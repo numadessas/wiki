@@ -833,7 +833,7 @@ In 2024, a four-week presential course was held at the Centro de Tecnologia e Ge
 
 The course's closing was interrupted by the **blocking of Twitter/X in Brazil** — a moment that became part of the project's own story. Rather than a disruption, it turned into a live case study: a reminder that the same platforms that host digital art communities are subject to political decisions, regulatory pressures, and corporate power.
 
-The regulation of social media platforms is not a secondary topic — it is central to any honest conversation about digital rights, freedom of expression, and the conditions under which artists create and distribute their work. Platforms must be held accountable for guaranteeing users' fundamental rights.
+The regulation of social media platforms is not a secondary topic — it is central to any honest conversation about digital rights, freedom of expression, and the conditions under which artists create and distribute their work. Platforms must be held accountable for guaranteeing users fundamental rights.
 
 ---
 
