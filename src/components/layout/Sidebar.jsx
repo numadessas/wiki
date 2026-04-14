@@ -1,6 +1,6 @@
 import { NavLink, Link } from 'react-router-dom'
 import { useLanguage } from '../../utils/LanguageContext.jsx'
-import { wikiSections } from '../../content/en/wiki.js'
+import { getAllSectionsSync } from '../../utils/contentAdapter.js'
 import { X } from 'lucide-react'
 
 const sectionIcons = {
@@ -18,7 +18,8 @@ const sectionIcons = {
 }
 
 export default function Sidebar({ isOpen, onClose }) {
-  const { t } = useLanguage()
+  const { t, lang } = useLanguage()
+  const sections = getAllSectionsSync(lang)
 
   return (
     <>
@@ -73,7 +74,7 @@ export default function Sidebar({ isOpen, onClose }) {
               }}
               className="group-hover:text-orange-500 transition-colors"
             >
-              ← {t.nav.home}
+              ← {lang === 'pt' ? 'Início' : 'Home'}
             </span>
           </Link>
 
@@ -92,8 +93,8 @@ export default function Sidebar({ isOpen, onClose }) {
           </p>
 
           {/* Navigation links */}
-          <ul className="space-y-0.5">
-            {wikiSections.map((section) => (
+          <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+            {sections.map((section) => (
               <li key={section.id}>
                 <NavLink
                   to={`/wiki/${section.slug}`}
@@ -127,7 +128,7 @@ export default function Sidebar({ isOpen, onClose }) {
                           fontWeight: isActive ? '600' : '400',
                         }}
                       >
-                        {t.sections[section.id] || section.title}
+                        {section.title}
                       </span>
                     </>
                   )}
