@@ -871,7 +871,7 @@ In 2025, an invitation from **Professor Leonardo Castillo** led to a module call
 
 **BEUTIN, Nikolas; BORAN, Daniel.** The Great Web 3.0 Glossary. 2023, Fachmedien Recht und Wirtschaft.
 
-**RENÉ G., MAPES D.** The Spatial Web: How Web 3.0 Will Connect Humans, Machines and AI to Transform the World. Author's Edition, 2019.
+**RENÉ G., MAPES D.** The Spatial Web: How Web 3.0 Will Connect Humans, Machines and AI to Transform the World. Author Edition, 2019.
 
 **LIMA, Júnior César de; CARVALHO, Cedric L. de.** Uma Visão da Web Semântica. 2004, UFG.
 
