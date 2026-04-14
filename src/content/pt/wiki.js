@@ -521,7 +521,6 @@ Explore diferentes plataformas. Muitas podem mudar e até fechar — o que não 
     `
   },
   {
-
     id: 'about',
     slug: 'about',
     title: 'Sobre o Projeto',
@@ -597,8 +596,6 @@ Em 2025, a pesquisa levou a um convite do **Professor Leonardo Castillo** para m
     \`
   },
   {
-
-
     id: 'references',
     slug: 'references',
     title: 'Referências',
@@ -645,8 +642,4 @@ Contato: [contato@numadessas.com.br](mailto:contato@numadessas.com.br) &nbsp;·&
 
 export const allTags = [...new Set(wikiSections.flatMap(s => s.tags))]
 export const getSectionBySlug = (slug) => wikiSections.find(s => s.slug === slug)
-
 export const getRelatedSections = (slugs) => slugs.map(slug => wikiSections.find(s => s.slug === slug)).filter(Boolean)
-
-export const getRelatedSections = (slugs) => slugs.map(slug => wikiSections.find(s => s.slug === slug)).filter(Boolean)
-
