@@ -782,6 +782,81 @@ Good marketing in the NFT space is not about shouting louder than everyone else.
     `
   },
   {
+    id: 'about',
+    slug: 'about',
+    title: 'About the Project',
+    subtitle: 'Research & history',
+    tags: ['research', 'ufpe', 'about'],
+    description: 'The origin of the project, the research behind it, and the people who built it.',
+    related: ['introduction', 'references'],
+    content: `
+# About the Project
+
+**Computadores Fazem Arte** is an educational wiki about Blockchain, Web3, and NFTs — developed as part of a master's research in **Digital Artifact Design** at the Universidade Federal de Pernambuco (UFPE), funded by the MAI/DAI program of the CNPq.
+
+---
+
+## The Name
+
+The project's name comes from a verse by **Fred Zero Quatro**, frontman of the legendary Recife band Mundo Livre S/A, from the song *Computadores Fazem Arte*. The verse captures something essential about the relationship between technology and artistic creation:
+
+> "Computadores avançam / Artistas pegam carona / Cientistas criam o novo / Artistas levam a fama"
+
+The song is both an observation and a provocation — and gave name to a project that tries to think critically about what it means for artists to inhabit technological spaces.
+
+---
+
+## The Song
+
+<div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:12px;margin:1.5rem 0"><iframe style="position:absolute;top:0;left:0;width:100%;height:100%" src="https://www.youtube.com/embed/KZg_m0z4NLI" title="Computadores Fazem Arte - Fred Zero Quatro" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+
+---
+
+## Scientific Initiation — Undergraduate Researchers
+
+As part of the research, three undergraduate students were mentored across different areas of knowledge — a deliberate interdisciplinary choice that reflects the project's own values.
+
+### Milena — Pedagogy
+Brought an educational lens to the project, helping think through how complex technological concepts could be made accessible to diverse audiences.
+
+### Vitória — Design
+Contributed a visual and communicational perspective, essential for shaping how the wiki and its materials are presented.
+
+### Artur — Computer Science · *in memoriam*
+Artur joined the research as a volunteer — entirely out of his own curiosity and enthusiasm. He was one of the most engaged and active participants in the project, bringing technical rigor and genuine excitement to every meeting. His presence left a mark on this research that cannot be measured. This project carries a piece of him.
+
+---
+
+## Presential Course — CTG/UFPE, 2024
+
+In 2024, a four-week presential course was held at the Centro de Tecnologia e Geociências (CTG) of UFPE — bringing together students from different areas to learn about Blockchain, NFTs, and digital art communities.
+
+The course's closing was interrupted by the **blocking of Twitter/X in Brazil** — a moment that became part of the project's own story. Rather than a disruption, it turned into a live case study: a reminder that the same platforms that host digital art communities are subject to political decisions, regulatory pressures, and corporate power.
+
+The regulation of social media platforms is not a secondary topic — it is central to any honest conversation about digital rights, freedom of expression, and the conditions under which artists create and distribute their work. Platforms must be held accountable for guaranteeing users' fundamental rights.
+
+---
+
+## Publication — WebMedia 2024
+
+The material was published and presented at **WebMedia 2024**, held at the Universidade Federal de Juiz de Fora (UFJF) — one of the most important Brazilian conferences on multimedia systems and web technologies.
+
+[Access the publication →](https://books-sol.sbc.org.br/index.php/sbc/catalog/view/177/779/1513)
+
+---
+
+## Guest Lecture — Design for Web3, UFPE 2025
+
+In 2025, an invitation from **Professor Leonardo Castillo** led to a module called *Design para Web3* within the Design undergraduate course at UFPE — bringing this project's content directly into formal design education.
+
+---
+
+## Contact
+
+**Numa** · [@numadessas](https://twitter.com/numadessas) · [contato@numadessas.com.br](mailto:contato@numadessas.com.br) · [numadessas.com.br](https://numadessas.com.br)
+    \`
+  },
+  {
     id: 'references',
     slug: 'references',
     title: 'References',
