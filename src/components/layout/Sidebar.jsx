@@ -19,12 +19,11 @@ const sectionIcons = {
 }
 
 export default function Sidebar({ isOpen, onClose }) {
-  const { t, lang } = useLanguage()
-  const sections = getAllSectionsSync(lang)
+  const { lang } = useLanguage()
+  const sections = getAllSectionsSync(lang).filter(s => s.id !== 'introduction')
 
   return (
     <>
-      {/* Mobile overlay */}
       {isOpen && (
         <div
           className="sidebar-overlay lg:hidden"
@@ -32,7 +31,6 @@ export default function Sidebar({ isOpen, onClose }) {
         />
       )}
 
-      {/* Sidebar */}
       <aside
         style={{
           width: 'var(--sidebar-width)',
@@ -49,7 +47,6 @@ export default function Sidebar({ isOpen, onClose }) {
         }}
         className="lg:translate-x-0"
       >
-        {/* Mobile close button */}
         <button
           onClick={onClose}
           className="lg:hidden absolute top-4 right-4 p-1.5 rounded-lg hover:bg-gray-200 transition-colors"
@@ -79,21 +76,18 @@ export default function Sidebar({ isOpen, onClose }) {
             </span>
           </Link>
 
-          {/* Label */}
-          <p
-            style={{
-              fontFamily: 'Space Mono, monospace',
-              fontSize: '0.6rem',
-              textTransform: 'uppercase',
-              letterSpacing: '0.15em',
-              color: 'var(--gray-400)',
-              marginBottom: '0.75rem',
-            }}
-          >
+          {/* Wiki sections */}
+          <p style={{
+            fontFamily: 'Space Mono, monospace',
+            fontSize: '0.6rem',
+            textTransform: 'uppercase',
+            letterSpacing: '0.15em',
+            color: 'var(--gray-400)',
+            marginBottom: '0.75rem',
+          }}>
             Wiki
           </p>
 
-          {/* Navigation links */}
           <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
             {sections.map((section) => (
               <li key={section.id}>
@@ -101,9 +95,7 @@ export default function Sidebar({ isOpen, onClose }) {
                   to={`/wiki/${section.slug}`}
                   onClick={onClose}
                   className={({ isActive }) =>
-                    `flex items-center gap-3 px-3 py-2.5 rounded-lg transition-all duration-200 group ${
-                      isActive ? 'nav-link-active' : ''
-                    }`
+                    `flex items-center gap-3 px-3 py-2.5 rounded-lg transition-all duration-200 group ${isActive ? 'nav-link-active' : ''}`
                   }
                   style={({ isActive }) => ({
                     color: isActive ? 'var(--orange)' : 'var(--gray-600)',
@@ -111,24 +103,19 @@ export default function Sidebar({ isOpen, onClose }) {
                 >
                   {({ isActive }) => (
                     <>
-                      <span
-                        style={{
-                          fontSize: '0.85rem',
-                          opacity: isActive ? 1 : 0.5,
-                          transition: 'opacity 0.2s',
-                          flexShrink: 0,
-                        }}
-                        className="group-hover:opacity-100"
-                      >
+                      <span style={{
+                        fontSize: '0.85rem',
+                        opacity: isActive ? 1 : 0.5,
+                        transition: 'opacity 0.2s',
+                        flexShrink: 0,
+                      }} className="group-hover:opacity-100">
                         {sectionIcons[section.id] || '◦'}
                       </span>
-                      <span
-                        style={{
-                          fontFamily: 'DM Sans, sans-serif',
-                          fontSize: '0.875rem',
-                          fontWeight: isActive ? '600' : '400',
-                        }}
-                      >
+                      <span style={{
+                        fontFamily: 'DM Sans, sans-serif',
+                        fontSize: '0.875rem',
+                        fontWeight: isActive ? '600' : '400',
+                      }}>
                         {section.title}
                       </span>
                     </>
@@ -139,42 +126,64 @@ export default function Sidebar({ isOpen, onClose }) {
           </ul>
 
           {/* Divider */}
-          <div
-            style={{
-              height: '1px',
-              background: 'var(--gray-200)',
-              margin: '2rem 0 1.5rem',
-            }}
-          />
+          <div style={{ height: '1px', background: 'var(--gray-200)', margin: '1.5rem 0' }} />
 
-          {/* Footer info */}
-          <div>
-            <p
-              style={{
-                fontFamily: 'Space Mono, monospace',
-                fontSize: '0.6rem',
-                textTransform: 'uppercase',
-                letterSpacing: '0.1em',
-                color: 'var(--gray-400)',
-                lineHeight: 1.8,
-              }}
+          {/* About link — separado */}
+          <NavLink
+            to="/wiki/about"
+            onClick={onClose}
+            className={({ isActive }) =>
+              `flex items-center gap-3 px-3 py-2.5 rounded-lg transition-all duration-200 group ${isActive ? 'nav-link-active' : ''}`
+            }
+            style={({ isActive }) => ({
+              color: isActive ? 'var(--orange)' : 'var(--gray-600)',
+            })}
+          >
+            {({ isActive }) => (
+              <>
+                <span style={{
+                  fontSize: '0.85rem',
+                  opacity: isActive ? 1 : 0.5,
+                  transition: 'opacity 0.2s',
+                  flexShrink: 0,
+                }} className="group-hover:opacity-100">
+                  ✦
+                </span>
+                <span style={{
+                  fontFamily: 'DM Sans, sans-serif',
+                  fontSize: '0.875rem',
+                  fontWeight: isActive ? '600' : '400',
+                }}>
+                  {lang === 'pt' ? 'Sobre o Projeto' : 'About the Project'}
+                </span>
+              </>
+            )}
+          </NavLink>
+
+          {/* Divider */}
+          <div style={{ height: '1px', background: 'var(--gray-200)', margin: '1.5rem 0' }} />
+
+          {/* Footer */}
+          <p style={{
+            fontFamily: 'Space Mono, monospace',
+            fontSize: '0.6rem',
+            textTransform: 'uppercase',
+            letterSpacing: '0.1em',
+            color: 'var(--gray-400)',
+            lineHeight: 1.8,
+          }}>
+            numawiki<br />
+            Computadores Fazem Arte<br />
+            v2.0 — 2026<br />
+            <a
+              href="https://numadessas.com.br"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ color: 'var(--orange)', textDecoration: 'underline' }}
             >
-              numawiki
-              <br />
-              Computadores Fazem Arte
-              <br />
-              v2.0 — 2026
-              <br />
-              <a
-                href="https://numadessas.com.br"
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{ color: 'var(--orange)', textDecoration: 'underline' }}
-              >
-                numadessas.com.br
-              </a>
-            </p>
-          </div>
+              numadessas.com.br
+            </a>
+          </p>
         </nav>
       </aside>
     </>
