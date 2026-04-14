@@ -69,11 +69,10 @@ export default function TableOfContents({ content }) {
                 fontSize: h.level === 2 ? '0.8rem' : '0.75rem',
                 color: active === h.id ? 'var(--orange)' : 'var(--gray-500)',
                 textDecoration: 'none',
-                paddingLeft: h.level === 3 ? '0.75rem' : '0',
+                paddingLeft: h.level === 3 ? '1rem' : '0.5rem',
                 paddingTop: '0.2rem',
                 paddingBottom: '0.2rem',
                 borderLeft: active === h.id ? '2px solid var(--orange)' : '2px solid transparent',
-                paddingLeft: h.level === 3 ? '1rem' : '0.5rem',
                 transition: 'all 0.2s',
                 lineHeight: 1.4,
               }}
