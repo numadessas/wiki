@@ -808,7 +808,7 @@ The song is both an observation and a provocation — and gave name to a project
 
 ## The Song
 
-<div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:12px;margin:1.5rem 0"><iframe style="position:absolute;top:0;left:0;width:100%;height:100%" src="https://www.youtube.com/embed/KZg_m0z4NLI" title="Computadores Fazem Arte - Fred Zero Quatro" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+[Ver video: https://www.youtube.com/watch?v=KZg_m0z4NLI]
 
 ---
 
