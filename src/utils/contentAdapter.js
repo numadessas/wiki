@@ -1,76 +1,98 @@
 /**
- * Content Adapter — Abstraction Layer
- * 
- * This module abstracts the data source for wiki content.
- * Currently uses local static data, but is designed to be
- * swapped out for blockchain/IPFS storage in the future.
- * 
- * Future integration targets:
- * - Tezos smart contracts (content registry)
- * - IPFS for content storage
- * - On-chain metadata for versioning
- * 
- * The interface exposed here should remain stable as the
- * underlying data source changes.
+ * Content Adapter — Camada de Abstração
+ *
+ * Este módulo abstrai a fonte de dados do conteúdo do wiki.
+ * Atualmente usa dados estáticos locais, mas foi projetado para
+ * ser substituído por armazenamento em Blockchain/IPFS no futuro.
+ *
+ * Alvos de integração futura:
+ * - Contratos inteligentes Tezos (registro de conteúdo)
+ * - IPFS para armazenamento de conteúdo
+ * - Metadados on-chain para versionamento
+ *
+ * A interface exposta aqui deve permanecer estável conforme
+ * a fonte de dados subjacente muda.
  */
 
-import { wikiSections, getSectionBySlug, getRelatedSections, allTags } from '../content/en/wiki.js'
+import { wikiSections as wikiEn, getSectionBySlug as getSlugEn, getRelatedSections as getRelatedEn, allTags as tagsEn } from '../content/en/wiki.js'
+import { wikiSections as wikiPt, getSectionBySlug as getSlugPt, getRelatedSections as getRelatedPt, allTags as tagsPt } from '../content/pt/wiki.js'
 
-// ─── Content Source Configuration ────────────────────────────────────────────
+// ─── Configuração da Fonte de Conteúdo ───────────────────────────────────────
 
 const CONFIG = {
   source: 'local', // 'local' | 'ipfs' | 'tezos'
-  // Future: ipfsGateway: 'https://ipfs.io/ipfs/',
-  // Future: tezosContract: 'KT1...',
-  // Future: tezosNetwork: 'mainnet',
+  // Futuro: ipfsGateway: 'https://ipfs.io/ipfs/',
+  // Futuro: tezosContract: 'KT1...',
+  // Futuro: tezosNetwork: 'mainnet',
 }
 
-// ─── Data Fetching ────────────────────────────────────────────────────────────
+// ─── Seleção de Idioma ────────────────────────────────────────────────────────
 
 /**
- * Fetch all wiki sections metadata (without full content for perf)
+ * Retorna o store de conteúdo correto baseado no idioma.
+ * Adicione novos idiomas aqui conforme necessário.
  */
-export async function fetchAllSections() {
+function getStore(lang) {
+  return lang === 'pt'
+    ? { wikiSections: wikiPt, getSectionBySlug: getSlugPt, getRelatedSections: getRelatedPt, allTags: tagsPt }
+    : { wikiSections: wikiEn, getSectionBySlug: getSlugEn, getRelatedSections: getRelatedEn, allTags: tagsEn }
+}
+
+// ─── Busca de Dados ───────────────────────────────────────────────────────────
+
+/**
+ * Busca metadados de todas as seções do wiki (sem o conteúdo completo, por performance).
+ * Futuro: busca do registro IPFS ou contrato Tezos.
+ */
+export async function fetchAllSections(lang = 'en') {
   if (CONFIG.source === 'local') {
-    return wikiSections.map(({ content: _, ...meta }) => meta)
+    return getStore(lang).wikiSections.map(({ content: _, ...meta }) => meta)
   }
-  // Future: fetch from IPFS registry or Tezos contract
-  throw new Error(`Unsupported source: ${CONFIG.source}`)
+  throw new Error(`Fonte não suportada: ${CONFIG.source}`)
 }
 
 /**
- * Fetch a single section including full content
+ * Busca uma seção completa incluindo conteúdo.
+ * Futuro: busca IPFS pelo CID armazenado no contrato Tezos.
  */
-export async function fetchSection(slug) {
+export async function fetchSection(slug, lang = 'en') {
   if (CONFIG.source === 'local') {
-    return getSectionBySlug(slug) || null
-  }
-  // Future: IPFS fetch by CID stored in Tezos contract
-}
-
-/**
- * Fetch related sections by slug array
- */
-export async function fetchRelated(slugs) {
-  if (CONFIG.source === 'local') {
-    return getRelatedSections(slugs)
-  }
-}
-
-/**
- * Fetch all available tags
- */
-export async function fetchTags() {
-  if (CONFIG.source === 'local') {
-    return allTags
+    return getStore(lang).getSectionBySlug(slug) || null
   }
 }
 
-// ─── Metadata Structure (IPFS-compatible) ────────────────────────────────────
+/**
+ * Busca seções relacionadas por array de slugs.
+ */
+export async function fetchRelated(slugs, lang = 'en') {
+  if (CONFIG.source === 'local') {
+    return getStore(lang).getRelatedSections(slugs)
+  }
+}
 
 /**
- * Converts a wiki section to IPFS-compatible metadata JSON structure.
- * Use this when preparing content for on-chain storage.
+ * Busca todas as tags disponíveis.
+ */
+export async function fetchTags(lang = 'en') {
+  if (CONFIG.source === 'local') {
+    return getStore(lang).allTags
+  }
+}
+
+/**
+ * Versão síncrona para uso em componentes que precisam
+ * dos dados imediatamente (sidebar, busca, home).
+ */
+export function getAllSectionsSync(lang = 'en') {
+  return getStore(lang).wikiSections
+}
+
+// ─── Estrutura de Metadados (compatível com IPFS) ─────────────────────────────
+
+/**
+ * Converte uma seção do wiki para estrutura de metadados
+ * compatível com IPFS. Use ao preparar conteúdo para
+ * armazenamento on-chain no futuro.
  */
 export function toIPFSMetadata(section) {
   return {
@@ -84,15 +106,22 @@ export function toIPFSMetadata(section) {
     ],
     content: section.content,
     related: section.related,
-    // Future: image: 'ipfs://...' (section cover art)
+    // Futuro: image: 'ipfs://...' (arte de capa da seção)
   }
 }
 
-// ─── Web3 Wallet Integration Stub ────────────────────────────────────────────
+// ─── Integração com Carteira Web3 (stub) ─────────────────────────────────────
 
 /**
- * Wallet integration stub for future Tezos connection.
- * DO NOT activate — structural only.
+ * Stub de integração com carteira para futura conexão Tezos.
+ * NÃO ativar — apenas estrutural por enquanto.
+ *
+ * Quando pronto para conectar:
+ * 1. Instalar @taquito/taquito e @airgap/beacon-sdk
+ * 2. Definir CONFIG.source = 'tezos'
+ * 3. Implementar fetchSection() para ler do contrato
+ * 4. Ativar as funções do walletAdapter abaixo
+ * 5. Construir fluxo de submissão de conteúdo
  */
 export const walletAdapter = {
   // connect: async () => { /* beacon-sdk / taquito */ },
