@@ -521,7 +521,7 @@ Explore diferentes plataformas. Muitas podem mudar e até fechar — o que não 
     `
   },
   {
-<<<<<<< Updated upstream
+
     id: 'about',
     slug: 'about',
     title: 'Sobre o Projeto',
@@ -548,7 +548,7 @@ A música é ao mesmo tempo uma observação e uma provocação — e deu nome a
 
 ## A Música
 
-<div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:12px;margin:1.5rem 0"><iframe style="position:absolute;top:0;left:0;width:100%;height:100%" src="https://www.youtube.com/embed/KZg_m0z4NLI" title="Computadores Fazem Arte - Fred Zero Quatro" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+[Ver video: https://www.youtube.com/watch?v=KZg_m0z4NLI]
 
 ---
 
@@ -597,8 +597,8 @@ Em 2025, a pesquisa levou a um convite do **Professor Leonardo Castillo** para m
     \`
   },
   {
-=======
->>>>>>> Stashed changes
+
+
     id: 'references',
     slug: 'references',
     title: 'Referências',
@@ -645,8 +645,8 @@ Contato: [contato@numadessas.com.br](mailto:contato@numadessas.com.br) &nbsp;·&
 
 export const allTags = [...new Set(wikiSections.flatMap(s => s.tags))]
 export const getSectionBySlug = (slug) => wikiSections.find(s => s.slug === slug)
-<<<<<<< Updated upstream
+
 export const getRelatedSections = (slugs) => slugs.map(slug => wikiSections.find(s => s.slug === slug)).filter(Boolean)
-=======
+
 export const getRelatedSections = (slugs) => slugs.map(slug => wikiSections.find(s => s.slug === slug)).filter(Boolean)
->>>>>>> Stashed changes
+
