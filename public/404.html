@@ -1,0 +1,8 @@
+<script>
+  (function(){
+    var p = window.location.search.match(/p=([^&]*)/);
+    if(p) {
+      window.history.replaceState(null, null, '/wiki/' + p[1] + (window.location.search.match(/q=([^&]*)/) ? '?' + window.location.search.match(/q=([^&]*)/)[1] : '') + window.location.hash);
+    }
+  })();
+</script>
