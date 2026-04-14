@@ -13,6 +13,13 @@
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
   <script type="module" src="/src/main.jsx"></script>
 </head>
+<script>
+  var redirect = sessionStorage.redirect;
+  delete sessionStorage.redirect;
+  if (redirect && redirect !== location.href) {
+    history.replaceState(null, null, redirect);
+  }
+</script>
 <body>
   <div id="root"></div>
 </body>
