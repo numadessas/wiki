@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 import { ArrowRight, ExternalLink } from 'lucide-react'
 import { useLanguage } from '../utils/LanguageContext.jsx'
-import { wikiSections, allTags } from '../content/en/wiki.js'
+import { getAllSectionsSync } from '../utils/contentAdapter.js'
 import TagPill from '../components/ui/TagPill.jsx'
 
 const sectionIcons = {
@@ -39,17 +39,25 @@ export default function HomePage() {
   const [activeTag, setActiveTag] = useState(searchParams.get('tag') || '')
   const [mounted, setMounted] = useState(false)
 
+  const sections = getAllSectionsSync(lang)
+  const tags = [...new Set(sections.flatMap(s => s.tags))]
+
   useEffect(() => {
     setTimeout(() => setMounted(true), 50)
   }, [])
 
   const filtered = activeTag
-    ? wikiSections.filter(s => s.tags.includes(activeTag))
-    : wikiSections
+    ? sections.filter(s => s.tags.includes(activeTag))
+    : sections
 
-  const totalTerms = wikiSections.reduce(
+  const totalTerms = sections.reduce(
     (acc, s) => acc + (s.glossaryTerms?.length || 0), 0
   )
+
+  const title = lang === 'pt' ? 'Computadores\nFazem Arte' : 'Computers\nMake Art'
+  const subtitle = lang === 'pt'
+    ? 'Um espaço de conhecimento sobre Blockchain, Web3, NFTs e comunidades digitais de arte.'
+    : 'A knowledge space about Blockchain, Web3, NFTs, and digital art communities.'
 
   return (
     <div style={{ minHeight: '100vh' }}>
@@ -87,7 +95,7 @@ export default function HomePage() {
               letterSpacing: '0.1em',
               color: 'var(--gray-400)',
             }}>
-              {t.home.by}{' '}
+              {lang === 'pt' ? 'por ' : 'by '}
               <a
                 href="https://numadessas.com.br"
                 target="_blank"
@@ -111,9 +119,10 @@ export default function HomePage() {
               color: 'var(--gray-900)',
               marginBottom: '2rem',
               maxWidth: '800px',
+              whiteSpace: 'pre-line',
             }}
           >
-            {lang === 'pt' ? 'Computadores\nFazem Arte' : 'Computers\nMake Art'}
+            {title}
           </h1>
 
           {/* Subtitle + stats */}
@@ -132,15 +141,15 @@ export default function HomePage() {
               flex: 1,
               minWidth: '240px',
             }}>
-              {t.home.subtitle}
+              {subtitle}
             </p>
 
             {/* Stats */}
             <div style={{ display: 'flex', gap: '2rem', flexShrink: 0 }}>
               {[
-                { value: wikiSections.length, label: t.home.topics },
-                { value: totalTerms, label: t.home.terms },
-                { value: '∞', label: t.home.free },
+                { value: sections.length, label: lang === 'pt' ? 'tópicos' : 'topics' },
+                { value: totalTerms, label: lang === 'pt' ? 'termos' : 'terms' },
+                { value: '∞', label: lang === 'pt' ? 'livre' : 'free' },
               ].map(stat => (
                 <div key={stat.label}>
                   <p style={{
@@ -170,7 +179,7 @@ export default function HomePage() {
           {/* CTA */}
           <div style={{ marginTop: '2.5rem', display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
             <Link
-              to={`/wiki/${wikiSections[0].slug}`}
+              to={`/wiki/${sections[0].slug}`}
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',
@@ -189,7 +198,7 @@ export default function HomePage() {
               }}
               className="hover:opacity-90"
             >
-              {t.home.explore}
+              {lang === 'pt' ? 'Explorar o wiki' : 'Explore the wiki'}
               <ArrowRight size={15} />
             </Link>
 
@@ -244,14 +253,14 @@ export default function HomePage() {
             color: 'var(--gray-400)',
             flexShrink: 0,
           }}>
-            {t.nav.allTopics}
+            {lang === 'pt' ? 'Todos os tópicos' : 'All topics'}
           </span>
           <TagPill
             tag="all"
             active={!activeTag}
             onClick={() => setActiveTag('')}
           />
-          {allTags.map(tag => (
+          {tags.map(tag => (
             <TagPill
               key={tag}
               tag={tag}
@@ -300,7 +309,10 @@ export default function HomePage() {
           margin: '0 auto',
           lineHeight: 1.8,
         }}>
-          "Computers advance / Artists hitchhike / Scientists create the new / Artists take the fame"
+          {lang === 'pt'
+            ? '"Computadores avançam / Artistas pegam carona / Cientistas criam o novo / Artistas levam a fama"'
+            : '"Computers advance / Artists hitchhike / Scientists create the new / Artists take the fame"'
+          }
           <footer style={{ marginTop: '0.5rem' }}>
             <cite style={{
               fontFamily: 'Space Mono, monospace',
@@ -361,7 +373,7 @@ function SectionCard({ section, accent, delay, mounted }) {
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: '8px',
-        background: `${accent}15`,
+        background: `${accent}18`,
         color: accent,
         fontSize: '1rem',
         marginBottom: '1rem',
