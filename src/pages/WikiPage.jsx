@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useParams, Link, useNavigate } from 'react-router-dom'
 import { Copy, Check, ChevronLeft, ChevronRight } from 'lucide-react'
-import { fetchSection, fetchRelated } from '../utils/contentAdapter.js'
-import { wikiSections } from '../content/en/wiki.js'
+import { fetchSection, fetchRelated, getAllSectionsSync } from '../utils/contentAdapter.js'
 import { useLanguage } from '../utils/LanguageContext.jsx'
 import MarkdownRenderer from '../components/wiki/MarkdownRenderer.jsx'
 import GlossaryList from '../components/wiki/GlossaryList.jsx'
@@ -18,7 +17,7 @@ function estimateReadTime(content) {
 
 export default function WikiPage() {
   const { slug } = useParams()
-  const { t } = useLanguage()
+  const { lang, t } = useLanguage()
   const navigate = useNavigate()
   const [section, setSection] = useState(null)
   const [related, setRelated] = useState([])
@@ -29,24 +28,25 @@ export default function WikiPage() {
     setMounted(false)
     setSection(null)
 
-    fetchSection(slug).then(data => {
+    fetchSection(slug, lang).then(data => {
       if (!data) {
         navigate('/404', { replace: true })
         return
       }
       setSection(data)
       if (data.related) {
-        fetchRelated(data.related).then(setRelated)
+        fetchRelated(data.related, lang).then(setRelated)
       }
       setTimeout(() => setMounted(true), 50)
       window.scrollTo({ top: 0 })
     })
-  }, [slug])
+  }, [slug, lang])
 
-  // Prev/next navigation
-  const currentIndex = wikiSections.findIndex(s => s.slug === slug)
-  const prevSection = currentIndex > 0 ? wikiSections[currentIndex - 1] : null
-  const nextSection = currentIndex < wikiSections.length - 1 ? wikiSections[currentIndex + 1] : null
+  // Prev/next navigation — usa o idioma atual
+  const allSections = getAllSectionsSync(lang)
+  const currentIndex = allSections.findIndex(s => s.slug === slug)
+  const prevSection = currentIndex > 0 ? allSections[currentIndex - 1] : null
+  const nextSection = currentIndex < allSections.length - 1 ? allSections[currentIndex + 1] : null
 
   const handleCopyLink = () => {
     navigator.clipboard.writeText(window.location.href)
@@ -72,7 +72,7 @@ export default function WikiPage() {
           alignItems: 'center',
           gap: '0.5rem',
         }}>
-          <span style={{ animation: 'spin 1s linear infinite', display: 'inline-block' }}>◌</span>
+          <span style={{ display: 'inline-block' }}>◌</span>
           Loading...
         </div>
       </div>
@@ -85,7 +85,6 @@ export default function WikiPage() {
       maxWidth: '1400px',
       margin: '0 auto',
     }}>
-      {/* Article */}
       <article
         style={{
           flex: 1,
@@ -97,15 +96,12 @@ export default function WikiPage() {
           transition: 'opacity 0.4s ease, transform 0.4s ease',
         }}
       >
-        {/* Breadcrumb */}
         <Breadcrumb items={[
-          { label: 'Wiki', href: '/' },
+          { label: 'numawiki', href: '/' },
           { label: section.title },
         ]} />
 
-        {/* Header */}
         <header style={{ marginBottom: '2.5rem' }}>
-          {/* Subtitle */}
           <p style={{
             fontFamily: 'Space Mono, monospace',
             fontSize: '0.65rem',
@@ -117,7 +113,6 @@ export default function WikiPage() {
             {section.subtitle}
           </p>
 
-          {/* Title */}
           <h1 style={{
             fontFamily: 'Instrument Sans, sans-serif',
             fontWeight: 700,
@@ -131,7 +126,6 @@ export default function WikiPage() {
             {section.title}
           </h1>
 
-          {/* Description */}
           {section.description && (
             <p style={{
               fontFamily: 'DM Sans, sans-serif',
@@ -145,14 +139,12 @@ export default function WikiPage() {
             </p>
           )}
 
-          {/* Meta row */}
           <div style={{
             display: 'flex',
             alignItems: 'center',
             gap: '0.75rem',
             flexWrap: 'wrap',
           }}>
-            {/* Read time */}
             <span style={{
               fontFamily: 'Space Mono, monospace',
               fontSize: '0.6rem',
@@ -165,17 +157,14 @@ export default function WikiPage() {
 
             <span style={{ color: 'var(--gray-200)' }}>·</span>
 
-            {/* Tags */}
             <div style={{ display: 'flex', gap: '0.4rem', flexWrap: 'wrap' }}>
               {section.tags?.map(tag => (
                 <TagPill key={tag} tag={tag} asLink />
               ))}
             </div>
 
-            {/* Spacer */}
             <div style={{ flex: 1 }} />
 
-            {/* Copy link */}
             <button
               onClick={handleCopyLink}
               style={{
@@ -189,6 +178,8 @@ export default function WikiPage() {
                 color: copied ? 'var(--green)' : 'var(--gray-400)',
                 transition: 'color 0.2s',
                 cursor: 'pointer',
+                border: 'none',
+                background: 'none',
               }}
               title={t.nav.copyLink}
             >
@@ -198,14 +189,12 @@ export default function WikiPage() {
           </div>
         </header>
 
-        {/* Content separator */}
         <div style={{
           height: '1px',
           background: 'var(--gray-200)',
           marginBottom: '2.5rem',
         }} />
 
-        {/* Glossary section gets special treatment */}
         {section.id === 'glossary' ? (
           <>
             <MarkdownRenderer content={section.content} />
@@ -215,7 +204,6 @@ export default function WikiPage() {
           <MarkdownRenderer content={section.content} />
         )}
 
-        {/* Navigation between pages */}
         <nav
           style={{
             display: 'grid',
@@ -250,7 +238,7 @@ export default function WikiPage() {
                 textTransform: 'uppercase',
                 color: 'var(--gray-400)',
               }}>
-                <ChevronLeft size={11} /> Previous
+                <ChevronLeft size={11} /> {lang === 'pt' ? 'Anterior' : 'Previous'}
               </span>
               <span style={{
                 fontFamily: 'Instrument Sans, sans-serif',
@@ -289,7 +277,7 @@ export default function WikiPage() {
                 textTransform: 'uppercase',
                 color: 'var(--gray-400)',
               }}>
-                Next <ChevronRight size={11} />
+                {lang === 'pt' ? 'Próximo' : 'Next'} <ChevronRight size={11} />
               </span>
               <span style={{
                 fontFamily: 'Instrument Sans, sans-serif',
@@ -305,7 +293,6 @@ export default function WikiPage() {
         </nav>
       </article>
 
-      {/* Right panel: TOC + Related */}
       <aside
         style={{
           width: '240px',
@@ -321,7 +308,6 @@ export default function WikiPage() {
         className="xl:block"
       >
         <TableOfContents content={section.content} />
-
         <div style={{ marginTop: '2.5rem' }}>
           <RelatedArticles sections={related} />
         </div>
