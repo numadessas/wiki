@@ -1,0 +1,268 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --orange: #ee6f22;
+  --green: #93FF78;
+  --purple: #734578;
+  --black: #0a0a0a;
+  --white: #fafaf8;
+  --gray-50: #f7f6f3;
+  --gray-100: #eeece8;
+  --gray-200: #dddad3;
+  --gray-300: #c4c0b6;
+  --gray-400: #9e9a8e;
+  --gray-500: #787368;
+  --gray-600: #5c5850;
+  --gray-700: #403d38;
+  --gray-800: #2a2824;
+  --gray-900: #1a1815;
+
+  --sidebar-width: 280px;
+  --header-height: 60px;
+}
+
+.dark {
+  --white: #0a0a0a;
+  --gray-50: #111110;
+  --gray-100: #1a1918;
+  --gray-200: #252420;
+  --gray-300: #35332e;
+  --gray-400: #5a5750;
+  --gray-500: #7a7770;
+  --gray-600: #9e9b94;
+  --gray-700: #c4c1ba;
+  --gray-800: #dddad3;
+  --gray-900: #f0ede8;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background-color: var(--white);
+  color: var(--gray-900);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--gray-100); }
+::-webkit-scrollbar-thumb { background: var(--gray-300); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--orange); }
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Instrument Sans', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  color: var(--gray-900);
+}
+
+/* Wiki content prose styles */
+.wiki-content h1 { font-size: 2.5rem; margin-bottom: 1.5rem; }
+.wiki-content h2 { font-size: 1.75rem; margin-top: 3rem; margin-bottom: 1rem; padding-top: 2rem; border-top: 1px solid var(--gray-200); }
+.wiki-content h3 { font-size: 1.25rem; margin-top: 2rem; margin-bottom: 0.75rem; color: var(--orange); }
+.wiki-content p { margin-bottom: 1.25rem; color: var(--gray-700); font-size: 1rem; }
+.wiki-content a { color: var(--orange); text-decoration: underline; text-underline-offset: 3px; }
+.wiki-content a:hover { color: var(--purple); }
+.wiki-content ul, .wiki-content ol { margin-bottom: 1.25rem; padding-left: 1.5rem; }
+.wiki-content li { margin-bottom: 0.5rem; color: var(--gray-700); }
+.wiki-content strong { color: var(--gray-900); font-weight: 600; }
+.wiki-content em { color: var(--gray-600); font-style: italic; }
+.wiki-content blockquote {
+  border-left: 3px solid var(--orange);
+  padding: 1rem 1.5rem;
+  margin: 2rem 0;
+  background: var(--gray-50);
+  border-radius: 0 8px 8px 0;
+  font-style: italic;
+  color: var(--gray-600);
+}
+.wiki-content code {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.85em;
+  background: var(--gray-100);
+  padding: 0.15em 0.4em;
+  border-radius: 4px;
+  color: var(--purple);
+}
+.wiki-content pre {
+  background: var(--gray-900);
+  color: var(--green);
+  padding: 1.5rem;
+  border-radius: 12px;
+  overflow-x: auto;
+  margin: 2rem 0;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.875rem;
+}
+.wiki-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2rem 0;
+  font-size: 0.9rem;
+}
+.wiki-content th {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background: var(--gray-900);
+  color: var(--white);
+  padding: 0.75rem 1rem;
+  text-align: left;
+}
+.wiki-content td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--gray-200);
+  color: var(--gray-700);
+}
+.wiki-content tr:hover td { background: var(--gray-50); }
+
+/* Callout blocks */
+.callout {
+  padding: 1.25rem 1.5rem;
+  border-radius: 12px;
+  margin: 2rem 0;
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+.callout-info { background: rgba(238, 111, 34, 0.08); border: 1px solid rgba(238, 111, 34, 0.3); }
+.callout-concept { background: rgba(115, 69, 120, 0.08); border: 1px solid rgba(115, 69, 120, 0.3); }
+.callout-warning { background: rgba(147, 255, 120, 0.1); border: 1px solid rgba(147, 255, 120, 0.4); }
+.callout-icon { font-size: 1.25rem; flex-shrink: 0; margin-top: 0.1rem; }
+.callout-title {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.35rem;
+  font-weight: 700;
+}
+.callout-info .callout-title { color: var(--orange); }
+.callout-concept .callout-title { color: var(--purple); }
+.callout-warning .callout-title { color: #4a7a3a; }
+.dark .callout-warning .callout-title { color: var(--green); }
+
+/* Reading progress */
+.reading-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: var(--orange);
+  z-index: 100;
+  transition: width 0.1s linear;
+}
+
+/* Page transitions */
+.page-enter {
+  opacity: 0;
+  transform: translateY(12px);
+}
+.page-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Sidebar active */
+.nav-link-active {
+  color: var(--orange) !important;
+  background: rgba(238, 111, 34, 0.08);
+}
+
+/* Tag pill */
+.tag {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.2rem 0.6rem;
+  border-radius: 100px;
+  border: 1px solid var(--gray-300);
+  color: var(--gray-500);
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+.tag:hover, .tag.active {
+  border-color: var(--orange);
+  color: var(--orange);
+  background: rgba(238, 111, 34, 0.06);
+}
+
+/* Definition tooltip */
+.definition-term {
+  border-bottom: 2px dotted var(--orange);
+  cursor: help;
+  transition: all 0.2s;
+}
+.definition-term:hover { background: rgba(238, 111, 34, 0.08); }
+
+/* Grain overlay */
+.grain::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-size: 128px 128px;
+  z-index: 9999;
+}
+
+/* Selection */
+::selection {
+  background: var(--orange);
+  color: white;
+}
+
+/* Focus */
+:focus-visible {
+  outline: 2px solid var(--orange);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Mobile sidebar overlay */
+.sidebar-overlay {
+  display: none;
+}
+
+@media (max-width: 1024px) {
+  .sidebar-overlay {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 40;
+    backdrop-filter: blur(4px);
+  }
+}
+
+/* Accordion animation */
+.accordion-content {
+  overflow: hidden;
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+}
+
+/* Copy button */
+.copy-btn {
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.copy-group:hover .copy-btn { opacity: 1; }

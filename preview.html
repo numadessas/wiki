@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>numawiki — Computadores Fazem Arte</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.3.1/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.3.1/umd/react-dom.production.min.js"></script>
+<style>
+:root{--orange:#ee6f22;--green:#93FF78;--purple:#734578;--black:#0a0a0a;--white:#fafaf8;--g50:#f7f6f3;--g100:#eeece8;--g200:#dddad3;--g300:#c4c0b6;--g400:#9e9a8e;--g500:#787368;--g600:#5c5850;--g700:#403d38;--g800:#2a2824;--g900:#1a1815;--sidebar:280px;--header:60px}
+.dark{--white:#0a0a0a;--g50:#111110;--g100:#1a1918;--g200:#252420;--g300:#35332e;--g400:#5a5750;--g500:#7a7770;--g600:#9e9b94;--g700:#c4c1ba;--g800:#dddad3;--g900:#f0ede8}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--white);color:var(--g900);line-height:1.7;-webkit-font-smoothing:antialiased;transition:background .3s,color .3s}
+::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:var(--g100)}::-webkit-scrollbar-thumb{background:var(--g300);border-radius:3px}::-webkit-scrollbar-thumb:hover{background:var(--orange)}
+h1,h2,h3,h4{font-family:'Instrument Sans',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:-.02em;line-height:1.1;color:var(--g900)}
+::selection{background:var(--orange);color:#fff}
+/* Header */
+.hdr{position:fixed;top:0;left:0;right:0;height:var(--header);background:var(--white);border-bottom:1px solid var(--g200);display:flex;align-items:center;padding:0 1.25rem;gap:1rem;z-index:60}
+.hdr-logo{font-family:'Instrument Sans',sans-serif;font-weight:700;font-size:.9rem;text-transform:uppercase;letter-spacing:-.02em;color:var(--g900);cursor:pointer;flex-shrink:0;text-decoration:none}
+.hdr-logo span{color:var(--orange)}
+.hdr-spacer{flex:1}
+.hdr-btn{display:flex;align-items:center;gap:.4rem;padding:.5rem .8rem;border-radius:8px;border:1px solid var(--g200);background:var(--g50);font-family:'DM Sans',sans-serif;font-size:.8rem;color:var(--g400);cursor:pointer;transition:all .2s;white-space:nowrap}
+.hdr-btn:hover{border-color:var(--orange);color:var(--orange)}
+.hdr-icon{padding:.4rem;border-radius:8px;border:none;background:none;color:var(--g500);cursor:pointer;transition:all .2s}
+.hdr-icon:hover{background:var(--g100);color:var(--g900)}
+.hdr-lang{font-family:'Space Mono',monospace;font-size:.7rem;text-transform:uppercase;padding:.4rem .7rem;border-radius:8px;border:none;background:none;color:var(--g500);cursor:pointer;transition:all .2s}
+.hdr-lang:hover{background:var(--g100)}
+/* Progress bar */
+.progress{position:fixed;top:0;left:0;height:3px;background:var(--orange);z-index:100;transition:width .1s linear}
+/* Sidebar */
+.sidebar{position:fixed;top:var(--header);left:0;bottom:0;width:var(--sidebar);background:var(--g50);border-right:1px solid var(--g200);overflow-y:auto;z-index:50;transition:transform .3s cubic-bezier(.4,0,.2,1)}
+.sidebar-inner{padding:1.5rem 1.25rem}
+.nav-back{font-family:'Space Mono',monospace;font-size:.6rem;text-transform:uppercase;letter-spacing:.12em;color:var(--g400);cursor:pointer;margin-bottom:1.5rem;display:flex;align-items:center;gap:.35rem;background:none;border:none;transition:color .2s}
+.nav-back:hover{color:var(--orange)}
+.nav-label{font-family:'Space Mono',monospace;font-size:.58rem;text-transform:uppercase;letter-spacing:.15em;color:var(--g400);margin-bottom:.6rem}
+.nav-link{display:flex;align-items:center;gap:.75rem;padding:.6rem .75rem;border-radius:8px;cursor:pointer;border:none;background:none;width:100%;text-align:left;transition:all .2s;margin-bottom:1px;text-decoration:none}
+.nav-link:hover{background:var(--g100)}
+.nav-link.active{background:rgba(238,111,34,.1);color:var(--orange)}
+.nav-icon{font-size:.85rem;opacity:.5;flex-shrink:0}
+.nav-link.active .nav-icon{opacity:1}
+.nav-text{font-family:'DM Sans',sans-serif;font-size:.875rem;color:var(--g600)}
+.nav-link.active .nav-text{color:var(--orange);font-weight:600}
+.nav-divider{height:1px;background:var(--g200);margin:1.5rem 0}
+.nav-footer{font-family:'Space Mono',monospace;font-size:.58rem;text-transform:uppercase;letter-spacing:.1em;color:var(--g400);line-height:1.9}
+.nav-footer a{color:var(--orange);text-decoration:underline}
+/* Main layout */
+.layout{padding-top:var(--header);display:flex}
+.main-content{flex:1;min-width:0;margin-left:var(--sidebar);transition:margin-left .3s}
+/* Home */
+.home{max-width:1200px;margin:0 auto}
+.hero{padding:clamp(3rem,8vh,5rem) clamp(1.5rem,5vw,4rem)}
+.eyebrow{display:flex;align-items:center;gap:.75rem;margin-bottom:1.5rem}
+.eyebrow-text{font-family:'Space Mono',monospace;font-size:.65rem;text-transform:uppercase;letter-spacing:.15em;color:var(--orange)}
+.eyebrow-line{height:1px;width:40px;background:var(--orange);opacity:.4}
+.eyebrow-by{font-family:'Space Mono',monospace;font-size:.65rem;text-transform:uppercase;letter-spacing:.1em;color:var(--g400)}
+.eyebrow-by a{color:var(--purple);text-decoration:underline}
+.hero-title{font-family:'Instrument Sans',sans-serif;font-weight:700;font-size:clamp(3.5rem,10vw,7rem);text-transform:uppercase;letter-spacing:-.04em;line-height:.92;color:var(--g900);margin-bottom:2rem;max-width:800px;white-space:pre-line}
+.hero-row{display:flex;align-items:flex-start;gap:3rem;flex-wrap:wrap}
+.hero-subtitle{font-family:'DM Sans',sans-serif;font-size:1.1rem;color:var(--g500);max-width:480px;line-height:1.7;flex:1;min-width:240px}
+.stats{display:flex;gap:2rem;flex-shrink:0}
+.stat-val{font-family:'Instrument Sans',sans-serif;font-weight:700;font-size:2rem;color:var(--orange);line-height:1;margin-bottom:.25rem}
+.stat-lbl{font-family:'Space Mono',monospace;font-size:.58rem;text-transform:uppercase;letter-spacing:.1em;color:var(--g400)}
+.cta-row{margin-top:2.5rem;display:flex;gap:1rem;flex-wrap:wrap}
+.btn-primary{display:inline-flex;align-items:center;gap:.5rem;padding:.75rem 1.5rem;background:var(--orange);color:#fff;font-family:'Instrument Sans',sans-serif;font-weight:600;font-size:.875rem;text-transform:uppercase;letter-spacing:.05em;border-radius:8px;border:none;cursor:pointer;transition:opacity .2s;text-decoration:none}
+.btn-primary:hover{opacity:.88}
+.btn-outline{display:inline-flex;align-items:center;gap:.5rem;padding:.75rem 1.5rem;border:1px solid var(--g200);color:var(--g600);font-family:'Instrument Sans',sans-serif;font-weight:600;font-size:.875rem;text-transform:uppercase;letter-spacing:.05em;border-radius:8px;background:none;cursor:pointer;transition:all .2s;text-decoration:none}
+.btn-outline:hover{border-color:var(--g400)}
+.hr-fade{height:1px;background:linear-gradient(to right,transparent,var(--g200) 20%,var(--g200) 80%,transparent);margin:0 clamp(1.5rem,5vw,4rem)}
+/* Tags */
+.tag-row{padding:1.5rem clamp(1.5rem,5vw,4rem);display:flex;align-items:center;gap:.6rem;flex-wrap:wrap}
+.tag-label{font-family:'Space Mono',monospace;font-size:.58rem;text-transform:uppercase;letter-spacing:.12em;color:var(--g400);flex-shrink:0}
+.tag{font-family:'Space Mono',monospace;font-size:.63rem;text-transform:uppercase;letter-spacing:.08em;padding:.2rem .6rem;border-radius:100px;border:1px solid var(--g300);color:var(--g500);cursor:pointer;transition:all .2s;white-space:nowrap;background:none}
+.tag:hover,.tag.active{border-color:var(--orange);color:var(--orange);background:rgba(238,111,34,.06)}
+/* Grid */
+.grid{padding:0 clamp(1.5rem,5vw,4rem) 5rem;display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:1rem}
+.card{display:flex;flex-direction:column;padding:1.5rem;border-radius:14px;border:1px solid var(--g200);background:var(--white);cursor:pointer;transition:all .25s;text-decoration:none;position:relative;overflow:hidden}
+.card:hover{border-color:var(--g300);box-shadow:0 4px 20px rgba(0,0,0,.06)}
+.card-accent{position:absolute;top:0;left:0;right:0;height:2px;opacity:0;transition:opacity .25s}
+.card:hover .card-accent{opacity:1}
+.card-icon{width:36px;height:36px;display:flex;align-items:center;justify-content:center;border-radius:8px;font-size:1rem;margin-bottom:1rem;flex-shrink:0;font-family:'Space Mono',monospace}
+.card-sub{font-family:'Space Mono',monospace;font-size:.58rem;text-transform:uppercase;letter-spacing:.1em;color:var(--g400);margin-bottom:.35rem}
+.card-title{font-family:'Instrument Sans',sans-serif;font-weight:700;font-size:1.05rem;text-transform:uppercase;letter-spacing:-.02em;color:var(--g900);margin-bottom:.5rem;line-height:1.2}
+.card-desc{font-family:'DM Sans',sans-serif;font-size:.8rem;color:var(--g500);line-height:1.6;flex:1}
+.card-tags{display:flex;gap:.4rem;flex-wrap:wrap;margin-top:1.25rem}
+/* Footer */
+.home-footer{border-top:1px solid var(--g200);padding:3rem clamp(1.5rem,5vw,4rem);text-align:center}
+.home-footer blockquote{font-family:'DM Sans',sans-serif;font-style:italic;font-size:1rem;color:var(--g400);max-width:480px;margin:0 auto;line-height:1.8}
+.home-footer cite{display:block;margin-top:.5rem;font-family:'Space Mono',monospace;font-size:.63rem;text-transform:uppercase;letter-spacing:.1em;font-style:normal;color:var(--orange)}
+/* Wiki page */
+.wiki-wrap{display:flex;max-width:1400px;margin:0 auto}
+.article{flex:1;min-width:0;padding:clamp(2rem,4vw,3.5rem) clamp(1.5rem,4vw,3rem);max-width:760px}
+.breadcrumb{display:flex;align-items:center;gap:.35rem;margin-bottom:2rem;flex-wrap:wrap}
+.breadcrumb a,.breadcrumb span{font-family:'Space Mono',monospace;font-size:.63rem;text-transform:uppercase;letter-spacing:.08em;color:var(--g400);text-decoration:none;cursor:pointer}
+.breadcrumb a:hover{color:var(--orange)}
+.breadcrumb .sep{color:var(--g300);font-size:.7rem}
+.breadcrumb .current{color:var(--g600)}
+.art-sub{font-family:'Space Mono',monospace;font-size:.63rem;text-transform:uppercase;letter-spacing:.12em;color:var(--orange);margin-bottom:.75rem}
+.art-title{font-family:'Instrument Sans',sans-serif;font-weight:700;font-size:clamp(2rem,5vw,3rem);text-transform:uppercase;letter-spacing:-.03em;line-height:.95;color:var(--g900);margin-bottom:1rem}
+.art-desc{font-family:'DM Sans',sans-serif;font-size:1.05rem;color:var(--g500);line-height:1.6;margin-bottom:1.5rem;max-width:540px}
+.art-meta{display:flex;align-items:center;gap:.75rem;flex-wrap:wrap;margin-bottom:.5rem}
+.meta-time{font-family:'Space Mono',monospace;font-size:.58rem;text-transform:uppercase;letter-spacing:.08em;color:var(--g400)}
+.meta-dot{color:var(--g200)}
+.meta-spacer{flex:1}
+.copy-link{display:flex;align-items:center;gap:.35rem;font-family:'Space Mono',monospace;font-size:.58rem;text-transform:uppercase;letter-spacing:.08em;color:var(--g400);border:none;background:none;cursor:pointer;transition:color .2s}
+.copy-link:hover,.copy-link.done{color:var(--green)}
+.art-divider{height:1px;background:var(--g200);margin:1.5rem 0 2.5rem}
+/* Prose */
+.prose h1{font-size:2.25rem;margin-bottom:1.5rem}
+.prose h2{font-size:1.6rem;margin-top:3rem;margin-bottom:1rem;padding-top:2rem;border-top:1px solid var(--g200)}
+.prose h2 a,.prose h3 a{text-decoration:none;color:inherit}
+.prose h3{font-size:1.15rem;margin-top:2rem;margin-bottom:.75rem;color:var(--orange)}
+.prose p{margin-bottom:1.25rem;color:var(--g700);font-size:1rem}
+.prose a{color:var(--orange);text-underline-offset:3px}
+.prose a:hover{color:var(--purple)}
+.prose ul,.prose ol{margin-bottom:1.25rem;padding-left:1.5rem}
+.prose li{margin-bottom:.5rem;color:var(--g700)}
+.prose strong{color:var(--g900);font-weight:600}
+.prose em{color:var(--g600);font-style:italic}
+.prose blockquote{border-left:3px solid var(--orange);padding:.875rem 1.25rem;margin:2rem 0;background:var(--g50);border-radius:0 8px 8px 0;font-style:italic;color:var(--g600)}
+.prose code{font-family:'Space Mono',monospace;font-size:.82em;background:var(--g100);padding:.15em .4em;border-radius:4px;color:var(--purple)}
+.prose pre{background:var(--g900);color:var(--green);padding:1.5rem;border-radius:12px;overflow-x:auto;margin:2rem 0;font-family:'Space Mono',monospace;font-size:.875rem}
+.prose table{width:100%;border-collapse:collapse;margin:2rem 0;font-size:.9rem}
+.prose th{font-family:'Space Mono',monospace;font-size:.7rem;text-transform:uppercase;letter-spacing:.05em;background:var(--g900);color:var(--white);padding:.75rem 1rem;text-align:left}
+.prose td{padding:.75rem 1rem;border-bottom:1px solid var(--g200);color:var(--g700)}
+.prose tr:hover td{background:var(--g50)}
+.prose hr{border:none;border-top:1px solid var(--g200);margin:2.5rem 0}
+/* Glossary */
+.gloss-filter{width:100%;padding:.6rem .9rem;border-radius:8px;border:1px solid var(--g200);background:var(--g50);font-family:'DM Sans',sans-serif;font-size:.875rem;color:var(--g900);outline:none;margin-bottom:1.25rem}
+.gloss-count{font-family:'Space Mono',monospace;font-size:.63rem;text-transform:uppercase;letter-spacing:.08em;color:var(--g400);margin-bottom:1.25rem}
+.gloss-item{border:1px solid var(--g200);border-radius:10px;overflow:hidden;margin-bottom:.5rem;transition:border-color .2s}
+.gloss-item.open{border-color:var(--orange)}
+.gloss-btn{width:100%;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.875rem 1rem;background:none;cursor:pointer;text-align:left;transition:background .15s}
+.gloss-item.open .gloss-btn{background:rgba(238,111,34,.04)}
+.gloss-arrow{font-family:'Space Mono',monospace;font-size:.7rem;color:var(--orange);opacity:.5;transition:opacity .2s}
+.gloss-item.open .gloss-arrow{opacity:1}
+.gloss-term{font-family:'Instrument Sans',sans-serif;font-weight:600;font-size:.95rem;text-transform:uppercase;letter-spacing:-.01em;color:var(--g900)}
+.gloss-copy{padding:.25rem;color:var(--g300);border:none;background:none;cursor:pointer;transition:color .2s;flex-shrink:0}
+.gloss-copy:hover{color:var(--orange)}
+.gloss-def{padding:0 1rem .875rem 2.5rem;font-family:'DM Sans',sans-serif;font-size:.9rem;color:var(--g600);line-height:1.7;border-top:1px solid var(--g100);padding-top:.75rem}
+/* Page nav */
+.page-nav{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-top:4rem;padding-top:2rem;border-top:1px solid var(--g200)}
+.pnav-btn{display:flex;flex-direction:column;gap:.25rem;padding:.875rem 1rem;border-radius:10px;border:1px solid var(--g200);background:none;cursor:pointer;transition:border-color .2s;text-decoration:none}
+.pnav-btn:hover{border-color:var(--orange)}
+.pnav-btn.right{align-items:flex-end}
+.pnav-dir{display:flex;align-items:center;gap:.35rem;font-family:'Space Mono',monospace;font-size:.58rem;text-transform:uppercase;color:var(--g400)}
+.pnav-title{font-family:'Instrument Sans',sans-serif;font-weight:600;font-size:.85rem;text-transform:uppercase;color:var(--g800)}
+/* TOC */
+.toc-panel{width:220px;flex-shrink:0;padding-top:clamp(2rem,4vw,3.5rem);padding-right:2rem;position:sticky;top:var(--header);height:calc(100vh - var(--header));overflow-y:auto}
+.toc-label{font-family:'Space Mono',monospace;font-size:.58rem;text-transform:uppercase;letter-spacing:.12em;color:var(--g400);margin-bottom:.75rem}
+.toc-link{display:block;font-family:'DM Sans',sans-serif;font-size:.78rem;color:var(--g500);text-decoration:none;padding:.2rem .5rem;border-left:2px solid transparent;transition:all .2s;line-height:1.4}
+.toc-link:hover{color:var(--orange)}
+.toc-link.active{color:var(--orange);border-left-color:var(--orange)}
+.toc-link.h3{padding-left:1rem;font-size:.74rem}
+/* Related */
+.related-label{font-family:'Space Mono',monospace;font-size:.58rem;text-transform:uppercase;letter-spacing:.12em;color:var(--g400);margin-bottom:.75rem;margin-top:2.5rem}
+.related-card{display:flex;align-items:flex-start;justify-content:space-between;gap:.75rem;padding:.75rem .875rem;border-radius:10px;border:1px solid var(--g200);margin-bottom:.5rem;cursor:pointer;transition:all .2s;text-decoration:none}
+.related-card:hover{border-color:var(--orange)}
+.related-title{font-family:'Instrument Sans',sans-serif;font-weight:600;font-size:.8rem;text-transform:uppercase;color:var(--g900);margin-bottom:.15rem}
+.related-desc{font-family:'DM Sans',sans-serif;font-size:.72rem;color:var(--g400);line-height:1.4}
+/* Search modal */
+.search-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.4);backdrop-filter:blur(8px);z-index:200;display:flex;align-items:flex-start;justify-content:center;padding-top:8vh}
+.search-modal{position:relative;width:100%;max-width:580px;margin:0 1rem;background:var(--white);border-radius:16px;border:1px solid var(--g200);overflow:hidden;box-shadow:0 24px 64px rgba(0,0,0,.15)}
+.search-input-row{display:flex;align-items:center;gap:.75rem;padding:1rem 1.25rem;border-bottom:1px solid var(--g200)}
+.search-input{flex:1;border:none;outline:none;background:transparent;font-family:'DM Sans',sans-serif;font-size:1rem;color:var(--g900)}
+.search-input::placeholder{color:var(--g400)}
+.search-result{display:flex;align-items:flex-start;gap:.75rem;padding:.875rem 1.25rem;background:none;border:none;border-bottom:1px solid var(--g100);width:100%;text-align:left;cursor:pointer;transition:background .15s}
+.search-result:hover,.search-result.sel{background:var(--g50)}
+.search-result-icon{margin-top:.15rem;flex-shrink:0}
+.search-result-title{font-family:'Instrument Sans',sans-serif;font-weight:600;font-size:.9rem;text-transform:uppercase;color:var(--g900);margin-bottom:.15rem}
+.search-result-desc{font-family:'DM Sans',sans-serif;font-size:.78rem;color:var(--g500);line-height:1.4}
+.search-badge{font-family:'Space Mono',monospace;font-size:.58rem;color:var(--purple);border:1px solid var(--purple);padding:.08rem .35rem;border-radius:4px;vertical-align:middle;margin-left:.5rem}
+.search-hint{padding:1rem 1.25rem;font-family:'Space Mono',monospace;font-size:.58rem;text-transform:uppercase;letter-spacing:.08em;color:var(--g400)}
+.search-empty{padding:2rem;text-align:center;font-family:'Space Mono',monospace;font-size:.72rem;color:var(--g400)}
+/* Mobile */
+@media(max-width:1024px){
+  .main-content{margin-left:0 !important}
+  .sidebar{transform:translateX(-100%)}
+  .sidebar.open{transform:translateX(0)}
+  .toc-panel{display:none}
+}
+@media(max-width:640px){
+  .stats{display:none}
+  .hero-title{font-size:3rem}
+  .page-nav{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script>
+const { createElement: h, useState, useEffect, useRef, useCallback } = React;
+
+// ─── DATA ────────────────────────────────────────────────────────────────────
+
+const SECTIONS = [
+  { id:'introduction', slug:'introduction', title:'Introduction', subtitle:'About this wiki', tags:['overview','web3','nft'], description:'What is Computadores Fazem Arte and why this knowledge matters.', related:['glossary','internet-generations'],
+    content:`<h1>Introduction</h1><p>To begin talking about NFTs, we first need to think about some key terms that make up this universe. This formation covers the techniques and practices for creating artworks in the NFT market.</p><p>This project's main objective is to encourage more people to learn how to use Blockchain technology — and also to spark a serious conversation about how virtual communities can become more conscious and thereby contribute socially to physical spaces.</p><blockquote>"Computers advance / Artists hitchhike / Scientists create the new / Artists take the fame" — <em>Fred Zero Quatro</em></blockquote><h2>Why this matters</h2><p>This is not just a technical manual. It's an invitation to think critically about technology, art, and community. The NFT space is fertile ground — still largely unexplored.</p><h2>Who made this?</h2><p>This educational material was developed by <strong>Numa</strong> as part of a master's research in Digital Artifact Design at the Universidade Federal de Pernambuco (UFPE), funded by the MAI/DAI program of the CNPq with support from the NFT art community.</p><p>The content is available for <strong>free distribution</strong>.</p>`
+  },
+  { id:'glossary', slug:'glossary', title:'Glossary', subtitle:'Key terms', tags:['reference','terminology'], description:'Essential vocabulary for navigating the Web3 and NFT space.', related:['introduction','blockchain'], isGlossary:true,
+    content:`<p>Essential vocabulary for navigating the Web3 and NFT space. Click any term to expand its definition.</p>`,
+    terms:[
+      {term:'DYOR',def:'"Do Your Own Research" — an expression reminding everyone that investing in crypto is highly volatile. What works for one person does not necessarily work for another.'},
+      {term:'FOMO',def:'"Fear Of Missing Out" — the anxiety of missing an opportunity, often driving impulsive decisions in volatile markets.'},
+      {term:'WAGMI',def:'"We\'re All Gonna Make It" — an optimistic expression of collective encouragement common in NFT communities.'},
+      {term:'Genesis',def:'The first NFT someone launches on a network or platform. Inspired by the "genesis block" — the first block mined on a blockchain.'},
+      {term:'Hash',def:'A unique sequence of characters generated from transaction data using a mathematical function. Hashes verify data integrity and connect blockchain blocks.'},
+      {term:'Node',def:'A computer that is part of a blockchain network. Each node holds an identical copy of all transactions that have occurred on the network.'},
+      {term:'Nonce',def:'Short for "number used once" — a randomly generated number used only once in a cryptographic transaction.'},
+      {term:'Burn NFT',def:'A process to render an NFT unusable. Since NFTs cannot be deleted, burning is used when one needs to effectively "remove" an NFT from circulation.'},
+      {term:'Scam',def:'A fraudulent scheme designed to deceive users and steal assets or information.'},
+      {term:'Phishing',def:'A type of cyber attack that steals personal and financial information, often through fake websites or messages.'},
+      {term:'NFA',def:'"No Financial Advice" — used when discussing a project/coin to clarify that each person must evaluate for themselves what is appropriate for their financial situation.'},
+      {term:'IRL',def:'"In Real Life" — used to describe life and events that happen outside the internet.'},
+      {term:'Block Explorer',def:'A platform where you can access and read a blockchain publicly in real time. Each network has one or more explorers (e.g. Solscan for Solana).'},
+      {term:'Whitepaper',def:'A document explaining the objectives and technology of a crypto project. A crucial element for projects to be considered genuine and professional.'},
+      {term:'Mintagem / Minting',def:'The process of creating and registering an NFT on a blockchain — making it an official, verifiable digital asset.'},
+      {term:'GM / GN',def:'"Good Morning" / "Good Night" — common greetings used in NFT and crypto communities to build daily connection.'},
+      {term:'Flood',def:'Sending too many messages about the same topic, creating visual pollution in chats and channels.'},
+    ]
+  },
+  { id:'internet-generations', slug:'internet-generations', title:'Internet Generations', subtitle:'Web1, Web2, Web3', tags:['web3','history','technology'], description:'From static pages to semantic, decentralized networks.', related:['blockchain','introduction'],
+    content:`<h1>Internet Generations</h1><p>Before diving into NFTs, it's important to understand the three generations of the internet. We currently live in a moment where Web2 and Web3 <strong>coexist simultaneously</strong> — these are not separate periods but continuations.</p><h2>Web 1.0 — The Simple Internet</h2><p>The first phase emerged in the <strong>1990s</strong>. Sites were primarily informational with basic layouts and text content. Only possible to access and read — <em>read-only</em>.</p><p>Characteristics: limited bandwidth, desktop only, no real interaction.</p><h2>Web 2.0 — The Social Internet</h2><p>Emerged around <strong>2004</strong>. Brought user-generated content and visual resources. Users could share, comment, and connect. Marked by greater interactivity and the rise of social media platforms — but with <strong>centralized platforms</strong> (Google, Facebook, Instagram) owning user data.</p><h2>Web3 — The Semantic Internet</h2><p>Starting from <strong>2008</strong>, when Blockchain technology came into action through Bitcoin. Also called the <strong>Semantic Web</strong> — aiming to make information understandable to computers through machine learning.</p><blockquote>⚠️ Despite ideals of decentralization, many discourses around Blockchain are tied to neoliberal ideas. In practice, blockchains concentrate power in the hands of a few developers and miners. — <em>MENOTTI, 2021</em></blockquote><p>The idea of <strong>trustless</strong> blockchains: instead of trusting people or institutions, trust the technology itself.</p>`
+  },
+  { id:'blockchain', slug:'blockchain', title:'Blockchain Technology', subtitle:'How it works', tags:['blockchain','technology','history'], description:'Digital ledgers, consensus mechanisms, block structure, and applications.', related:['security','nfts','internet-generations'],
+    content:`<h1>Blockchain Technology</h1><h2>What is Blockchain?</h2><p>Blockchains are like <strong>digital, decentralized record books</strong>. Data is saved on each user's computer in the network — not just on a single server, like Web 2.0 platforms.</p><p>Think of it as a large <strong>shared spreadsheet</strong> replicated across thousands of computers. This spreadsheet is constantly updated and every node verifies each new entry.</p><h2>History</h2><p>Blockchain technology had its origins in <strong>1991</strong>, when Stuart Haber and W. Scott Stornetta published an article on securely timestamping digital documents. In 2008, <em>Satoshi Nakamoto</em> published the Bitcoin whitepaper, and in 2009 the first block was mined.</p><h2>How Does a Blockchain Work?</h2><p><strong>1. User requests a transaction</strong> — encoded in a block with sender, recipient, and value.</p><p><strong>2. Transaction broadcast to the network</strong> — all nodes verify validity.</p><p><strong>3. Consensus process</strong> — nodes agree which block to add (mining/validation).</p><p><strong>4. Transaction finalized</strong> — immutably added to the chain. Cannot be altered or reversed.</p><h2>Consensus Mechanisms</h2><table><thead><tr><th>Mechanism</th><th>Description</th><th>Examples</th></tr></thead><tbody><tr><td><strong>Proof of Work (PoW)</strong></td><td>Miners compete to solve complex math problems</td><td>Bitcoin, Litecoin</td></tr><tr><td><strong>Proof of Stake (PoS)</strong></td><td>Validators chosen by amount of crypto staked</td><td>Ethereum, Solana, Cardano</td></tr><tr><td><strong>Proof of Authority (PoA)</strong></td><td>Pre-selected validators</td><td>Binance Coin, XRP</td></tr></tbody></table><h2>Blockchain Properties</h2><p><strong>Decentralization:</strong> No central authority — control is distributed among all network participants.</p><p><strong>Transparency:</strong> All transactions are public and traceable via block explorers.</p><p><strong>Immutability:</strong> Once recorded, data cannot be altered. Errors require creating a new record and burning the old one.</p><p><strong>Anonymity:</strong> Users have public addresses (not personal identity). Anonymity exists without compromising transparency.</p><h2>Blockchain Layers</h2><table><thead><tr><th>Layer</th><th>Role</th><th>Examples</th></tr></thead><tbody><tr><td>L0</td><td>Software infrastructure, interoperability</td><td>Polkadot, Cosmos</td></tr><tr><td>L1</td><td>Core blockchains, handle consensus</td><td>Bitcoin, Ethereum, Solana</td></tr><tr><td>L2</td><td>Scalability solutions, reduce fees</td><td>Optimism, Polygon, Arbitrum</td></tr><tr><td>L3</td><td>Cross-chain application layer</td><td>IBC Protocol, Quant</td></tr></tbody></table>`
+  },
+  { id:'security', slug:'security', title:'Security', subtitle:'Wallets & protection', tags:['security','wallets','scam'], description:'Cryptocurrency wallets, private keys, and how to protect yourself from scams.', related:['blockchain','nfts'],
+    content:`<h1>Security</h1><h2>Cryptocurrency Wallets</h2><p>A <strong>wallet</strong> is like a bank account for your digital currencies — used to store crypto obtained through purchase, transfer, or mining. It's your primary way to interact with Web3 sites and applications.</p><h2>Security Keys</h2><p><strong>Public Keys:</strong> Like bank account numbers — a sequence of numbers and letters generated when creating a wallet. Needed to receive assets. Safe to share.</p><p><strong>Private Keys / Seed Phrase:</strong> Must be kept completely secret in a safe physical location. The <em>seed phrase</em> is the most important security element — with it you can recover your wallet on any device.</p><blockquote>⚠️ <strong>Critical:</strong> These keys must NEVER be stored in digital files, emails, or apps. Once you lose your seed phrase, it is impossible to recover your wallet. There is no recovery system.</blockquote><h2>Types of Wallets</h2><p><strong>Hot Wallet (Digital):</strong> Software on desktop or mobile, connected to the internet. Used for active trading and minting. Examples: Phantom (Solana), MetaMask (Ethereum), Temple (Tezos).</p><p><strong>Cold Wallet (Hardware):</strong> Physical device (like a USB drive) not connected to the internet. Recommended for long-term storage. Brands: Ledger, Trezor, Ngrave.</p><h2>Common Scams</h2><p><strong>Fake Collector Profiles:</strong> Pretend to offer high prices for your work, then ask you to pay a "fee" to complete the sale. There was never a real sale.</p><p><strong>Fake Work Proposals:</strong> Offer commissions or game tests with malware-infected files that scan your computer to steal wallet credentials.</p><p><strong>Fraudulent Sites:</strong> Clone popular NFT projects. When you connect your wallet, they drain all funds.</p><h2>Security Measures</h2><p>✓ Don't click unknown links &nbsp;·&nbsp; ✓ Don't open attachments from unknown sources &nbsp;·&nbsp; ✓ Don't connect your wallet to just any site &nbsp;·&nbsp; ✓ Be skeptical of exorbitant proposals &nbsp;·&nbsp; ✓ Never share your seed phrase &nbsp;·&nbsp; ✓ Store keys only in physical, secure locations &nbsp;·&nbsp; ✓ Use anti-phishing browser extensions (Pocket Universe, Wallet Guard)</p>`
+  },
+  { id:'nfts', slug:'nfts', title:'NFTs', subtitle:'Non-fungible tokens', tags:['nft','art','blockchain'], description:'What NFTs are, how they work, metadata, dynamic NFTs, and how to create one.', related:['blockchain','platforms','communities'],
+    content:`<h1>NFTs</h1><h2>What Are NFTs?</h2><p>We can understand an NFT as the <strong>digital certificate of ownership of an item</strong>. This certificate is created and recorded on a blockchain network and can contain files, links, text, or code.</p><p>NFT stands for <strong>Non-Fungible Token</strong>. <em>Fungible</em> = replaceable (money, cars). <em>Non-fungible</em> = unique, irreplaceable (artworks, real estate).</p><h2>Metadata</h2><p>NFT metadata is like labels with the properties of a digital asset: file description, name, categories, transaction history, date/time.</p><p><strong>On-chain:</strong> Information lives directly on the blockchain, integrated into the NFT itself — most permanent.</p><p><strong>Off-chain:</strong> Information lives on servers or cloud storage (IPFS). Most metadata is stored off-chain as a JSON file.</p><h2>Dynamic NFTs (dNFTs)</h2><p>NFTs whose characteristics can <em>change</em> — also called "semi-fungible" or "living NFTs." Used in DeFi games (badges that evolve) and art (pieces that change by artist-defined rules).</p><p>Example: basketball player <strong>LaMelo Ball's</strong> dynamic NFTs incorporate real sports data and update based on game results.</p><h2>Compressed NFTs (cNFTs)</h2><p>A unique type of token on Solana allowing multiple unique tokens to be grouped, greatly reducing creation costs. An economical alternative for mass minting.</p><h2>How to Create an NFT</h2><p><strong>Step 1:</strong> Choose the Blockchain (Ethereum, Solana, Tezos...)</p><p><strong>Step 2:</strong> Choose a Platform (see Platforms section)</p><p><strong>Step 3:</strong> Generate your file (artwork, music, video, code...)</p><p><strong>Step 4:</strong> Mint the file on the platform</p><p><strong>Step 5:</strong> List the NFT (price, edition, conditions)</p><p><strong>Step 6:</strong> Share through your community</p>`
+  },
+  { id:'communities', slug:'communities', title:'NFT Communities', subtitle:'Building connections', tags:['community','nft','culture'], description:'Types of communities, how to join, social initiatives, and critical perspectives.', related:['platforms','communication','marketing'],
+    content:`<h1>NFT Communities</h1><p>An NFT community is a digital group gathering to discuss, create, buy, sell, and exchange these tokens. Communities are crucial — it's impossible to thrive without community in this environment.</p><h2>Types of Communities</h2><p><strong>Project Communities:</strong> Centered around a specific NFT project or collection.</p><p><strong>Collector Communities:</strong> People interested in collecting NFTs across projects.</p><p><strong>Artist Communities:</strong> Focused on digital artists creating NFTs.</p><p><strong>Investor Communities:</strong> People investing in NFTs for profit.</p><h2>How to Participate</h2><p>Use platforms like Discord, Twitter/X, and Warpcast. Be consistent and patient — building loyal community takes time. Be authentic and transparent about your goals.</p><h2>Tips for Beginners</h2><p>1. Don't trust easy money — don't expect millions in 2 weeks.<br>2. Use NFT as a tool to showcase your work.<br>3. Don't believe "drop your NFT here" posts (engagement farming).<br>4. Never create the same artwork on different blockchains.<br>5. Don't flood chats with too many messages.</p><h2>Social Initiatives</h2><p>The <strong>Balot NFT</strong> initiative by the Congolese Plantation Workers Art League (CATPC) used NFT technology to reclaim cultural heritage and buy back lands in the Congo. Each NFT Balot represents one hectare of land, with funds used to replant forests.</p><h2>Critical Perspective</h2><blockquote>The virtual environment is only an extension of our physical world — it reflects and reproduces the social problems that exist in real life. The NFT scene is not exempt from politics. Every technology is a tool; the result depends on who is using it.</blockquote>`
+  },
+  { id:'platforms', slug:'platforms', title:'Platforms', subtitle:'NFT marketplaces', tags:['nft','platforms','tools'], description:'An overview of NFT platforms across different blockchains.', related:['nfts','communication','blockchain'],
+    content:`<h1>NFT Platforms</h1><p>Below is an overview of platforms across different blockchains. Explore <strong>DappRadar</strong> to discover platforms across many other networks.</p><h2>Ethereum & L2s</h2><p><strong>Zora</strong> — creator-focused, free minting &nbsp;·&nbsp; <strong>Super Rare</strong> — curated 1/1 &nbsp;·&nbsp; <strong>Foundation</strong> — invite-only &nbsp;·&nbsp; <strong>Manifold</strong> — custom smart contracts &nbsp;·&nbsp; <strong>Rarible</strong> — multi-chain</p><h2>Solana</h2><p><strong>3.land</strong> — community & exhibition &nbsp;·&nbsp; <strong>Exchange Art</strong> — curated art &nbsp;·&nbsp; <strong>Magic Eden</strong> — largest marketplace &nbsp;·&nbsp; <strong>Tensor</strong> — trading & analytics</p><h2>Tezos</h2><p><strong>Objkt</strong> — largest Tezos marketplace &nbsp;·&nbsp; <strong>(fx)hash</strong> — generative art &nbsp;·&nbsp; <strong>teia</strong> — community-owned, artist-centered</p><h2>Bitcoin Ordinals</h2><p><strong>Gamma</strong> &nbsp;·&nbsp; <strong>Magic Eden</strong> &nbsp;·&nbsp; <strong>Ordzaa</strong></p><h2>How to Choose?</h2><p><strong>Fees:</strong> Tezos and Solana have very low fees; Ethereum is higher.</p><p><strong>Community:</strong> Different platforms attract different collector communities.</p><p><strong>Curation:</strong> Open (Objkt, Magic Eden) vs. curated (Super Rare, Foundation).</p><p><strong>Mission:</strong> teia is community-owned; other platforms are for-profit.</p><blockquote>Platforms can change and close — but NFTs remain on the blockchain. Always be prepared to adapt.</blockquote>`
+  },
+  { id:'communication', slug:'communication', title:'Communication', subtitle:'Where communities live', tags:['community','social','tools'], description:'The social networks and communication tools that NFT communities use.', related:['communities','marketing'],
+    content:`<h1>Communication Platforms</h1><p>NFT communities are built on essential social networks. These spaces connect artists and collectors. While Instagram is less central, audiences from these platforms often extend there.</p><h2>X (formerly Twitter)</h2><p>One of the most used platforms for NFT promotion. Many artists, traders, and crypto people maintain dedicated profiles for interaction and sharing work. Despite changes and removing NFT profile pictures, it remains important for discovering projects and participating in conversations.</p><h2>Discord</h2><p>Essential for community building. Artists, investors, and collectors connect, organize, and converse. Many NFT platforms, artists, and projects have their own Discord servers. Typical structure: announcements, art sharing, discussion, events, team/collector roles.</p><h2>Warpcast / Farcaster</h2><p>A <strong>decentralized social network</strong> with strong crypto-native audience. Annual subscription fee. Growing art community with "Channels" for organized topics. Your data is not owned by the platform.</p><h2>Nostr</h2><p>A simple, open protocol enabling global, decentralized, censorship-resistant social media. Multiple networks use this protocol — flexible foundation without central control.</p><h2>Choosing Your Platforms</h2><p>You don't need to be everywhere. Start with 1–2 platforms and build genuine connections before expanding. <strong>Consistency and authenticity matter more than volume.</strong></p>`
+  },
+  { id:'marketing', slug:'marketing', title:'Marketing', subtitle:'Sharing your work', tags:['marketing','community','strategy'], description:'Strategies for promoting your NFT work ethically and effectively.', related:['communities','communication','platforms'],
+    content:`<h1>Marketing</h1><h2>1. Build a Solid Identity</h2><p>Develop a visual identity and a consistent voice that represents your personality — profile, bio, aesthetic palette, and your artistic narrative.</p><h2>2. Be Active on Social Media</h2><p>Interact with your audience, share your work, and participate in conversations. Share works in progress, behind-the-scenes, thoughts on technology and art, and announcements for drops.</p><h2>3. Organization is Fundamental</h2><p>Use post scheduling tools, maintain a launch calendar, and stay attentive to deadlines and opportunities.</p><h2>4. Build Meaningful Connections</h2><p>Comment genuinely on others' work. Participate in shared projects. Show up consistently in communities you care about. Offer help before asking for it.</p><h2>5. Launch Frequency</h2><p>Find a sustainable rhythm — whether elaborate projects that take time, or quick creations from inspiration peaks. Both require energy but different kinds. <strong>Burnout helps no one.</strong></p><h2>6. Pricing Strategies</h2><p><strong>Don't devalue yourself!</strong> Consider scarcity, demand, currency value, and your time and craft. Research what artists you admire are charging.</p><h2>7. Stay Creative and Connected</h2><p>Even in slower periods, keep creating and staying connected. Consistency and experimentation are essential — they allow you to reinvent yourself as necessary.</p><h2>8. Be Prepared for Change</h2><p>Platforms may change and close — this doesn't make NFTs disappear (they live on the blockchain). Currencies can have drastic changes. Keep experimenting with new possibilities.</p><blockquote>Good marketing in the NFT space is about being genuinely present, sharing authentically, building relationships before transactions, and maintaining consistency over time.</blockquote>`
+  },
+  { id:'references', slug:'references', title:'References', subtitle:'Bibliography', tags:['research','bibliography'], description:'Academic and online references used in this wiki.', related:['introduction'],
+    content:`<h1>References</h1><h2>Academic Works</h2><p><strong>MENOTTI, Gabriel.</strong> Criptoarte: A Metafísica do NFT e a Tecnocolonização da Autenticidade. 2021, Revista do Centro de Pesquisa e Formação / No 13.</p><p><strong>ASSANGE, Julian et al.</strong> Cypherpunks: Liberdade e o Futuro da Internet. São Paulo: Boitempo, 2013.</p><p><strong>PANDA, Sandeep Kumar et al.</strong> Bitcoin and Blockchain: History and Current Applications. 2020, CRC Press.</p><p><strong>AL-SAQAF, Walid; SEIDLER, Nicolas.</strong> Blockchain technology for social impact. 2017, Journal of Cyber Policy.</p><p><strong>KENT, Charlotte.</strong> Blockchain manifestos: fighting for the imagination of a culture. 2021, Burlington Contemporary Journal.</p><p><strong>LIMA, Júnior César de; CARVALHO, Cedric L. de.</strong> Uma Visão da Web Semântica. 2004, UFG.</p><h2>Online Resources</h2><p><a href="https://coinmarketcap.com/academy/en/glossary" target="_blank">CoinMarketCap Glossary</a> &nbsp;·&nbsp; <a href="https://web3.foundation/" target="_blank">Web3 Foundation</a> &nbsp;·&nbsp; <a href="https://chain.link/education-hub/what-is-dynamic-nft" target="_blank">Chainlink — Dynamic NFTs</a> &nbsp;·&nbsp; <a href="https://dappradar.com/" target="_blank">DappRadar</a></p><h2>About this Project</h2><p>This wiki was developed by <strong>Numa</strong> (<a href="https://twitter.com/numadessas" target="_blank">@numadessas</a>) as part of master's research in Digital Artifact Design at UFPE, funded by CNPq's MAI/DAI program.</p><p>Contact: <a href="mailto:contato@numadessas.com.br">contato@numadessas.com.br</a> &nbsp;·&nbsp; Content is freely available for distribution.</p>`
+  }
+];
+
+const ICONS = {introduction:'◎',glossary:'≋','internet-generations':'⊕',blockchain:'⬡',security:'◈',nfts:'◆',communities:'⬭',platforms:'▣',communication:'◉',marketing:'▲',references:'◦'};
+const ACCENTS = ['var(--orange)','var(--purple)','#3b82f6','var(--orange)','#ef4444','var(--purple)','var(--green)','#0ea5e9','var(--orange)','var(--purple)','var(--g400)'];
+const ALL_TAGS = [...new Set(SECTIONS.flatMap(s=>s.tags))];
+
+// ─── HOOKS ───────────────────────────────────────────────────────────────────
+
+function useProgress() {
+  const [p,setP] = useState(0);
+  useEffect(()=>{
+    const fn=()=>{const d=document.documentElement.scrollHeight-window.innerHeight;setP(d>0?Math.min(100,(window.scrollY/d)*100):0)};
+    window.addEventListener('scroll',fn,{passive:true}); fn();
+    return()=>window.removeEventListener('scroll',fn);
+  },[]);
+  return p;
+}
+
+function useDark() {
+  const [dark,setDark] = useState(()=>localStorage.getItem('theme')==='dark');
+  useEffect(()=>{
+    dark?document.documentElement.classList.add('dark'):document.documentElement.classList.remove('dark');
+    localStorage.setItem('theme',dark?'dark':'light');
+  },[dark]);
+  return [dark,()=>setDark(d=>!d)];
+}
+
+// ─── SEARCH ──────────────────────────────────────────────────────────────────
+
+function search(q){
+  if(!q.trim()) return [];
+  const lq=q.toLowerCase();
+  const res=[];
+  SECTIONS.forEach(s=>{
+    if(s.title.toLowerCase().includes(lq)||s.description?.toLowerCase().includes(lq)||s.tags?.some(t=>t.includes(lq))||s.content?.toLowerCase().includes(lq)){
+      res.push({...s,score:s.title.toLowerCase().includes(lq)?0:1});
+    }
+    if(s.terms){
+      s.terms.forEach(t=>{
+        if(t.term.toLowerCase().includes(lq)||t.def.toLowerCase().includes(lq)){
+          res.push({id:`t-${t.term}`,title:t.term,description:t.def.substring(0,90)+'…',slug:'glossary',isGloss:true,score:.5});
+        }
+      });
+    }
+  });
+  return res.sort((a,b)=>a.score-b.score).slice(0,8);
+}
+
+// ─── COMPONENTS ──────────────────────────────────────────────────────────────
+
+function SearchModal({open,onClose,onNav}){
+  const [q,setQ]=useState(''); const [res,setRes]=useState([]); const [sel,setSel]=useState(0);
+  const inp=useRef(null);
+  useEffect(()=>{if(open){inp.current?.focus();setQ('');setRes([]);setSel(0);}}, [open]);
+  useEffect(()=>{setRes(search(q));setSel(0);},[q]);
+  if(!open) return null;
+  const go=(slug)=>{onNav(slug);onClose();};
+  const kd=(e)=>{
+    if(e.key==='Escape') onClose();
+    if(e.key==='ArrowDown') setSel(s=>Math.min(s+1,res.length-1));
+    if(e.key==='ArrowUp') setSel(s=>Math.max(s-1,0));
+    if(e.key==='Enter'&&res[sel]) go(res[sel].slug);
+  };
+  return h('div',{className:'search-backdrop',onClick:onClose},
+    h('div',{className:'search-modal',onClick:e=>e.stopPropagation()},
+      h('div',{className:'search-input-row'},
+        h('svg',{width:18,height:18,viewBox:'0 0 24 24',fill:'none',stroke:'var(--g400)',strokeWidth:2},h('circle',{cx:11,cy:11,r:8}),h('path',{d:'m21 21-4.35-4.35'})),
+        h('input',{ref:inp,className:'search-input',value:q,onChange:e=>setQ(e.target.value),onKeyDown:kd,placeholder:'Search sections, terms…'}),
+        h('button',{onClick:onClose,style:{border:'none',background:'none',cursor:'pointer',color:'var(--g400)',fontSize:'1.1rem'}},'×')
+      ),
+      res.length>0?h('ul',{style:{listStyle:'none',maxHeight:420,overflowY:'auto'}},
+        res.map((r,i)=>h('li',{key:r.id},
+          h('button',{className:`search-result${i===sel?' sel':''}`,onClick:()=>go(r.slug)},
+            h('span',{className:'search-result-icon',style:{color:r.isGloss?'var(--purple)':'var(--orange)'}},
+              r.isGloss?'𝔸':'📄'
+            ),
+            h('div',null,
+              h('div',{className:'search-result-title'},r.title, r.isGloss&&h('span',{className:'search-badge'},'Glossary')),
+              h('div',{className:'search-result-desc'},r.description)
+            )
+          )
+        ))
+      ):q?h('div',{className:'search-empty'},`No results for "${q}"`):h('div',{className:'search-hint'},'Type to search sections and glossary')
+    )
+  );
+}
+
+function Header({onMenu,onSearch,dark,toggleDark,lang,toggleLang,onHome}){
+  const p=useProgress();
+  return h('header',{className:'hdr'},
+    h('div',{className:'progress',style:{width:`${p}%`}}),
+    h('button',{className:'hdr-icon',onClick:onMenu,style:{display:'flex'}},
+      h('svg',{width:20,height:20,viewBox:'0 0 24 24',fill:'none',stroke:'currentColor',strokeWidth:2},
+        h('line',{x1:3,y1:6,x2:21,y2:6}),h('line',{x1:3,y1:12,x2:21,y2:12}),h('line',{x1:3,y1:18,x2:21,y2:18})
+      )
+    ),
+    h('a',{className:'hdr-logo',onClick:onHome,style:{cursor:'pointer'}},
+        'numa',h('span',null,'wiki')
+    ),
+    h('div',{className:'hdr-spacer'}),
+    h('button',{className:'hdr-btn',onClick:onSearch},
+      h('svg',{width:14,height:14,viewBox:'0 0 24 24',fill:'none',stroke:'currentColor',strokeWidth:2},h('circle',{cx:11,cy:11,r:8}),h('path',{d:'m21 21-4.35-4.35'})),
+      h('span',null,'Search…'),
+      h('kbd',{style:{fontFamily:'Space Mono,monospace',fontSize:'.6rem',background:'var(--g200)',color:'var(--g500)',padding:'.1rem .35rem',borderRadius:4}},'⌘K')
+    ),
+    h('button',{className:'hdr-lang',onClick:toggleLang},lang.toUpperCase()),
+    h('button',{className:'hdr-icon',onClick:toggleDark,title:dark?'Light mode':'Dark mode'},
+      dark?'☀':'🌙'
+    )
+  );
+}
+
+function Sidebar({open,currentSlug,onNav}){
+  return h('aside',{className:`sidebar${open?' open':''}`},
+    h('div',{className:'sidebar-inner'},
+      h('button',{className:'nav-back',onClick:()=>onNav('home')},
+        '← Home'
+      ),
+      h('p',{className:'nav-label'},'Wiki'),
+      h('nav',null,
+        SECTIONS.map(s=>
+          h('button',{
+            key:s.id,
+            className:`nav-link${currentSlug===s.slug?' active':''}`,
+            onClick:()=>onNav(s.slug)
+          },
+            h('span',{className:'nav-icon'},ICONS[s.id]||'◦'),
+            h('span',{className:'nav-text'},s.title)
+          )
+        )
+      ),
+      h('div',{className:'nav-divider'}),
+      h('div',{className:'nav-footer'},
+        'numawiki',h('br'),'Computadores Fazem Arte',h('br'),
+        'v2.0 — 2026',h('br'),
+        h('a',{href:'https://numadessas.com.br',target:'_blank'},'numadessas.com.br')
+      )
+    )
+  );
+}
+
+function TagPill({tag,active,onClick}){
+  return h('button',{className:`tag${active?' active':''}`,onClick},tag);
+}
+
+function HomePage({onNav,lang}){
+  const [activeTag,setActiveTag]=useState('');
+  const filtered=activeTag?SECTIONS.filter(s=>s.tags.includes(activeTag)):SECTIONS;
+  const totalTerms=SECTIONS.reduce((a,s)=>a+(s.terms?.length||0),0);
+  const title=lang==='pt'?'Computadores\nFazem Arte':'Computers\nMake Art';
+  const subtitle=lang==='pt'?'Um espaço de conhecimento sobre Blockchain, Web3, NFTs e comunidades digitais de arte.':'A knowledge space about Blockchain, Web3, NFTs, and digital art communities.';
+  return h('div',{className:'home'},
+    h('section',{className:'hero'},
+      h('div',{className:'eyebrow'},
+        h('span',{className:'eyebrow-text'},'numawiki'),
+        h('div',{className:'eyebrow-line'}),
+        h('span',{className:'eyebrow-by'},lang==='pt'?'por ':'by ',h('a',{href:'https://numadessas.com.br',target:'_blank'},'Numa'))
+      ),
+      h('h1',{className:'hero-title'},title),
+      h('div',{className:'hero-row'},
+        h('p',{className:'hero-subtitle'},subtitle),
+        h('div',{className:'stats'},
+          [{v:SECTIONS.length,l:lang==='pt'?'tópicos':'topics'},{v:totalTerms,l:lang==='pt'?'termos':'terms'},{v:'∞',l:lang==='pt'?'livre':'free'}].map(s=>
+            h('div',{key:s.l},h('p',{className:'stat-val'},s.v),h('p',{className:'stat-lbl'},s.l))
+          )
+        )
+      ),
+      h('div',{className:'cta-row'},
+        h('button',{className:'btn-primary',onClick:()=>onNav(SECTIONS[0].slug)},
+          lang==='pt'?'Explorar o wiki':'Explore the wiki',
+          ' →'
+        ),
+        h('a',{href:'https://numadessas.com.br',target:'_blank',className:'btn-outline'},'numadessas.com.br ↗')
+      )
+    ),
+    h('div',{className:'hr-fade'}),
+    h('div',{className:'tag-row'},
+      h('span',{className:'tag-label'},lang==='pt'?'Tópicos':'Topics'),
+      h(TagPill,{tag:'all',active:!activeTag,onClick:()=>setActiveTag('')}),
+      ALL_TAGS.map(t=>h(TagPill,{key:t,tag:t,active:activeTag===t,onClick:()=>setActiveTag(x=>x===t?'':t)}))
+    ),
+    h('div',{className:'grid'},
+      filtered.map((s,i)=>
+        h('button',{key:s.id,className:'card',onClick:()=>onNav(s.slug)},
+          h('div',{className:'card-accent',style:{background:ACCENTS[i%ACCENTS.length]}}),
+          h('div',{className:'card-icon',style:{background:`${ACCENTS[i%ACCENTS.length]}18`,color:ACCENTS[i%ACCENTS.length]}},ICONS[s.id]||'◦'),
+          h('p',{className:'card-sub'},s.subtitle),
+          h('h2',{className:'card-title'},s.title),
+          h('p',{className:'card-desc'},s.description),
+          h('div',{className:'card-tags'},s.tags.slice(0,3).map(t=>h('span',{key:t,className:'tag',style:{pointerEvents:'none'}},t)))
+        )
+      )
+    ),
+    h('footer',{className:'home-footer'},
+      h('blockquote',null,
+        '"Computers advance / Artists hitchhike / Scientists create the new / Artists take the fame"',
+        h('footer',null,h('cite',null,'— Fred Zero Quatro'))
+      )
+    )
+  );
+}
+
+function GlossaryList({terms}){
+  const [filter,setFilter]=useState('');
+  const [open,setOpen]=useState({});
+  const [copied,setCopied]=useState({});
+  const filtered=terms.filter(t=>t.term.toLowerCase().includes(filter.toLowerCase())||t.def.toLowerCase().includes(filter.toLowerCase()));
+  const copy=(term,def,e)=>{e.stopPropagation();navigator.clipboard?.writeText(`${term}: ${def}`);setCopied(c=>({...c,[term]:true}));setTimeout(()=>setCopied(c=>({...c,[term]:false})),1500);};
+  return h('div',null,
+    h('div',{style:{display:'flex',gap:'.75rem',alignItems:'center',marginBottom:'1.25rem'}},
+      h('input',{className:'gloss-filter',value:filter,onChange:e=>setFilter(e.target.value),placeholder:'Filter terms…'}),
+      h('span',{className:'gloss-count'},`${filtered.length} terms`)
+    ),
+    h('div',null,
+      filtered.map(t=>
+        h('div',{key:t.term,className:`gloss-item${open[t.term]?' open':''}`},
+          h('button',{className:'gloss-btn',onClick:()=>setOpen(o=>({...o,[t.term]:!o[t.term]}))},
+            h('div',{style:{display:'flex',alignItems:'center',gap:'.75rem'}},
+              h('span',{className:'gloss-arrow'},open[t.term]?'▼':'▶'),
+              h('span',{className:'gloss-term'},t.term)
+            ),
+            h('button',{className:'gloss-copy',onClick:e=>copy(t.term,t.def,e),title:'Copy definition'},
+              copied[t.term]?'✓':'⎘'
+            )
+          ),
+          open[t.term]&&h('div',{className:'gloss-def'},t.def)
+        )
+      )
+    )
+  );
+}
+
+function TOC({html}){
+  const [active,setActive]=useState('');
+  const headings=[];
+  const re=/<h([23])[^>]*id="([^"]+)"[^>]*>([^<]+)/g;
+  let m;
+  while((m=re.exec(html))!==null) headings.push({level:parseInt(m[1]),id:m[2],text:m[3].replace(/#/g,'').trim()});
+
+  useEffect(()=>{
+    if(!headings.length) return;
+    const obs=new IntersectionObserver(entries=>{
+      entries.forEach(e=>{if(e.isIntersecting)setActive(e.target.id);});
+    },{rootMargin:'-80px 0px -70% 0px'});
+    headings.forEach(h=>{const el=document.getElementById(h.id);if(el)obs.observe(el);});
+    return()=>obs.disconnect();
+  },[html]);
+
+  if(!headings.length) return null;
+  return h('nav',null,
+    h('p',{className:'toc-label'},'On this page'),
+    headings.map(hd=>
+      h('a',{key:hd.id,href:`#${hd.id}`,className:`toc-link${hd.level===3?' h3':''}${active===hd.id?' active':''}`,
+        onClick:e=>{e.preventDefault();document.getElementById(hd.id)?.scrollIntoView({behavior:'smooth'})}
+      },hd.text)
+    )
+  );
+}
+
+// Add IDs to headings in HTML
+function addHeadingIds(html){
+  return html.replace(/<h([23])>([^<]+)<\/h\1>/g,(match,lvl,text)=>{
+    const id=text.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,'');
+    return `<h${lvl} id="${id}" style="scroll-margin-top:80px"><a href="#${id}" style="text-decoration:none;color:inherit">${text}</a></h${lvl}>`;
+  });
+}
+
+function WikiPage({section,onNav,lang}){
+  const [cp,setCp]=useState(false);
+  const idx=SECTIONS.findIndex(s=>s.slug===section.slug);
+  const prev=idx>0?SECTIONS[idx-1]:null;
+  const next=idx<SECTIONS.length-1?SECTIONS[idx+1]:null;
+  const related=section.related?.map(slug=>SECTIONS.find(s=>s.slug===slug)).filter(Boolean)||[];
+  const processedHtml=addHeadingIds(section.content||'');
+  const words=section.content?.split(/\s+/).length||0;
+  const readTime=Math.max(1,Math.round(words/200));
+
+  useEffect(()=>{window.scrollTo({top:0});},[section.slug]);
+
+  const copyLink=()=>{navigator.clipboard?.writeText(window.location.href);setCp(true);setTimeout(()=>setCp(false),1500);};
+
+  return h('div',{className:'wiki-wrap'},
+    h('article',{className:'article'},
+      h('nav',{className:'breadcrumb'},
+        h('a',{onClick:()=>onNav('home'),className:''},'numawiki'),
+        h('span',{className:'sep'},' › '),
+        h('span',{className:'current'},section.title)
+      ),
+      h('header',null,
+        h('p',{className:'art-sub'},section.subtitle),
+        h('h1',{className:'art-title'},section.title),
+        section.description&&h('p',{className:'art-desc'},section.description),
+        h('div',{className:'art-meta'},
+          h('span',{className:'meta-time'},`${readTime} min read`),
+          h('span',{className:'meta-dot'},'·'),
+          h('div',{style:{display:'flex',gap:'.35rem',flexWrap:'wrap'}},
+            section.tags?.map(t=>h('span',{key:t,className:'tag',style:{pointerEvents:'none'}},t))
+          ),
+          h('div',{className:'meta-spacer'}),
+          h('button',{className:`copy-link${cp?' done':''}`,onClick:copyLink},
+            cp?'✓ Copied':'⎘ Copy link'
+          )
+        )
+      ),
+      h('div',{className:'art-divider'}),
+      // Section content
+      h('div',{className:'prose'},
+        section.isGlossary
+          ? h('div',null,
+              h('div',{dangerouslySetInnerHTML:{__html:processedHtml}}),
+              h(GlossaryList,{terms:section.terms||[]})
+            )
+          : h('div',{dangerouslySetInnerHTML:{__html:processedHtml}})
+      ),
+      // Page navigation
+      h('nav',{className:'page-nav'},
+        prev
+          ? h('a',{className:'pnav-btn',onClick:()=>onNav(prev.slug)},
+              h('span',{className:'pnav-dir'},'← Previous'),
+              h('span',{className:'pnav-title'},prev.title)
+            )
+          : h('div'),
+        next&&h('a',{className:'pnav-btn right',onClick:()=>onNav(next.slug)},
+          h('span',{className:'pnav-dir'},'Next →'),
+          h('span',{className:'pnav-title'},next.title)
+        )
+      )
+    ),
+    // Right panel
+    h('div',{className:'toc-panel'},
+      h(TOC,{html:processedHtml}),
+      related.length>0&&h('div',null,
+        h('p',{className:'related-label'},'Related'),
+        related.map(r=>
+          h('a',{key:r.id,className:'related-card',onClick:()=>onNav(r.slug)},
+            h('div',null,
+              h('div',{className:'related-title'},r.title),
+              h('div',{className:'related-desc'},r.description)
+            ),
+            h('span',{style:{color:'var(--orange)',flexShrink:0}},'→')
+          )
+        )
+      )
+    )
+  );
+}
+
+// ─── APP ─────────────────────────────────────────────────────────────────────
+
+function App(){
+  const [page,setPage]=useState('home');
+  const [sidebarOpen,setSidebarOpen]=useState(false);
+  const [searchOpen,setSearchOpen]=useState(false);
+  const [dark,toggleDark]=useDark();
+  const [lang,setLang]=useState('en');
+
+  const currentSection=SECTIONS.find(s=>s.slug===page);
+
+  const navigate=(slug)=>{
+    setPage(slug==='home'?'home':slug);
+    setSidebarOpen(false);
+  };
+
+  useEffect(()=>{
+    const handler=(e)=>{
+      if((e.metaKey||e.ctrlKey)&&e.key==='k'){e.preventDefault();setSearchOpen(true);}
+    };
+    window.addEventListener('keydown',handler);
+    return()=>window.removeEventListener('keydown',handler);
+  },[]);
+
+  return h('div',null,
+    h(Header,{
+      onMenu:()=>setSidebarOpen(o=>!o),
+      onSearch:()=>setSearchOpen(true),
+      dark, toggleDark,
+      lang, toggleLang:()=>setLang(l=>l==='en'?'pt':'en'),
+      onHome:()=>navigate('home')
+    }),
+    h(SearchModal,{open:searchOpen,onClose:()=>setSearchOpen(false),onNav:navigate}),
+    h('div',{className:'layout'},
+      currentSection&&h(Sidebar,{open:sidebarOpen,currentSlug:page,onNav:navigate}),
+      h('main',{
+        className:'main-content',
+        style:{marginLeft:currentSection?undefined:'0'}
+      },
+        page==='home'
+          ? h(HomePage,{onNav:navigate,lang})
+          : currentSection
+            ? h(WikiPage,{section:currentSection,onNav:navigate,lang})
+            : h('div',{style:{padding:'4rem 2rem',textAlign:'center'}},
+                h('h1',{style:{fontFamily:'Instrument Sans,sans-serif',fontSize:'4rem',textTransform:'uppercase',color:'var(--orange)'}},'404'),
+                h('p',{style:{fontFamily:'DM Sans,sans-serif',color:'var(--g500)',margin:'1rem 0 2rem'}},'Page not found.'),
+                h('button',{className:'btn-primary',onClick:()=>navigate('home')},'← Back to numawiki')
+              )
+      )
+    )
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(h(App));
+</script>
+</body>
+</html>
