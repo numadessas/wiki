@@ -15,6 +15,7 @@ const sectionIcons = {
   communication: '◉',
   marketing: '▲',
   references: '◦',
+  about: '✦',
 }
 
 export default function Sidebar({ isOpen, onClose }) {
