@@ -521,6 +521,81 @@ Explore diferentes plataformas. Muitas podem mudar e até fechar — o que não 
     `
   },
   {
+    id: 'about',
+    slug: 'about',
+    title: 'Sobre o Projeto',
+    subtitle: 'Pesquisa e história',
+    tags: ['pesquisa', 'ufpe', 'sobre'],
+    description: 'A origem do projeto, a pesquisa por trás dele e as pessoas que o construíram.',
+    related: ['introduction', 'references'],
+    content: `
+# Sobre o Projeto
+
+**Computadores Fazem Arte** é um wiki educacional sobre Blockchain, Web3 e NFTs — desenvolvido como parte integrante de uma pesquisa de mestrado em **Design de Artefatos Digitais** na Universidade Federal de Pernambuco (UFPE), financiada pelo programa MAI/DAI do CNPq.
+
+---
+
+## O Nome
+
+O nome do projeto vem de um verso de **Fred Zero Quatro**, vocalista da lendária banda recifense Mundo Livre S/A, da música *Computadores Fazem Arte*. O verso captura algo essencial sobre a relação entre tecnologia e criação artística:
+
+> "Computadores avançam / Artistas pegam carona / Cientistas criam o novo / Artistas levam a fama"
+
+A música é ao mesmo tempo uma observação e uma provocação — e deu nome a um projeto que tenta pensar criticamente o que significa para artistas habitar espaços tecnológicos.
+
+---
+
+## A Música
+
+<div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:12px;margin:1.5rem 0"><iframe style="position:absolute;top:0;left:0;width:100%;height:100%" src="https://www.youtube.com/embed/KZg_m0z4NLI" title="Computadores Fazem Arte - Fred Zero Quatro" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+
+---
+
+## Iniciação Científica
+
+Como parte da pesquisa, três estudantes de graduação foram orientados em diferentes áreas do conhecimento — uma escolha interdisciplinar deliberada que reflete os próprios valores do projeto.
+
+### Milena — Pedagogia
+Trouxe um olhar educacional ao projeto, ajudando a pensar como conceitos tecnológicos complexos podem ser tornados acessíveis a públicos diversos.
+
+### Vitória — Design
+Contribuiu com uma perspectiva visual e comunicacional, essencial para moldar como o wiki e seus materiais são apresentados.
+
+### Artur — Ciência da Computação · *in memoriam*
+Artur entrou na pesquisa como voluntário — movido inteiramente pela própria curiosidade e entusiasmo. Foi um dos participantes mais engajados e ativos do projeto, trazendo rigor técnico e empolgação genuína a cada encontro. Sua presença deixou uma marca nessa pesquisa que não se mede. Este projeto carrega um pedaço dele.
+
+---
+
+## Curso Presencial — CTG/UFPE, 2024
+
+Em 2024, um curso presencial de quatro semanas foi realizado no Centro de Tecnologia e Geociências (CTG) da UFPE — reunindo estudantes de diferentes áreas para aprender sobre Blockchain, NFTs e comunidades digitais de arte.
+
+O encerramento do curso foi interrompido pelo **bloqueio do Twitter/X no Brasil** — um momento que se tornou parte da própria história do projeto. Em vez de uma interrupção, virou um estudo de caso ao vivo: um lembrete de que as mesmas plataformas que hospedam comunidades de arte digital estão sujeitas a decisões políticas, pressões regulatórias e poder corporativo.
+
+A regulação das plataformas de redes sociais não é um tema secundário — é central para qualquer conversa honesta sobre direitos digitais, liberdade de expressão e as condições nas quais artistas criam e distribuem seu trabalho. As plataformas devem ser responsabilizadas por garantir os direitos fundamentais dos usuários.
+
+---
+
+## Publicação — WebMedia 2024
+
+O material desenvolvido nesta pesquisa foi publicado e apresentado no **WebMedia 2024**, realizado na Universidade Federal de Juiz de Fora (UFJF) — uma das mais importantes conferências brasileiras sobre sistemas multimídia e tecnologias web.
+
+[Acessar a publicação →](https://books-sol.sbc.org.br/index.php/sbc/catalog/view/177/779/1513)
+
+---
+
+## Disciplina — Design para Web3, UFPE 2025
+
+Em 2025, a pesquisa levou a um convite do **Professor Leonardo Castillo** para ministrar a disciplina *Design para Web3* no curso de Design da UFPE — levando o conteúdo deste projeto diretamente para a educação formal em design.
+
+---
+
+## Contato
+
+**Numa** · [@numadessas](https://twitter.com/numadessas) · [contato@numadessas.com.br](mailto:contato@numadessas.com.br) · [numadessas.com.br](https://numadessas.com.br)
+    \`
+  },
+  {
     id: 'references',
     slug: 'references',
     title: 'Referências',
