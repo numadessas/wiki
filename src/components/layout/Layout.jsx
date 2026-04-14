@@ -5,7 +5,16 @@ import Sidebar from './Sidebar.jsx'
 
 export default function Layout({ children }) {
   const [sidebarOpen, setSidebarOpen] = useState(false)
+  const [isDesktop, setIsDesktop] = useState(false)
   const location = useLocation()
+
+  // Detect desktop
+  useEffect(() => {
+    const check = () => setIsDesktop(window.innerWidth >= 1024)
+    check()
+    window.addEventListener('resize', check)
+    return () => window.removeEventListener('resize', check)
+  }, [])
 
   // Close sidebar on navigation
   useEffect(() => {
@@ -17,7 +26,6 @@ export default function Layout({ children }) {
     const handler = (e) => {
       if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
         e.preventDefault()
-        // Trigger search — handled in Header
         document.dispatchEvent(new CustomEvent('open-search'))
       }
     }
@@ -40,7 +48,7 @@ export default function Layout({ children }) {
           paddingTop: 'var(--header-height)',
         }}
       >
-        {/* Sidebar - only on wiki pages */}
+        {/* Sidebar — only on wiki pages */}
         {isWikiPage && (
           <Sidebar
             isOpen={sidebarOpen}
@@ -48,15 +56,16 @@ export default function Layout({ children }) {
           />
         )}
 
-        {/* Main content */}
+        {/* Main content — only push right on desktop */}
         <main
           style={{
             flex: 1,
             minWidth: 0,
-            marginLeft: isWikiPage ? 'var(--sidebar-width)' : 0,
+            marginLeft: isWikiPage && isDesktop ? 'var(--sidebar-width)' : 0,
             transition: 'margin-left 0.3s ease',
+            width: '100%',
+            overflowX: 'hidden',
           }}
-          className={isWikiPage ? 'lg:ml-[280px]' : ''}
         >
           {children}
         </main>
