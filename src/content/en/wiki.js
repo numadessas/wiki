@@ -15,17 +15,17 @@ export const wikiSections = [
 
 To begin talking about NFTs, we first need to think about some key terms that make up this universe. This formation covers the techniques and practices for creating artworks in the NFT market.
 
-This project's main objective is to encourage more people to learn how to use Blockchain technology — and also to spark a serious conversation about how virtual communities can become more conscious and thereby contribute socially to physical spaces.
+This project main objective is to encourage more people to learn how to use Blockchain technology — and also to spark a serious conversation about how virtual communities can become more conscious and thereby contribute socially to physical spaces.
 
 ---
 
-We'll cover **Blockchain**, **crypto**, **digital communities**, and other foundational concepts so that you have the autonomy and initial courage to create your NFT works and projects.
+We will cover **Blockchain**, **crypto**, **digital communities**, and other foundational concepts so that you have the autonomy and initial courage to create your NFT works and projects.
 
 > "Computers advance / Artists hitchhike / Scientists create the new / Artists take the fame" — *Fred Zero Quatro*
 
 ## Why this matters
 
-This is not just a technical manual. It's an invitation to think critically about technology, art, and community. The NFT space is fertile ground — still largely unexplored. It's up to us to navigate it consciously: planting good ideas without deforestation.
+This is not just a technical manual. It is an invitation to think critically about technology, art, and community. The NFT space is fertile ground — still largely unexplored. It is up to us to navigate it consciously: planting good ideas without deforestation.
 
 ## Who made this?
 
@@ -79,9 +79,9 @@ Essential vocabulary for navigating the Web3 and NFT space. Click any term to ex
     content: `
 # Internet Generations
 
-Before diving into NFTs and blockchain, it's important to understand the three generations (so far) of the internet and how interaction in this space has evolved.
+Before diving into NFTs and blockchain, it is important to understand the three generations (so far) of the internet and how interaction in this space has evolved.
 
-You'll find content referring to these as "eras" in a temporal sense — but it's more useful to think of them not as separate periods, but as **continuations and overlaps**. We currently live in a moment where Web2 and Web3 coexist simultaneously.
+You'll find content referring to these as "eras" in a temporal sense — but it is more useful to think of them not as separate periods, but as **continuations and overlaps**. We currently live in a moment where Web2 and Web3 coexist simultaneously.
 
 ---
 
@@ -117,7 +117,7 @@ The Web 2.0 is marked by greater interactivity and collaboration between users, 
 
 **Front-end** is the part with which users interact directly: the visible and functional interface that allows users to navigate, interact, and consume content. It uses languages like HTML, CSS, and JavaScript.
 
-**Back-end** is the part that deals with logic: data processing and storage. It's invisible to users and uses languages like PHP, Python, Ruby, Java, and Rust.
+**Back-end** is the part that deals with logic: data processing and storage. It is invisible to users and uses languages like PHP, Python, Ruby, Java, and Rust.
 
 ---
 
@@ -152,9 +152,9 @@ The idea of **trustless** blockchains is: instead of trusting people or institut
 
 ## What is Blockchain?
 
-Blockchains are like **digital, decentralized record books**. Online networks where data is saved on each user's computer in the blockchain — not just on a single server, like Web 2.0 platforms.
+Blockchains are like **digital, decentralized record books**. Online networks where data is saved on each user computer in the blockchain — not just on a single server, like Web 2.0 platforms.
 
-A useful analogy: a blockchain is like a large **shared spreadsheet** replicated across thousands of computers. Each row represents a financial transaction (a block). This spreadsheet is constantly updated with new transactions, and every time a new one happens, it's sent to all nodes on the network, which verify its validity before adding it.
+A useful analogy: a blockchain is like a large **shared spreadsheet** replicated across thousands of computers. Each row represents a financial transaction (a block). This spreadsheet is constantly updated with new transactions, and every time a new one happens, it is sent to all nodes on the network, which verify its validity before adding it.
 
 ---
 
@@ -270,7 +270,7 @@ A partnership between companies that build a shared blockchain network. Used in 
 
 **Decentralized Learning:** Platforms that connect students and educators directly, with blockchain-based certification systems.
 
-**Digital Identity:** A more secure electronic representation of a person's identity, controlled by users themselves.
+**Digital Identity:** A more secure electronic representation of a person identity, controlled by users themselves.
     `
   },
   {
@@ -295,7 +295,7 @@ Wallets are the primary way to **interact with Web3 sites and applications**.
 ## Security Keys
 
 ### Public Keys
-Like bank account numbers — a sequence of numbers and letters generated randomly when creating a wallet. This is the information needed to transfer or receive digital assets. It appears in the block explorer. No one can alter or spend another user's money with just this key.
+Like bank account numbers — a sequence of numbers and letters generated randomly when creating a wallet. This is the information needed to transfer or receive digital assets. It appears in the block explorer. No one can alter or spend another user money with just this key.
 
 ### Private Keys
 These are the passwords and seed phrases to access your wallets. Unlike public keys, **they must be kept secret in a safe physical location**.
@@ -326,13 +326,13 @@ Can be purchased directly from manufacturers or specialized resellers. *Known br
 
 ## Common Scams
 
-Where there's money, there will always be people trying to exploit others. The key here is **prevention and constant alertness**. If something seems too good to be true, it's a scam.
+Where there's money, there will always be people trying to exploit others. The key here is **prevention and constant alertness**. If something seems too good to be true, it is a scam.
 
 ### Fake Collector Profiles on Instagram
-Mostly targets artists without NFT experience. Fake profiles pretend to be collectors and message saying they want to buy works for a very high price, usually in Ethereum. They then ask you to pay a fee before finalizing the sale — and there was never a sale. It's a trap.
+Mostly targets artists without NFT experience. Fake profiles pretend to be collectors and message saying they want to buy works for a very high price, usually in Ethereum. They then ask you to pay a fee before finalizing the sale — and there was never a sale. It is a trap.
 
 ### Fake Work Proposals
-Artists receive fraudulent messages disguised as work proposals (DeFi games, art commissions). The user sends a file claiming to be a game test or references. Once downloaded, it may be **malware** that scans your computer to invade the artist's wallets.
+Artists receive fraudulent messages disguised as work proposals (DeFi games, art commissions). The user sends a file claiming to be a game test or references. Once downloaded, it may be **malware** that scans your computer to invade the artist wallets.
 
 ### Fraudulent Sites Imitating Big Projects
 Scammers create fake websites of popular projects. They spread these links on Discord and Twitter. When people try to purchase NFTs from these projects, the applications drain all the money in the wallets.
@@ -344,16 +344,16 @@ Fake profiles impersonate artists on NFT platforms. These can be reported direct
 
 ## Security Measures
 
-- ✓ Don't click unknown links
-- ✓ Don't open attachments from unknown profiles
-- ✓ Don't connect your wallet to any site
+- ✓ Do not click unknown links
+- ✓ Do not open attachments from unknown profiles
+- ✓ Do not connect your wallet to any site
 - ✓ Be skeptical of exorbitant proposals
 - ✓ Create direct, organized channels for negotiating work
 - ✓ Use anti-phishing/spam browser extensions
-- ✓ Research the user's profile for reliable information
-- ✓ If the supposed client insists they can't meet security requirements, walk away
+- ✓ Research the user profile for reliable information
+- ✓ If the supposed client insists they cannot meet security requirements, walk away
 - ✓ Never share your keys with anyone — store them in a secure physical location
-- ✓ Change passwords regularly; it's possible to "re-key" your wallet and generate a new seed phrase
+- ✓ Change passwords regularly; it is possible to "re-key" your wallet and generate a new seed phrase
 
 **Recommended extensions:** Pocket Universe, Wallet Guard
     `
@@ -405,7 +405,7 @@ After minting, the ID and contract address of an NFT cannot be changed. Metadata
 
 Dynamic NFTs, also known as "semi-fungible" or "living NFTs," are a type of NFT whose characteristics can change. Widely used in DeFi games (badges that change after completing a mission) and in art (pieces that evolve based on artist-defined rules).
 
-**Example:** Basketball player LaMelo Ball's dynamic NFTs incorporate sports data on-chain and change depending on game results.
+**Example:** Basketball player LaMelo Ball dynamic NFTs incorporate sports data on-chain and change depending on game results.
 
 **Real-world potential:** dNFTs could be used for the sale of physical goods — for example, a house NFT that initially shows its original characteristics, then updates after renovations and change of ownership years later.
 
@@ -454,7 +454,7 @@ The NFT space is also a fertile ground for **collaborative creation (collabs)** 
 
 A **NFT community** is a digital group of people interested in NFTs, gathering to discuss, create, buy, sell, and exchange these tokens.
 
-Communities are crucial in any NFT-related project — offering support and validation. It's impossible to thrive without community in this environment. They also serve as incubators for innovation and forums for education and NFT governance.
+Communities are crucial in any NFT-related project — offering support and validation. It is impossible to thrive without community in this environment. They also serve as incubators for innovation and forums for education and NFT governance.
 
 ---
 
@@ -473,7 +473,7 @@ Communities are crucial in any NFT-related project — offering support and vali
 ## How to Participate in an NFT Community
 
 1. Use the social platforms common in communities: Discord, Twitter/X, and Warpcast
-2. Stay in contact with users — share news, answer questions, stimulate conversations. Don't be afraid to ask; seek and offer help when needed
+2. Stay in contact with users — share news, answer questions, stimulate conversations. Do not be afraid to ask; seek and offer help when needed
 3. Be consistent and patient — building a loyal community takes time and effort
 4. Be authentic and transparent about your goals
 
@@ -481,21 +481,21 @@ Communities are crucial in any NFT-related project — offering support and vali
 
 ## Tips for Beginners
 
-1. **Don't trust easy money** — don't expect to become a millionaire in 2 weeks
+1. **Do not trust easy money** — do not expect to become a millionaire in 2 weeks
 2. Use NFT as a tool to showcase your work
-3. Don't believe "drop your NFT here" posts — verify whether it's a reliable collector or just time wasted (this is "engagement farming")
+3. Do not believe "drop your NFT here" posts — verify whether it is a reliable collector or just time wasted (this is "engagement farming")
 4. Never create the same artwork on different blockchains
-5. Don't flood chats, servers, or posts with too many messages
+5. Do not flood chats, servers, or posts with too many messages
 6. Never save your keys in email or on your phone
-7. Don't quit your day job 😅
+7. Do not quit your day job 😅
 
 ---
 
 ## Artistic Experiments
 
-The NFT space is still fertile ground — barely explored. It's up to us to uncover it consciously: planting good ideas without deforestation.
+The NFT space is still fertile ground — barely explored. It is up to us to uncover it consciously: planting good ideas without deforestation.
 
-In NFT communities, it's possible to promote projects virtually and in person — connecting with interested people more easily and aiming for fairer compensation.
+In NFT communities, it is possible to promote projects virtually and in person — connecting with interested people more easily and aiming for fairer compensation.
 
 ### Collaborations (Collabs)
 Something interesting about this medium: collective artworks are common. In the NFT world, this seems easier to achieve than in the physical world.
@@ -507,7 +507,7 @@ NFTs are an incredible tool for experimenting with new media and techniques. Lea
 
 ## Events
 
-NFT art events have helped many artists gain visibility more naturally than in the traditional art market. Through crypto art, it's easier to exhibit works at events around the world. However, many of these events still happen in specific locations — Rio and São Paulo in Brazil, and the US and Europe in general — which can be difficult for artists from other regions, especially Latin America.
+NFT art events have helped many artists gain visibility more naturally than in the traditional art market. Through crypto art, it is easier to exhibit works at events around the world. However, many of these events still happen in specific locations — Rio and São Paulo in Brazil, and the US and Europe in general — which can be difficult for artists from other regions, especially Latin America.
 
 ---
 
@@ -628,7 +628,7 @@ Despite Twitter stopping NFT profile pictures and making various changes that af
 
 **Key practices:**
 - Post consistently about your work and process
-- Engage authentically with others' posts
+- Engage authentically with others posts
 - Use relevant hashtags (#NFTart, #Web3, #SolanaNFT, etc.)
 - Share behind-the-scenes and creative process content
 
@@ -670,7 +670,7 @@ Nostr is a simple, open protocol that enables global, decentralized, censorship-
 
 ## Choosing Your Platforms
 
-You don't need to be everywhere. Start with 1-2 platforms and build genuine connections before expanding. Consistency and authenticity matter more than volume.
+You do not need to be everywhere. Start with 1-2 platforms and build genuine connections before expanding. Consistency and authenticity matter more than volume.
 
 | Platform | Best for | NFT Focus |
 |----------|----------|-----------|
@@ -728,7 +728,7 @@ To effectively manage your presence in the NFT market, organization is key. Use 
 Establishing significant connections with other users is fundamental. Participate in groups, servers, and relevant communities. Collaborations and partnerships can expand visibility and reach.
 
 **Authentic networking looks like:**
-- Commenting genuinely on others' work
+- Commenting genuinely on others work
 - Participating in shared projects
 - Showing up consistently in communities you care about
 - Offering help before asking for it
@@ -737,7 +737,7 @@ Establishing significant connections with other users is fundamental. Participat
 
 ## 5. Launch Frequency
 
-It's possible to launch work at different frequencies — whether more elaborate projects that require time or quick creations from inspiration peaks. Both require energy but different kinds for their dissemination.
+It is possible to launch work at different frequencies — whether more elaborate projects that require time or quick creations from inspiration peaks. Both require energy but different kinds for their dissemination.
 
 Find a rhythm that's sustainable for you. Burnout helps no one.
 
@@ -745,7 +745,7 @@ Find a rhythm that's sustainable for you. Burnout helps no one.
 
 ## 6. Pricing Strategies
 
-**Don't devalue yourself!** Develop pricing strategies that are right for you and your NFTs. Factors that can directly impact sales and recognition:
+**Do not devalue yourself!** Develop pricing strategies that are right for you and your NFTs. Factors that can directly impact sales and recognition:
 
 - **Scarcity** — 1/1 vs. editions
 - **Demand** — how developed is your audience?
@@ -764,13 +764,13 @@ Even in periods of slower sales, keep creating and staying connected with your a
 
 ## 8. Be Prepared for Change
 
-Explore different platforms to market your NFTs. Know that many platforms may change and even close (which does not make NFTs disappear — remember, they live on the blockchain). Cryptocurrencies themselves can have drastic changes. It's crucial to keep experimenting with new possibilities and be prepared to adapt.
+Explore different platforms to market your NFTs. Know that many platforms may change and even close (which does not make NFTs disappear — remember, they live on the blockchain). Cryptocurrencies themselves can have drastic changes. It is crucial to keep experimenting with new possibilities and be prepared to adapt.
 
 ---
 
 ## Summary
 
-Good marketing in the NFT space is not about shouting louder than everyone else. It's about:
+Good marketing in the NFT space is not about shouting louder than everyone else. It is about:
 
 - Being genuinely present in communities
 - Sharing work that represents you authentically
@@ -798,7 +798,7 @@ Good marketing in the NFT space is not about shouting louder than everyone else.
 
 ## The Name
 
-The project's name comes from a verse by **Fred Zero Quatro**, frontman of the legendary Recife band Mundo Livre S/A, from the song *Computadores Fazem Arte*. The verse captures something essential about the relationship between technology and artistic creation:
+The project name comes from a verse by **Fred Zero Quatro**, frontman of the legendary Recife band Mundo Livre S/A, from the song *Computadores Fazem Arte*. The verse captures something essential about the relationship between technology and artistic creation:
 
 > "Computadores avançam / Artistas pegam carona / Cientistas criam o novo / Artistas levam a fama"
 
@@ -814,7 +814,7 @@ The song is both an observation and a provocation — and gave name to a project
 
 ## Scientific Initiation — Undergraduate Researchers
 
-As part of the research, three undergraduate students were mentored across different areas of knowledge — a deliberate interdisciplinary choice that reflects the project's own values.
+As part of the research, three undergraduate students were mentored across different areas of knowledge — a deliberate interdisciplinary choice that reflects the project own values.
 
 ### Milena — Pedagogy
 Brought an educational lens to the project, helping think through how complex technological concepts could be made accessible to diverse audiences.
@@ -831,7 +831,7 @@ Artur joined the research as a volunteer — entirely out of his own curiosity a
 
 In 2024, a four-week presential course was held at the Centro de Tecnologia e Geociências (CTG) of UFPE — bringing together students from different areas to learn about Blockchain, NFTs, and digital art communities.
 
-The course's closing was interrupted by the **blocking of Twitter/X in Brazil** — a moment that became part of the project's own story. Rather than a disruption, it turned into a live case study: a reminder that the same platforms that host digital art communities are subject to political decisions, regulatory pressures, and corporate power.
+The course's closing was interrupted by the **blocking of Twitter/X in Brazil** — a moment that became part of the project own story. Rather than a disruption, it turned into a live case study: a reminder that the same platforms that host digital art communities are subject to political decisions, regulatory pressures, and corporate power.
 
 The regulation of social media platforms is not a secondary topic — it is central to any honest conversation about digital rights, freedom of expression, and the conditions under which artists create and distribute their work. Platforms must be held accountable for guaranteeing users fundamental rights.
 
@@ -847,7 +847,7 @@ The material was published and presented at **WebMedia 2024**, held at the Unive
 
 ## Guest Lecture — Design for Web3, UFPE 2025
 
-In 2025, an invitation from **Professor Leonardo Castillo** led to a module called *Design para Web3* within the Design undergraduate course at UFPE — bringing this project's content directly into formal design education.
+In 2025, an invitation from **Professor Leonardo Castillo** led to a module called *Design para Web3* within the Design undergraduate course at UFPE — bringing this project content directly into formal design education.
 
 ---
 
