@@ -35,7 +35,7 @@ export default function AboutPage() {
           <div style={{ flex: 1, minWidth: '180px' }}>
             <p style={{ fontFamily: 'Instrument Sans, sans-serif', fontWeight: 700, fontSize: '1rem', textTransform: 'uppercase', color: 'var(--gray-900)', marginBottom: '0.25rem' }}>Numa</p>
             <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.85rem', color: 'var(--gray-600)', lineHeight: 1.5, marginBottom: '0.75rem' }}>
-              {isPt ? 'Artista, pesquisadora e designer. Mestranda em Design de Artefatos Digitais na UFPE. Trabalha na interseção entre arte, tecnologia e comunidade.' : 'Artist, researcher, and designer. Masters student in Digital Artifact Design at UFPE. Works at the intersection of art, technology, and community.'}
+              {isPt ? 'Designer, artista e educadora. Mestre em Design de Artefatos Digitais (UFPE)), graduada em Design Gráfico (UTFPR).' : 'Designer, artist and educator. Master in Digital Artifact Design (UFPE), graduated in Graphic Design (UTFPR).'}
             </p>
             <a href="https://numadessas.com.br" target="_blank" rel="noopener noreferrer" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem', padding: '0.35rem 0.75rem', border: '1px solid var(--orange)', color: 'var(--orange)', fontFamily: 'Space Mono, monospace', fontSize: '0.65rem', textTransform: 'uppercase', letterSpacing: '0.08em', borderRadius: '6px', textDecoration: 'none' }}>
               numadessas.com.br →
