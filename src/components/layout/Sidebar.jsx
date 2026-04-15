@@ -1,24 +1,10 @@
-import { NavLink, Link } from 'react-router-dom'
+import { NavLink, Link, useLocation } from 'react-router-dom'
 import { useLanguage } from '../../utils/LanguageContext.jsx'
-import { getAllSectionsSync } from '../../utils/contentAdapter.js'
 import { X } from 'lucide-react'
-
-const sectionIcons = {
-  glossary: '≋',
-  'internet-generations': '⊕',
-  blockchain: '⬡',
-  security: '◈',
-  nfts: '◆',
-  communities: '⬭',
-  platforms: '▣',
-  communication: '◉',
-  marketing: '▲',
-  references: '◦',
-}
 
 export default function Sidebar({ isOpen, onClose }) {
   const { lang } = useLanguage()
-  const sections = getAllSectionsSync(lang).filter(s => s.id !== 'introduction' && s.id !== 'about')
+  const location = useLocation()
 
   return (
     <>
@@ -50,73 +36,72 @@ export default function Sidebar({ isOpen, onClose }) {
         </button>
 
         <nav className="p-6">
-          <Link to="/" className="flex items-center gap-2 mb-8 group" onClick={onClose}>
-            <span style={{
+          <Link
+            to="/"
+            onClick={onClose}
+            style={{
               fontFamily: 'Space Mono, monospace',
               fontSize: '0.65rem',
               textTransform: 'uppercase',
               letterSpacing: '0.12em',
               color: 'var(--gray-400)',
-            }} className="group-hover:text-orange-500 transition-colors">
-              ← {lang === 'pt' ? 'Início' : 'Home'}
-            </span>
+              textDecoration: 'none',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.5rem',
+              marginBottom: '1.5rem',
+            }}
+          >
+            ← {lang === 'pt' ? 'Início' : 'Home'}
           </Link>
 
-          <p style={{
-            fontFamily: 'Space Mono, monospace',
-            fontSize: '0.6rem',
-            textTransform: 'uppercase',
-            letterSpacing: '0.15em',
-            color: 'var(--gray-400)',
-            marginBottom: '0.75rem',
-          }}>Wiki</p>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
+            <Link
+              to="/"
+              onClick={onClose}
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.75rem',
+                padding: '0.6rem 0.75rem',
+                borderRadius: '8px',
+                textDecoration: 'none',
+                background: location.pathname === '/' ? 'rgba(238,111,34,0.1)' : 'transparent',
+                color: location.pathname === '/' ? 'var(--orange)' : 'var(--gray-600)',
+                transition: 'all 0.2s',
+                fontFamily: 'DM Sans, sans-serif',
+                fontSize: '0.875rem',
+                fontWeight: location.pathname === '/' ? '600' : '400',
+              }}
+            >
+              <span style={{ fontSize: '0.85rem', opacity: 0.7 }}>◈</span>
+              Wiki
+            </Link>
 
-          <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
-            {sections.map((section) => (
-              <li key={section.id}>
-                <NavLink
-                  to={`/wiki/${section.slug}`}
-                  onClick={onClose}
-                  className={({ isActive }) =>
-                    `flex items-center gap-3 px-3 py-2.5 rounded-lg transition-all duration-200 group ${isActive ? 'nav-link-active' : ''}`
-                  }
-                  style={({ isActive }) => ({ color: isActive ? 'var(--orange)' : 'var(--gray-600)' })}
-                >
-                  {({ isActive }) => (
-                    <>
-                      <span style={{ fontSize: '0.85rem', opacity: isActive ? 1 : 0.5, transition: 'opacity 0.2s', flexShrink: 0 }}
-                        className="group-hover:opacity-100">
-                        {sectionIcons[section.id] || '◦'}
-                      </span>
-                      <span style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.875rem', fontWeight: isActive ? '600' : '400' }}>
-                        {section.title}
-                      </span>
-                    </>
-                  )}
-                </NavLink>
-              </li>
-            ))}
-          </ul>
+            <div style={{ height: '1px', background: 'var(--gray-200)', margin: '0.75rem 0' }} />
 
-          <div style={{ height: '1px', background: 'var(--gray-200)', margin: '1.5rem 0' }} />
-
-          <NavLink
-            to="/wiki/about"
-            onClick={onClose}
-            className={({ isActive }) =>
-              `flex items-center gap-3 px-3 py-2.5 rounded-lg transition-all duration-200 group ${isActive ? 'nav-link-active' : ''}`
-            }
-            style={({ isActive }) => ({ color: isActive ? 'var(--orange)' : 'var(--gray-600)' })}
-          >
-            {({ isActive }) => (
-              <>
-                <span style={{ fontSize: '0.85rem', opacity: isActive ? 1 : 0.5, flexShrink: 0 }} className="group-hover:opacity-100">✦</span>
-                <span style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.875rem', fontWeight: isActive ? '600' : '400' }}>
-                  {lang === 'pt' ? 'Sobre o Projeto' : 'About the Project'}
-                </span>
-              </>
-            )}
-          </NavLink>
+            <NavLink
+              to="/wiki/about"
+              onClick={onClose}
+              style={({ isActive }) => ({
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.75rem',
+                padding: '0.6rem 0.75rem',
+                borderRadius: '8px',
+                textDecoration: 'none',
+                background: isActive ? 'rgba(238,111,34,0.1)' : 'transparent',
+                color: isActive ? 'var(--orange)' : 'var(--gray-600)',
+                transition: 'all 0.2s',
+                fontFamily: 'DM Sans, sans-serif',
+                fontSize: '0.875rem',
+                fontWeight: isActive ? '600' : '400',
+              })}
+            >
+              <span style={{ fontSize: '0.85rem', opacity: 0.7 }}>✦</span>
+              {lang === 'pt' ? 'Sobre o Projeto' : 'About the Project'}
+            </NavLink>
+          </div>
 
           <div style={{ height: '1px', background: 'var(--gray-200)', margin: '1.5rem 0' }} />
 
