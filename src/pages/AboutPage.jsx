@@ -98,9 +98,9 @@ export default function AboutPage() {
         <Divider />
 
         {/* UFSJ */}
-        <SectionTitle>{isPt ? 'Formação Intensiva — UFSJ, 2024' : 'Intensive Training — UFSJ, 2024'}</SectionTitle>
         <div style={{ display: 'flex', gap: '1.5rem', alignItems: 'flex-start', flexWrap: 'wrap' }}>
           <div style={{ flex: 1, minWidth: '220px' }}>
+            <SectionTitle>{isPt ? 'Formação Intensiva — UFSJ, 2024' : 'Intensive Training — UFSJ, 2024'}</SectionTitle>
             <Body>{isPt ? <>Uma formação intensiva foi realizada para alunos de Ciência da Computação da <strong>Universidade Federal de São João Del-Rei (UFSJ)</strong>, em Minas Gerais. O convite partiu do <strong>Professor Darlinton Carvalho</strong>, que conheceu Numa no WebMedia 2024 e trouxe o conteúdo como parte de um projeto de extensão que coordena na universidade.</> : <>An intensive training was held for Computer Science students at the <strong>Universidade Federal de São João Del-Rei (UFSJ)</strong>, in Minas Gerais. The invitation came from <strong>Professor Darlinton Carvalho</strong>, who met Numa at WebMedia 2024 and brought the content as part of an extension project he coordinates at the university.</>}</Body>
           </div>
           <figure style={{ margin: 0, flexShrink: 0 }}>
@@ -112,9 +112,9 @@ export default function AboutPage() {
         <Divider />
 
         {/* UFPE 2025 */}
-        <SectionTitle>{isPt ? 'Disciplina — Design para Web3, UFPE 2025' : 'Course — Design for Web3, UFPE 2025'}</SectionTitle>
         <div style={{ display: 'flex', gap: '1.5rem', alignItems: 'flex-start', flexWrap: 'wrap' }}>
           <div style={{ flex: 1, minWidth: '220px' }}>
+            <SectionTitle>{isPt ? 'Disciplina — Design para Web3, UFPE 2025' : 'Course — Design for Web3, UFPE 2025'}</SectionTitle>
             <Body>{isPt ? <>Em 2025, a convite do <strong>Professor Leonardo Castillo</strong>, Numa ministrou a disciplina <em>Design para Web3</em> no curso de Design da UFPE.</> : <>In 2025, invited by <strong>Professor Leonardo Castillo</strong>, Numa taught the course <em>Design para Web3</em> within the Design undergraduate program at UFPE.</>}</Body>
           </div>
           <figure style={{ margin: 0, flexShrink: 0 }}>
