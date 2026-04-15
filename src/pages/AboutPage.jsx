@@ -99,61 +99,65 @@ export default function AboutPage() {
 
         {/* UFSJ */}
         <SectionTitle>{isPt ? 'Formação Intensiva — UFSJ, 2024' : 'Intensive Training — UFSJ, 2024'}</SectionTitle>
-        <Body>{isPt ? <>Uma formação intensiva foi realizada para alunos de Ciência da Computação da <strong>Universidade Federal de São João Del-Rei (UFSJ)</strong>, em Minas Gerais. O convite partiu do <strong>Professor Darlinton Carvalho</strong>, que conheceu Numa no WebMedia 2024 e trouxe o conteúdo como parte de um projeto de extensão que coordena na universidade.</> : <>An intensive training was held for Computer Science students at the <strong>Universidade Federal de São João Del-Rei (UFSJ)</strong>, in Minas Gerais. The invitation came from <strong>Professor Darlinton Carvalho</strong>, who met Numa at WebMedia 2024 and brought the content as part of an extension project he coordinates at the university.</>}</Body>
-
-        <div style={{ display: 'flex', gap: '1.25rem', alignItems: 'flex-start', flexWrap: 'wrap', margin: '1.25rem 0' }}>
-          <img src="/wiki/images/ufsj-nft.jpg" alt="NFT UFSJ" style={imgSmallStyle} />
-          <p style={{ fontFamily: 'Space Mono, monospace', fontSize: '0.6rem', textTransform: 'uppercase', letterSpacing: '0.08em', color: 'var(--gray-400)', lineHeight: 1.7, flex: 1, minWidth: '150px', paddingTop: '0.25rem' }}>
-            {isPt ? 'NFT criada para os participantes da formação intensiva na UFSJ' : 'NFT created for participants of the intensive training at UFSJ'}
-          </p>
+        <div style={{ display: 'flex', gap: '1.5rem', alignItems: 'flex-start', flexWrap: 'wrap' }}>
+          <div style={{ flex: 1, minWidth: '220px' }}>
+            <Body>{isPt ? <>Uma formação intensiva foi realizada para alunos de Ciência da Computação da <strong>Universidade Federal de São João Del-Rei (UFSJ)</strong>, em Minas Gerais. O convite partiu do <strong>Professor Darlinton Carvalho</strong>, que conheceu Numa no WebMedia 2024 e trouxe o conteúdo como parte de um projeto de extensão que coordena na universidade.</> : <>An intensive training was held for Computer Science students at the <strong>Universidade Federal de São João Del-Rei (UFSJ)</strong>, in Minas Gerais. The invitation came from <strong>Professor Darlinton Carvalho</strong>, who met Numa at WebMedia 2024 and brought the content as part of an extension project he coordinates at the university.</>}</Body>
+          </div>
+          <figure style={{ margin: 0, flexShrink: 0 }}>
+            <img src="/wiki/images/ufsj-nft.jpg" alt="NFT UFSJ" style={{ width: '160px', height: '160px', objectFit: 'cover', borderRadius: '10px', border: '1px solid var(--gray-200)', display: 'block' }} />
+            <figcaption style={{ ...captionStyle, maxWidth: '160px' }}>{isPt ? 'NFT dos participantes' : 'Participants NFT'}</figcaption>
+          </figure>
         </div>
 
         <Divider />
 
         {/* UFPE 2025 */}
         <SectionTitle>{isPt ? 'Disciplina — Design para Web3, UFPE 2025' : 'Course — Design for Web3, UFPE 2025'}</SectionTitle>
-        <Body>{isPt ? <>Em 2025, a convite do <strong>Professor Leonardo Castillo</strong>, Numa ministrou a disciplina <em>Design para Web3</em> no curso de Design da UFPE.</> : <>In 2025, invited by <strong>Professor Leonardo Castillo</strong>, Numa taught the course <em>Design para Web3</em> within the Design undergraduate program at UFPE.</>}</Body>
-
-        <figure style={{ margin: '1.25rem 0' }}>
-          <img src="/wiki/images/ufpe-web3.jpg" alt="Numa, Prof. Castillo e turma" style={imgStyle} />
-          <figcaption style={captionStyle}>{isPt ? 'Numa, Prof. Castillo e parte da turma em visita ao Centro Histórico do Recife' : 'Numa, Prof. Castillo and part of the class visiting the Historic Center of Recife'}</figcaption>
-        </figure>
+        <div style={{ display: 'flex', gap: '1.5rem', alignItems: 'flex-start', flexWrap: 'wrap' }}>
+          <div style={{ flex: 1, minWidth: '220px' }}>
+            <Body>{isPt ? <>Em 2025, a convite do <strong>Professor Leonardo Castillo</strong>, Numa ministrou a disciplina <em>Design para Web3</em> no curso de Design da UFPE.</> : <>In 2025, invited by <strong>Professor Leonardo Castillo</strong>, Numa taught the course <em>Design para Web3</em> within the Design undergraduate program at UFPE.</>}</Body>
+          </div>
+          <figure style={{ margin: 0, flexShrink: 0 }}>
+            <img src="/wiki/images/ufpe-web3.jpg" alt="Turma Design Web3 UFPE" style={{ width: '200px', height: '150px', objectFit: 'cover', borderRadius: '10px', border: '1px solid var(--gray-200)', display: 'block' }} />
+            <figcaption style={{ ...captionStyle, maxWidth: '200px' }}>{isPt ? 'Visita ao Centro Histórico do Recife' : 'Visit to the Historic Center of Recife'}</figcaption>
+          </figure>
+        </div>
 
         <Divider />
 
         {/* Publications */}
         <SectionTitle>{isPt ? 'Publicações' : 'Publications'}</SectionTitle>
 
-        <div style={{ padding: '1.25rem 1.5rem', borderRadius: '12px', border: '1px solid var(--gray-200)', marginBottom: '1rem' }}>
+        <div style={{ padding: '1.25rem 1.5rem', borderRadius: '12px', border: '1px solid var(--gray-200)', marginBottom: '0.75rem' }}>
           <p style={{ fontFamily: 'Space Mono, monospace', fontSize: '0.6rem', textTransform: 'uppercase', letterSpacing: '0.08em', color: 'var(--orange)', marginBottom: '0.5rem' }}>WebMedia 2024 — UFJF</p>
-          <p style={{ fontFamily: 'Instrument Sans, sans-serif', fontWeight: 600, fontSize: '0.95rem', color: 'var(--gray-900)', marginBottom: '1rem', lineHeight: 1.3 }}>
+          <p style={{ fontFamily: 'Instrument Sans, sans-serif', fontWeight: 600, fontSize: '0.95rem', color: 'var(--gray-900)', marginBottom: '0.75rem', lineHeight: 1.3 }}>
             {isPt ? 'Material didático sobre Blockchain, Web3 e NFTs para comunidades de arte digital' : 'Educational material on Blockchain, Web3, and NFTs for digital art communities'}
           </p>
-          <div style={{ display: 'flex', gap: '1.25rem', alignItems: 'flex-start', flexWrap: 'wrap', marginBottom: '1rem' }}>
-            <img src="/wiki/images/webmedia-minicurso.jpg" alt="WebMedia 2024" style={imgSmallStyle} />
-            <p style={{ fontFamily: 'Space Mono, monospace', fontSize: '0.6rem', textTransform: 'uppercase', letterSpacing: '0.08em', color: 'var(--gray-400)', lineHeight: 1.7, flex: 1, minWidth: '150px', paddingTop: '0.25rem' }}>
-              {isPt ? 'Participantes do minicurso — WebMedia 2024, UFJF' : 'Mini-course participants — WebMedia 2024, UFJF'}
-            </p>
-          </div>
           <a href="https://books-sol.sbc.org.br/index.php/sbc/catalog/view/177/779/1513" target="_blank" rel="noopener noreferrer" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem', padding: '0.35rem 0.75rem', background: 'var(--orange)', color: 'white', fontFamily: 'Space Mono, monospace', fontSize: '0.65rem', textTransform: 'uppercase', letterSpacing: '0.06em', borderRadius: '6px', textDecoration: 'none' }}>
             {isPt ? 'Acessar →' : 'Access →'}
           </a>
         </div>
 
-        <div style={{ padding: '1.25rem 1.5rem', borderRadius: '12px', border: '1px solid var(--gray-200)', marginBottom: '1rem' }}>
+        <div style={{ padding: '1.25rem 1.5rem', borderRadius: '12px', border: '1px solid var(--gray-200)', marginBottom: '1.25rem' }}>
           <p style={{ fontFamily: 'Space Mono, monospace', fontSize: '0.6rem', textTransform: 'uppercase', letterSpacing: '0.08em', color: 'var(--orange)', marginBottom: '0.5rem' }}>IMX Workshop 2024</p>
-          <p style={{ fontFamily: 'Instrument Sans, sans-serif', fontWeight: 600, fontSize: '0.95rem', color: 'var(--gray-900)', marginBottom: '1rem', lineHeight: 1.3 }}>
+          <p style={{ fontFamily: 'Instrument Sans, sans-serif', fontWeight: 600, fontSize: '0.95rem', color: 'var(--gray-900)', marginBottom: '0.75rem', lineHeight: 1.3 }}>
             Art and XR: Experiences With 3D Scanning and NFTs in Web 3.0 Education
           </p>
-          <div style={{ display: 'flex', gap: '1.25rem', alignItems: 'flex-start', flexWrap: 'wrap', marginBottom: '1rem' }}>
-            <img src="/wiki/images/imx-apresentacao.jpg" alt="IMX 2024" style={imgSmallStyle} />
-            <p style={{ fontFamily: 'Space Mono, monospace', fontSize: '0.6rem', textTransform: 'uppercase', letterSpacing: '0.08em', color: 'var(--gray-400)', lineHeight: 1.7, flex: 1, minWidth: '150px', paddingTop: '0.25rem' }}>
-              {isPt ? 'Numa apresentando o artigo — IMX Workshop 2024' : 'Numa presenting the paper — IMX Workshop 2024'}
-            </p>
-          </div>
           <a href="https://sol.sbc.org.br/index.php/imxw/article/view/35239" target="_blank" rel="noopener noreferrer" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem', padding: '0.35rem 0.75rem', background: 'var(--orange)', color: 'white', fontFamily: 'Space Mono, monospace', fontSize: '0.65rem', textTransform: 'uppercase', letterSpacing: '0.06em', borderRadius: '6px', textDecoration: 'none' }}>
             {isPt ? 'Acessar →' : 'Access →'}
           </a>
+        </div>
+
+        {/* Publication photos side by side */}
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '0.5rem' }}>
+          <figure style={{ margin: 0 }}>
+            <img src="/wiki/images/webmedia-minicurso.jpg" alt="WebMedia 2024" style={{ width: '100%', aspectRatio: '1', objectFit: 'cover', borderRadius: '10px', border: '1px solid var(--gray-200)', display: 'block' }} />
+            <figcaption style={captionStyle}>{isPt ? 'Minicurso — WebMedia 2024' : 'Mini-course — WebMedia 2024'}</figcaption>
+          </figure>
+          <figure style={{ margin: 0 }}>
+            <img src="/wiki/images/imx-apresentacao.jpg" alt="IMX 2024" style={{ width: '100%', aspectRatio: '1', objectFit: 'cover', borderRadius: '10px', border: '1px solid var(--gray-200)', display: 'block' }} />
+            <figcaption style={captionStyle}>{isPt ? 'Apresentação — IMX Workshop 2024' : 'Presentation — IMX Workshop 2024'}</figcaption>
+          </figure>
         </div>
 
         <Divider />
