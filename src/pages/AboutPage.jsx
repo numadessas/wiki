@@ -107,8 +107,8 @@ export default function AboutPage() {
               marginBottom: '0.75rem',
             }}>
               {isPt
-                ? 'Artista, pesquisadora e designer. Mestranda em Design de Artefatos Digitais na UFPE. Trabalha na interseção entre arte, tecnologia e comunidade.'
-                : 'Artist, researcher, and designer. Master\'s student in Digital Artifact Design at UFPE. Works at the intersection of art, technology, and community.'
+                ? 'Fundadoral, artista, designer e educadora. Mestre em Design de Artefatos Digitais (UFPE), graduada em Design Gráfico (UTFPR).'
+                : '}Founder, artist, designer and educator. Master in Digital Artifact Design (UFPE), graduated in Graphic Design (UTFPR).'
               }
             </p>
             <a
@@ -306,8 +306,8 @@ export default function AboutPage() {
               lineHeight: 1.7,
             }}>
               {isPt
-                ? 'Artur entrou na pesquisa como voluntário. Sua curiosidade, entusiasmo e dedicação deixaram uma marca nesse projeto que vai além do que qualquer texto pode descrever. Este wiki carrega um pedaço dele.'
-                : 'Artur joined the research as a volunteer. His curiosity, enthusiasm, and dedication left a mark on this project that goes beyond what any text can describe. This wiki carries a piece of him.'
+                ? 'Artur foi voluntário da pesquisa. Sua curiosidade, entusiasmo e dedicação deixaram uma marca nesse projeto que vai além do que qualquer texto pode descrever. Este wiki carrega um pedaço dele.'
+                : 'Artur was a research volunteer. His curiosity, enthusiasm, and dedication left a mark on this project that goes beyond what any text can describe. This wiki carries a piece of him.'
               }
             </p>
           </div>
@@ -326,8 +326,8 @@ export default function AboutPage() {
           </Body>
           <Body>
             {isPt
-              ? <>O encerramento do curso foi interrompido pelo <strong>bloqueio do Twitter/X no Brasil</strong> — um momento que se tornou parte da própria história do projeto. A regulação das plataformas de redes sociais não é um tema secundário: é central para qualquer conversa honesta sobre direitos digitais e as condições nas quais artistas criam e distribuem seu trabalho.</>
-              : <>The course closing was interrupted by the <strong>blocking of Twitter/X in Brazil</strong> — a moment that became part of the project's own story. The regulation of social media platforms is not a secondary topic: it is central to any honest conversation about digital rights and the conditions under which artists create and distribute their work.</>
+              ? <>O encerramento do curso foi interrompido pelo <strong>bloqueio do Twitter/X no Brasil</strong> — um momento que se tornou parte da própria história do projeto. A regulamentação das redes sociais é um tema importante, apesar do bloqueio, é necessário avançar nesta questão para garantir os direitos digitais de todos os que utilizam estas plataformas.</>
+              : <>The course closing was interrupted by the <strong>blocking of Twitter/X in Brazil</strong> — a moment that became part of the project's own story. The regulation of social networks is an important topic, despite the blockade, it is necessary to move forward on this issue to guarantee the digital rights of everyone who uses these platforms.</>
             }
           </Body>
         </Section>
