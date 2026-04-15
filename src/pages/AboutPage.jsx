@@ -43,13 +43,13 @@ export default function AboutPage() {
           </div>
         </div>
 
-        <Body>{isPt ? <><strong>Este wiki</strong> é parte dos resultados de uma pesquisa de mestrado em <strong>Design de Artefatos Digitais</strong> na UFPE, financiada pelo programa MAI/DAI do CNPq. Reúne conteúdo sobre Blockchain, Web3, NFTs e comunidades digitais de arte.</> : <><strong>This wiki</strong> is part of the results of a masters research in <strong>Digital Artifact Design</strong> at UFPE, funded by the MAI/DAI program of the CNPq. It brings together content on Blockchain, Web3, NFTs, and digital art communities.</>}</Body>
+        <Body>{isPt ? <>Este wiki é parte dos resultados de uma pesquisa de mestrado em <strong>Design de Artefatos Digitais</strong> na UFPE, financiada pelo programa MAI/DAI do CNPq. Reúne conteúdo sobre Blockchain, Web3, NFTs e comunidades digitais de arte.</> : <>This wiki is part of the results of a masters research in <strong>Digital Artifact Design</strong> at UFPE, funded by the MAI/DAI program of the CNPq. It brings together content on Blockchain, Web3, NFTs, and digital art communities.</>}</Body>
 
         <Divider />
 
         {/* The Name */}
         <SectionTitle>{isPt ? 'A Origem do Nome' : 'The Origin of the Name'}</SectionTitle>
-        <Body>{isPt ? <>Este wiki nasceu com o nome <strong>Computadores Fazem Arte</strong> — uma referência à música homônima, composta por <strong>Fred Zero Quatro</strong> e interpretada com <strong>Chico Science e Nação Zumbi</strong>.</> : <>This wiki was born under the name <strong>Computadores Fazem Arte</strong> — a reference to the song of the same name, written by <strong>Fred Zero Quatro</strong> and performed with <strong>Chico Science e Nação Zumbi</strong>.</>}</Body>
+        <Body>{isPt ? <>Este projeto nasceu com o nome <strong>Computadores Fazem Arte</strong> — uma referência à música homônima, composta por <strong>Fred Zero Quatro</strong> e interpretada com <strong>Chico Science e Nação Zumbi</strong>.</> : <>This project was born under the name <strong>Computadores Fazem Arte</strong> — a reference to the song of the same name, written by <strong>Fred Zero Quatro</strong> and performed with <strong>Chico Science e Nação Zumbi</strong>.</>}</Body>
 
         <blockquote style={{ borderLeft: '3px solid var(--orange)', padding: '1rem 1.5rem', margin: '1.5rem 0', background: 'var(--gray-50)', borderRadius: '0 8px 8px 0', fontFamily: 'DM Sans, sans-serif', fontStyle: 'italic', color: 'var(--gray-600)', lineHeight: 1.8 }}>
           "Computadores avançam<br/>Artistas pegam carona<br/>Cientistas criam o novo<br/>Artistas levam a fama"
