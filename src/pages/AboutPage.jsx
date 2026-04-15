@@ -107,8 +107,8 @@ export default function AboutPage() {
               marginBottom: '0.75rem',
             }}>
               {isPt
-                ? 'Fundadoral, artista, designer e educadora. Mestre em Design de Artefatos Digitais (UFPE), graduada em Design Gráfico (UTFPR).'
-                : '}Founder, artist, designer and educator. Master in Digital Artifact Design (UFPE), graduated in Graphic Design (UTFPR).'
+                ? 'Artista, pesquisadora e designer. Mestranda em Design de Artefatos Digitais na UFPE. Trabalha na interseção entre arte, tecnologia e comunidade.'
+                : 'Artist, researcher, and designer. Master\'s student in Digital Artifact Design at UFPE. Works at the intersection of art, technology, and community.'
               }
             </p>
             <a
@@ -306,8 +306,8 @@ export default function AboutPage() {
               lineHeight: 1.7,
             }}>
               {isPt
-                ? 'Artur foi voluntário da pesquisa. Sua curiosidade, entusiasmo e dedicação deixaram uma marca nesse projeto que vai além do que qualquer texto pode descrever. Este wiki carrega um pedaço dele.'
-                : 'Artur was a research volunteer. His curiosity, enthusiasm, and dedication left a mark on this project that goes beyond what any text can describe. This wiki carries a piece of him.'
+                ? 'Artur entrou na pesquisa como voluntário. Sua curiosidade, entusiasmo e dedicação deixaram uma marca nesse projeto que vai além do que qualquer texto pode descrever. Este wiki carrega um pedaço dele.'
+                : 'Artur joined the research as a volunteer. His curiosity, enthusiasm, and dedication left a mark on this project that goes beyond what any text can describe. This wiki carries a piece of him.'
               }
             </p>
           </div>
@@ -326,8 +326,8 @@ export default function AboutPage() {
           </Body>
           <Body>
             {isPt
-              ? <>O encerramento do curso foi interrompido pelo <strong>bloqueio do Twitter/X no Brasil</strong> — um momento que se tornou parte da própria história do projeto. A regulamentação das redes sociais é um tema importante, apesar do bloqueio, é necessário avançar nesta questão para garantir os direitos digitais de todos os que utilizam estas plataformas.</>
-              : <>The course closing was interrupted by the <strong>blocking of Twitter/X in Brazil</strong> — a moment that became part of the project's own story. The regulation of social networks is an important topic, despite the blockade, it is necessary to move forward on this issue to guarantee the digital rights of everyone who uses these platforms.</>
+              ? <>O encerramento do curso foi interrompido pelo <strong>bloqueio do Twitter/X no Brasil</strong> — um momento que se tornou parte da própria história do projeto. A regulação das plataformas de redes sociais não é um tema secundário: é central para qualquer conversa honesta sobre direitos digitais e as condições nas quais artistas criam e distribuem seu trabalho.</>
+              : <>The course closing was interrupted by the <strong>blocking of Twitter/X in Brazil</strong> — a moment that became part of the project's own story. The regulation of social media platforms is not a secondary topic: it is central to any honest conversation about digital rights and the conditions under which artists create and distribute their work.</>
             }
           </Body>
         </Section>
@@ -343,6 +343,10 @@ export default function AboutPage() {
               : <>An intensive training was held for Computer Science students at the <strong>Universidade Federal de São João Del-Rei (UFSJ)</strong>, in Minas Gerais. The invitation came from <strong>Professor Darlinton Carvalho</strong>, who met Numa at WebMedia 2024 and brought the content as part of an extension project he coordinates at the university.</>
             }
           </Body>
+        <figure style={{ margin: '1.25rem 0' }}>
+          <img src="/wiki/images/ufsj-nft.jpg" alt="NFT criada para os participantes da formação na UFSJ" style={{ width: '100%', borderRadius: '12px', border: '1px solid var(--gray-200)', display: 'block' }} />
+          <figcaption style={{ fontFamily: 'Space Mono, monospace', fontSize: '0.6rem', textTransform: 'uppercase', letterSpacing: '0.08em', color: 'var(--gray-400)', marginTop: '0.5rem', textAlign: 'center' }}>{isPt ? 'NFT criada para os participantes da formação intensiva na UFSJ' : 'NFT created for participants of the intensive training at UFSJ'}</figcaption>
+        </figure>
         </Section>
 
         <Divider />
@@ -356,6 +360,10 @@ export default function AboutPage() {
               : <>In 2025, invited by <strong>Professor Leonardo Castillo</strong>, Numa taught the course <em>Design para Web3</em> within the Design undergraduate program at UFPE — bringing this project's content directly into formal design education.</>
             }
           </Body>
+        <figure style={{ margin: '1.25rem 0' }}>
+          <img src="/wiki/images/ufpe-web3.jpg" alt="Numa, Prof. Castillo e turma no Centro Histórico do Recife" style={{ width: '100%', borderRadius: '12px', border: '1px solid var(--gray-200)', display: 'block' }} />
+          <figcaption style={{ fontFamily: 'Space Mono, monospace', fontSize: '0.6rem', textTransform: 'uppercase', letterSpacing: '0.08em', color: 'var(--gray-400)', marginTop: '0.5rem', textAlign: 'center' }}>{isPt ? 'Numa, Prof. Castillo e parte da turma em visita ao Centro Histórico do Recife' : 'Numa, Prof. Castillo and part of the class visiting the Historic Center of Recife'}</figcaption>
+        </figure>
         </Section>
 
         <Divider />
