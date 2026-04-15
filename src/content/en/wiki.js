@@ -1,29 +1,6 @@
 // Content registry - English
 // Uses regular strings to avoid template literal parsing issues
 
-const intro = [
-  "# Introduction",
-  "",
-  "To begin talking about NFTs, we first need to think about some key terms that make up this universe. This formation covers the techniques and practices for creating artworks in the NFT market.",
-  "",
-  "This project main objective is to encourage more people to learn how to use Blockchain technology — and also to spark a serious conversation about how virtual communities can become more conscious and thereby contribute socially to physical spaces.",
-  "",
-  "---",
-  "",
-  "We will cover **Blockchain**, **crypto**, **digital communities**, and other foundational concepts so that you have the autonomy and initial courage to create your NFT works and projects.",
-  "",
-  '> "Computers advance / Artists hitchhike / Scientists create the new / Artists take the fame" — *Fred Zero Quatro*',
-  "",
-  "## Why this matters",
-  "",
-  "This is not just a technical manual. It is an invitation to think critically about technology, art, and community. The NFT space is fertile ground — still largely unexplored. It is up to us to navigate it consciously: planting good ideas without deforestation.",
-  "",
-  "## Who made this?",
-  "",
-  "This educational material was developed by **Numa** as part of a masters research in Digital Artifact Design at the Universidade Federal de Pernambuco (UFPE), funded by the MAI/DAI program of the CNPq with support from the NFT art community.",
-  "",
-  "The content is available for **free distribution**.",
-].join("\n");
 
 const internetGen = [
   "# Internet Generations",

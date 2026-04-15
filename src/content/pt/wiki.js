@@ -1,30 +1,6 @@
 // Conteúdo do wiki em Português
 // Usa arrays de strings para evitar problemas com template literals
 
-const intro = [
-  "# Introdução",
-  "",
-  "Para começar a conversar sobre NFTs, precisamos pensar antes em alguns termos-chave que fazem parte deste universo. Nesta formação, tem conteúdo das técnicas e práticas para criar obras de arte no mercado de NFTs.",
-  "",
-  "Esse projeto tem como principal objetivo incentivar mais pessoas a aprenderem a utilizar tecnologia Blockchain — também encorajar uma conversa séria sobre como as comunidades virtuais devem ser mais conscientes e dessa forma contribuir socialmente para o espaço físico.",
-  "",
-  "---",
-  "",
-  "Vamos falar sobre **Blockchain**, **cripto**, **comunidades digitais** e outros conceitos básicos para que você tenha autonomia e encorajamento inicial para criar suas obras e projetos NFTs.",
-  "",
-  "> Computadores avançam / Artistas pegam carona / Cientistas criam o novo / Artistas levam a fama — Fred Zero Quatro",
-  "",
-  "## Por que isso importa",
-  "",
-  "Este não é apenas um manual técnico. É um convite para pensar criticamente sobre tecnologia, arte e comunidade. O espaço das NFTs ainda é uma terra fértil — pouco explorada. Cabe a nós navegar nela de forma consciente: plantando boas ideias, sem desmatar.",
-  "",
-  "## Quem fez isso?",
-  "",
-  "Este material didático foi desenvolvido por **Numa** como parte integrante da pesquisa de mestrado em Design de Artefatos Digitais na Universidade Federal de Pernambuco (UFPE), financiada pelo programa MAI/DAI do CNPq.",
-  "",
-  "O conteúdo está disponível para **distribuição livre e gratuita**.",
-].join("\n");
-
 const internetGen = [
   "# Gerações da Internet",
   "",
