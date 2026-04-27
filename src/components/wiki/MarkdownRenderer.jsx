@@ -122,7 +122,7 @@ const components = {
         style={{
           width: '100%',
           borderRadius: '12px',
-          border: '1px solid var(--gray-200)',
+          border: src?.endsWith('.svg') ? 'none' : '1px solid var(--gray-200)',
         }}
       />
       {alt && (
