@@ -2,8 +2,6 @@
 // Usa arrays de strings para evitar problemas com template literals
 
 const intro = [
-  "# Introdução",
-  "",
   "Para começar a conversar sobre NFTs, precisamos pensar antes em alguns termos-chave que fazem parte deste universo. Nesta formação, tem conteúdo das técnicas e práticas para criar obras de arte no mercado de NFTs.",
   "",
   "Esse projeto tem como principal objetivo incentivar mais pessoas a aprenderem a utilizar tecnologia Blockchain — também encorajar uma conversa séria sobre como as comunidades virtuais devem ser mais conscientes e dessa forma contribuir socialmente para o espaço físico.",
@@ -26,8 +24,6 @@ const intro = [
 ].join("\n");
 
 const internetGen = [
-  "# Gerações da Internet",
-  "",
   "Antes de tudo, é importante aprender sobre as três gerações existentes da internet. Vivemos em um momento onde a Web 2 e a Web3 existem simultaneamente — cada geração não são coisas à parte, mas apenas continuações da web que já conhecemos.",
   "",
   "---",
@@ -52,8 +48,6 @@ const internetGen = [
 ].join("\n");
 
 const blockchain = [
-  "# Tecnologia Blockchain",
-  "",
   "## O que é Blockchain?",
   "",
   "As Blockchains são como **livros de registros digitais e descentralizados**. Redes online onde os dados são salvos nos computadores de cada usuário da Blockchain, não apenas em um só servidor.",
@@ -65,8 +59,6 @@ const blockchain = [
   "## História",
   "",
   "A tecnologia Blockchain teve suas origens em **1991**, quando Stuart Haber e W. Scott Stornetta publicaram um artigo sobre como colocar um carimbo de data e hora em documentos digitais de forma segura, usando uma série criptografada de blocos.",
-  "",
-  "> **Criptografia** é a transformação de dados legíveis em dados codificados, que só podem ser decodificados com processamento de softwares — essencial para manter informações seguras e evitar usos maliciosos.",
   "",
   "| Ano | Evento |",
   "|-----|--------|",
@@ -93,7 +85,7 @@ const blockchain = [
   "",
   "Imagine que você quer enviar dinheiro para alguém sem passar por um banco. Na blockchain, isso acontece em quatro etapas — sem intermediários, sem servidor central, sem possibilidade de fraude.",
   "",
-  "![Como funciona a Blockchain — diagrama com 4 etapas](/images/how-blockchain-works.svg)",
+  "![Como funciona a Blockchain — diagrama com 4 etapas](/wiki/images/how-blockchain-works.svg)",
   "",
   "**① Você solicita uma transação**",
   "Seu pedido é codificado em um bloco contendo: quem envia, quem recebe e qual o valor. É como um envelope lacrado com todas as informações necessárias.",
@@ -102,7 +94,7 @@ const blockchain = [
   "Esse bloco é transmitido para milhares de computadores ao redor do mundo — os *nós* da rede. Cada um deles verifica de forma independente se a transação é válida.",
   "",
   "**③ Os nós chegam a um consenso**",
-  "A rede precisa concordar sobre qual bloco será adicionado. Esse processo — chamado de *consenso* — pode acontecer por mineração (PoW) ou validação (PoS). Saiba mais em [Mecanismos de Consenso](/wiki/consensus).",
+  "A rede precisa concordar sobre qual bloco será adicionado. Esse processo — chamado de *consenso* — pode acontecer por mineração (PoW) ou validação (PoS). Saiba mais em [Mineração e Validação](mining-and-validation).",
   "",
   "**④ A transação é gravada para sempre**",
   "O bloco aprovado é adicionado à cadeia de forma permanente e imutável. Ninguém pode apagar, alterar ou reverter — nem o criador da transação.",
@@ -115,7 +107,7 @@ const blockchain = [
   "",
   "Os principais mecanismos são Prova de Trabalho (PoW), Prova de Participação (PoS), Prova de Autoridade (PoA) e Prova de História (PoH) — cada um com formas diferentes de minerar e validar blocos.",
   "",
-  "> Veja o artigo completo: [Mecanismos de Consenso, Mineração e Validação](/wiki/consensus)",
+  "> Veja o artigo completo: [Mineração e Validação](mining-and-validation)",
   "",
   "---",
   "",
@@ -141,9 +133,7 @@ const blockchain = [
   "| L3 | Camada de aplicação cross-chain | IBC Protocol, Quant |",
 ].join("\n");
 
-const consensus = [
-  "# Mecanismos de Consenso, Mineração e Validação",
-  "",
+const miningValidation = [
   "Os mecanismos de consenso são protocolos que permitem que uma rede descentralizada de computadores concorde com o estado da blockchain — ou seja, quais transações são válidas e em que ordem devem ser adicionadas.",
   "",
   "Esses mecanismos são cruciais para garantir a segurança, integridade e confiabilidade da blockchain, evitando fraudes e garantindo que todos os participantes da rede tenham uma cópia idêntica e atualizada do registro.",
@@ -166,7 +156,7 @@ const consensus = [
   "",
   "**Validação:** Outros validadores verificam a validade do bloco. Se a maioria concordar, o bloco é adicionado à blockchain.",
   "",
-  "**Exemplos:** Ethereum (ETH) · Cardano (ADA) · Solana (SOL) · Tezos (XTZ) · Avalanche (AVAX) · Algorand (ALGO)",
+  "**Exemplos:** Ethereum (ETH) · Cardano (ADA) · Tezos (XTZ) · Avalanche (AVAX) · Algorand (ALGO)",
   "",
   "---",
   "",
@@ -186,7 +176,15 @@ const consensus = [
   "",
   "**Validação:** A validação é realizada por um grupo de nós que verificam a ordem das transações e a integridade do hashgraph.",
   "",
-  "**Exemplos:** Solana (SOL) · Hedera Hashgraph (HBAR)",
+  "**Exemplos:** Hedera Hashgraph (HBAR)",
+  "",
+  "---",
+  "",
+  "## O caso especial da Solana",
+  "",
+  "A Solana combina dois mecanismos: **PoH + PoS**. O PoH funciona como um relógio interno — cada evento na rede recebe um carimbo de tempo criptográfico, criando uma ordem verificável de transações antes mesmo da validação. Esse registro histórico permite que os validadores (escolhidos por PoS) trabalhem em paralelo, sem precisar esperar uns pelos outros para confirmar a ordem dos blocos.",
+  "",
+  "O resultado é uma rede muito mais rápida: enquanto o Ethereum processa ~15 transações por segundo, a Solana pode atingir dezenas de milhares.",
   "",
   "---",
   "",
@@ -195,16 +193,49 @@ const consensus = [
   "| Mecanismo | Mineração | Validação | Exemplos |",
   "|-----------|-----------|-----------|---------|",
   "| **PoW** | Competição por hash criptográfico | Maioria dos nós concorda | Bitcoin, Litecoin, Monero |",
-  "| **PoS** | Sem mineração — seleção por stake | Maioria dos validadores concorda | Ethereum, Cardano, Solana, Tezos |",
+  "| **PoS** | Sem mineração — seleção por stake | Maioria dos validadores concorda | Ethereum, Cardano, Tezos |",
   "| **PoA** | Sem mineração — validadores pré-autorizados | Validadores autorizados | Binance Coin, VeChain, XRP |",
-  "| **PoH** | Sem mineração — registro histórico (hashgraph) | Nós verificam ordem e integridade | Solana, Hedera Hashgraph |",
+  "| **PoH** | Sem mineração — registro histórico (hashgraph) | Nós verificam ordem e integridade | Hedera Hashgraph |",
+  "| **PoH + PoS** | Sem mineração — relógio criptográfico + stake | Validadores em paralelo | Solana |",
   "",
-  "> Voltar para: [Tecnologia Blockchain](/wiki/blockchain)",
+  "> Voltar para: [Tecnologia Blockchain](blockchain)",
+].join("\n");
+
+const cryptography = [
+  "**Criptografia** é a transformação de dados legíveis em dados codificados — que só podem ser decifrados com a chave certa. É a tecnologia que torna a blockchain possível: sem ela, não haveria como garantir que transações são autênticas, que dados não foram adulterados ou que uma moeda digital não foi gasta duas vezes.",
+  "",
+  "---",
+  "",
+  "## Por que cripto se chama cripto",
+  "",
+  "O prefixo *cripto* vem do grego *kryptós* — oculto, secreto. **Criptomoeda** significa literalmente moeda protegida por criptografia. Não é só um nome — é uma descrição do que ela é: uma moeda cuja segurança e autenticidade dependem inteiramente de funções criptográficas.",
+  "",
+  "---",
+  "",
+  "## A Árvore de Merkle",
+  "",
+  "Uma das estruturas mais importantes para a blockchain é a **Árvore de Merkle**, criada por Ralph Merkle em 1979.",
+  "",
+  "Funciona assim: cada transação gera um código único chamado *hash*. Esses hashes são agrupados aos pares e combinados em novos hashes — e assim sucessivamente, até restar um único hash no topo, chamado de **Merkle Root**.",
+  "",
+  "Esse processo cria uma impressão digital de todo o bloco. Se qualquer transação for alterada — mesmo que minimamente — o Merkle Root muda completamente. Isso torna a adulteração imediatamente detectável por qualquer nó da rede.",
+  "",
+  "É por isso que a blockchain é **imutável**: não porque seja fisicamente impossível alterar um dado, mas porque qualquer alteração quebra a cadeia de hashes e é rejeitada pela rede.",
+  "",
+  "> Veja a linha do tempo completa de como isso levou à criação do Bitcoin em [Tecnologia Blockchain](blockchain).",
+  "",
+  "---",
+  "",
+  "## Como a criptografia protege a blockchain",
+  "",
+  "**Autenticidade:** Cada transação é assinada com a chave privada do remetente. Só quem tem a chave pode autorizar o envio — mas qualquer um pode verificar que a assinatura é legítima usando a chave pública.",
+  "",
+  "**Integridade:** O hash de cada bloco inclui o hash do bloco anterior. Alterar qualquer bloco antigo invalida todos os blocos seguintes — tornando a fraude computacionalmente inviável.",
+  "",
+  "**Descentralização:** Como a verificação é matemática, não há necessidade de uma autoridade central. Qualquer nó pode confirmar que uma transação é válida apenas com as regras criptográficas.",
 ].join("\n");
 
 const security = [
-  "# Segurança",
-  "",
   "## Carteiras de Criptomoedas",
   "",
   "A **carteira (wallet)** é como uma conta bancária para suas moedas digitais. Feita para armazenar cripto obtida através de compra, transferência ou mineração/validação. É o principal meio de interagir com sites e aplicativos da Web3.",
@@ -251,8 +282,6 @@ const security = [
 ].join("\n");
 
 const nfts = [
-  "# NFTs",
-  "",
   "## O que são NFTs?",
   "",
   "Podemos entender **NFT** como o **certificado digital de propriedade de um item**. Esse certificado é criado e registrado em uma rede Blockchain e pode conter arquivos, links, texto ou códigos.",
@@ -295,8 +324,6 @@ const nfts = [
 ].join("\n");
 
 const communities = [
-  "# Comunidades NFT",
-  "",
   "Uma **comunidade NFT** é um grupo digital de pessoas interessadas em NFTs, que se reúnem para discutir, criar, comprar, vender e trocar esses tokens. As comunidades são cruciais — é impossível prosperar sem comunidade nesse ambiente.",
   "",
   "---",
@@ -341,8 +368,6 @@ const communities = [
 ].join("\n");
 
 const platforms = [
-  "# Plataformas de NFTs",
-  "",
   "Abaixo está uma visão geral de plataformas disponíveis em diferentes blockchains. Explore o **DappRadar** para descobrir plataformas em muitas outras redes.",
   "",
   "---",
@@ -388,8 +413,6 @@ const platforms = [
 ].join("\n");
 
 const communication = [
-  "# Plataformas de Comunicação",
-  "",
   "As comunidades NFTs se constroem em redes sociais essenciais. Estes espaços são necessários para conectar artistas e colecionadores.",
   "",
   "---",
@@ -424,8 +447,6 @@ const communication = [
 ].join("\n");
 
 const marketing = [
-  "# Marketing",
-  "",
   "## 1. Crie uma Identidade Sólida",
   "",
   "Desenvolva uma identidade visual e tenha um discurso consistente que representem sua personalidade.",
@@ -476,8 +497,6 @@ const marketing = [
 ].join("\n");
 
 const about = [
-  "# Sobre o Projeto",
-  "",
   "**Computadores Fazem Arte** é um wiki educacional sobre Blockchain, Web3 e NFTs — desenvolvido como parte integrante de uma pesquisa de mestrado em **Design de Artefatos Digitais** na Universidade Federal de Pernambuco (UFPE), financiada pelo programa MAI/DAI do CNPq.",
   "",
   "---",
@@ -539,8 +558,6 @@ const about = [
 ].join("\n");
 
 const references = [
-  "# Referências",
-  "",
   "## Obras Acadêmicas",
   "",
   "**MENOTTI, Gabriel.** Criptoarte: A Metafísica do NFT e a Tecnocolonização da Autenticidade. 2021, Revista do Centro de Pesquisa e Formação / No 13.",
@@ -637,14 +654,24 @@ export const wikiSections = [
     content: blockchain,
   },
   {
-    id: "consensus",
-    slug: "consensus",
+    id: "mining-and-validation",
+    slug: "mining-and-validation",
     title: "Mecanismos de Consenso",
     subtitle: "Mineração e Validação",
     tags: ["blockchain", "tecnologia", "consenso"],
     description: "Como redes descentralizadas concordam sobre transações: PoW, PoS, PoA e PoH.",
-    related: ["blockchain", "security"],
-    content: consensus,
+    related: ["blockchain", "cryptography", "security"],
+    content: miningValidation,
+  },
+  {
+    id: "cryptography",
+    slug: "cryptography",
+    title: "Criptografia",
+    subtitle: "A base da blockchain",
+    tags: ["blockchain", "tecnologia", "criptografia"],
+    description: "Como a criptografia torna a blockchain possível — e por que cripto se chama cripto.",
+    related: ["blockchain", "mining-and-validation"],
+    content: cryptography,
   },
   {
     id: "security",

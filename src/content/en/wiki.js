@@ -1,8 +1,6 @@
 // Wiki content in English
 
 const intro = [
-  "# Introduction",
-  "",
   "To start talking about NFTs, we first need to think about some key terms that are part of this universe. This curriculum covers the techniques and practices for creating artworks in the NFT market.",
   "",
   "This project's main goal is to encourage more people to learn how to use Blockchain technology — and to foster a serious conversation about how virtual communities should be more conscious and thereby contribute socially to physical space.",
@@ -25,8 +23,6 @@ const intro = [
 ].join("\n");
 
 const internetGen = [
-  "# Internet Generations",
-  "",
   "First of all, it's important to learn about the three existing generations of the internet. We live in a moment where Web 2 and Web3 exist simultaneously — each generation is not a separate thing, but just a continuation of the web we already know.",
   "",
   "---",
@@ -51,8 +47,6 @@ const internetGen = [
 ].join("\n");
 
 const blockchain = [
-  "# Blockchain Technology",
-  "",
   "## What is Blockchain?",
   "",
   "Blockchains are like **decentralized digital ledgers**. Online networks where data is saved on each user's computer, not just on a single server.",
@@ -90,7 +84,7 @@ const blockchain = [
   "",
   "Imagine you want to send money to someone without going through a bank. On the blockchain, this happens in four steps — no intermediaries, no central server, no possibility of fraud.",
   "",
-  "![How Blockchain works — diagram with 4 steps](/images/how-blockchain-works.svg)",
+  "![How Blockchain works — diagram with 4 steps](/wiki/images/how-blockchain-works.svg)",
   "",
   "**① You request a transaction**",
   "Your request is encoded in a block containing: who sends, who receives, and the value. Think of it as a sealed envelope with all the necessary information.",
@@ -139,8 +133,6 @@ const blockchain = [
 ].join("\n");
 
 const miningValidation = [
-  "# Consensus Mechanisms, Mining and Validation",
-  "",
   "Consensus mechanisms are protocols that allow a decentralized network of computers to agree on the state of the blockchain — that is, which transactions are valid and in what order they should be added.",
   "",
   "These mechanisms are crucial for ensuring the security, integrity, and reliability of the blockchain, preventing fraud and ensuring that all network participants have an identical and up-to-date copy of the ledger.",
@@ -209,8 +201,6 @@ const miningValidation = [
 ].join("\n");
 
 const cryptography = [
-  "# Cryptography",
-  "",
   "**Cryptography** is the transformation of readable data into encoded data — which can only be deciphered with the right key. It is the technology that makes blockchain possible: without it, there would be no way to guarantee that transactions are authentic, that data hasn't been tampered with, or that a digital coin hasn't been spent twice.",
   "",
   "---",
@@ -245,8 +235,6 @@ const cryptography = [
 ].join("\n");
 
 const security = [
-  "# Security",
-  "",
   "## Cryptocurrency Wallets",
   "",
   "A **wallet** is like a bank account for your digital currencies. Made to store crypto obtained through purchase, transfer, or mining/validation. It is the main way to interact with Web3 sites and applications.",
@@ -293,8 +281,6 @@ const security = [
 ].join("\n");
 
 const nfts = [
-  "# NFTs",
-  "",
   "## What are NFTs?",
   "",
   "We can understand an **NFT** as the **digital certificate of ownership of an item**. This certificate is created and registered on a Blockchain network and can contain files, links, text, or code.",
@@ -337,8 +323,6 @@ const nfts = [
 ].join("\n");
 
 const communities = [
-  "# NFT Communities",
-  "",
   "An **NFT community** is a digital group of people interested in NFTs, who gather to discuss, create, buy, sell, and trade these tokens. Communities are crucial — it's impossible to thrive without community in this environment.",
   "",
   "---",
@@ -383,8 +367,6 @@ const communities = [
 ].join("\n");
 
 const platforms = [
-  "# NFT Platforms",
-  "",
   "Below is an overview of platforms available on different blockchains. Explore **DappRadar** to discover platforms on many other networks.",
   "",
   "---",
@@ -430,8 +412,6 @@ const platforms = [
 ].join("\n");
 
 const communication = [
-  "# Communication Platforms",
-  "",
   "NFT communities are built on essential social networks. These spaces are necessary to connect artists and collectors.",
   "",
   "---",
@@ -466,8 +446,6 @@ const communication = [
 ].join("\n");
 
 const marketing = [
-  "# Marketing",
-  "",
   "## 1. Build a Strong Identity",
   "",
   "Develop a visual identity and maintain a consistent voice that represents your personality.",
@@ -518,8 +496,6 @@ const marketing = [
 ].join("\n");
 
 const about = [
-  "# About the Project",
-  "",
   "**Computadores Fazem Arte** is an educational wiki about Blockchain, Web3, and NFTs — developed as an integral part of master's research in **Digital Artifact Design** at the Federal University of Pernambuco (UFPE), funded by CNPq's MAI/DAI program.",
   "",
   "---",
@@ -581,8 +557,6 @@ const about = [
 ].join("\n");
 
 const references = [
-  "# References",
-  "",
   "## Academic Works",
   "",
   "**MENOTTI, Gabriel.** Criptoarte: A Metafísica do NFT e a Tecnocolonização da Autenticidade. 2021, Revista do Centro de Pesquisa e Formação / No 13.",
@@ -679,7 +653,7 @@ export const wikiSections = [
     content: blockchain,
   },
   {
-    id: "consensus",
+    id: "mining-and-validation",
     slug: "mining-and-validation",
     title: "Consensus Mechanisms",
     subtitle: "Mining and Validation",
