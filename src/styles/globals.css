@@ -157,6 +157,15 @@ h1, h2, h3, h4, h5, h6 {
 .callout-warning .callout-title { color: #4a7a3a; }
 .dark .callout-warning .callout-title { color: var(--green); }
 
+/* History Timeline */
+.wiki-content td:first-child {
+  white-space: nowrap;
+  color: var(--orange);
+  font-family: 'Space Mono', monospace;
+  font-size: 0.8rem;
+  width: 80px;
+}
+
 /* Reading progress */
 .reading-progress {
   position: fixed;
