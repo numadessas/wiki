@@ -1,5 +1,6 @@
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
+import rehypeRaw from 'rehype-raw'
 import { useState } from 'react'
 import { Copy, Check } from 'lucide-react'
 
@@ -122,7 +123,7 @@ const components = {
         style={{
           width: '100%',
           borderRadius: '12px',
-          border: src?.endsWith('.svg') ? 'none' : '1px solid var(--gray-200)',
+          border: '1px solid var(--gray-200)',
         }}
       />
       {alt && (
@@ -154,6 +155,7 @@ export default function MarkdownRenderer({ content }) {
     <div className="wiki-content">
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
+        rehypePlugins={[rehypeRaw]}
         components={components}
       >
         {content}

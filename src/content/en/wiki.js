@@ -700,7 +700,7 @@ export const wikiSections = [
   {
     id: "security",
     slug: "security",
-    title: "Cryptocurrency Wallets",
+    title: "Crypto Wallets",
     subtitle: "Wallets, private keys, and how to protect yourself from scams",
     tags: ["security", "wallets", "scam"],
     description: "Cryptocurrency wallets, private keys, and how to protect yourself from scams.",

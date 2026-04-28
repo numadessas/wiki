@@ -701,8 +701,8 @@ export const wikiSections = [
   {
     id: "security",
     slug: "security",
-    title: "Cryptocurrency Wallets",
-    subtitle: "Wallets, chaves privadas e como se proteger de golpes",
+    title: "Crypto Wallets",
+    subtitle: "Wallets, private keys, and how to protect yourself from scams.",
     tags: ["segurança", "carteiras", "golpe"],
     description: "Carteiras de criptomoedas, chaves privadas e como se proteger de golpes.",
     related: ["blockchain", "nfts"],
