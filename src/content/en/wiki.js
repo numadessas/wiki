@@ -701,9 +701,9 @@ export const wikiSections = [
 
       { term: "Burn NFT", definition: "The process of making an NFT unusable. It's not possible to delete an NFT from the blockchain, so this action is used when there's a need to remove an NFT from circulation." },
 
-      { term: "CEX", definition: "Centralized Exchange — a centralized exchange managed by a company. You create an account, deposit funds, and trade through the platform. Examples: Coinbase, Binance, Kraken. <span style=\"font-family:'Space Mono',monospace;font-size:0.65rem;text-transform:uppercase;letter-spacing:0.08em;background:var(--gray-100);color:var(--gray-500);padding:0.15rem 0.5rem;border-radius:100px\">Coming soon</span>" },
+      { term: "CEX", definition: "Centralized Exchange — a centralized exchange managed by a company. You create an account, deposit funds, and trade through the platform. Examples: Coinbase, Binance, Kraken. → coming soon" },
 
-      { term: "DEX", definition: "Decentralized Exchange — a decentralized exchange where you trade directly from your wallet, without creating an account or going through identity verification. Examples: Uniswap, Jupiter, Raydium. <span style=\"font-family:'Space Mono',monospace;font-size:0.65rem;text-transform:uppercase;letter-spacing:0.08em;background:var(--gray-100);color:var(--gray-500);padding:0.15rem 0.5rem;border-radius:100px\">Coming soon</span>" },
+      { term: "DEX", definition: "Decentralized Exchange — a decentralized exchange where you trade directly from your wallet, without creating an account or going through identity verification. Examples: Uniswap, Jupiter, Raydium. → coming soon" },
 
       { term: "DYOR", definition: "Do Your Own Research — an expression meaning everyone needs to do their own research, as investing in crypto is very volatile. What works for one person doesn't necessarily work for another." },
 
@@ -723,7 +723,7 @@ export const wikiSections = [
 
       { term: "HODL", definition: "A typo of 'hold' that became a classic crypto slang for 'don't sell, hold the asset regardless of price swings'. Also interpreted as Hold On for Dear Life." },
 
-      { term: "IPFS", definition: "InterPlanetary File System — a decentralized storage system where files are distributed across the network instead of being stored on a single server. Widely used to store NFT metadata and images. <span style=\"font-family:'Space Mono',monospace;font-size:0.65rem;text-transform:uppercase;letter-spacing:0.08em;background:var(--gray-100);color:var(--gray-500);padding:0.15rem 0.5rem;border-radius:100px\">Coming soon</span>" },
+      { term: "IPFS", definition: "InterPlanetary File System — a decentralized storage system where files are distributed across the network instead of being stored on a single server. Widely used to store NFT metadata and images. → coming soon" },
 
       { term: "IRL", definition: "In Real Life — used to refer to life that happens outside the internet." },
 
@@ -757,9 +757,9 @@ export const wikiSections = [
 
       { term: "Ser", definition: "A deliberate, humorous misspelling of 'Sir', used as a form of address in crypto and internet culture. Carries a tone of ironic respect and warmth. Ex: 'good morning, ser'." },
 
-      { term: "Smart Contract", definition: "A program that runs automatically on the blockchain when predefined conditions are met. No intermediaries needed to execute. <span style=\"font-family:'Space Mono',monospace;font-size:0.65rem;text-transform:uppercase;letter-spacing:0.08em;background:var(--gray-100);color:var(--gray-500);padding:0.15rem 0.5rem;border-radius:100px\">Coming soon</span>" },
+      { term: "Smart Contract", definition: "A program that runs automatically on the blockchain when predefined conditions are met. No intermediaries needed to execute. → coming soon" },
 
-      { term: "Token", definition: "A digital asset created and managed on a blockchain. Unlike a native coin (like ETH or SOL), tokens are built on top of existing networks. They can represent currencies, votes, loyalty points, art, property, and much more. <span style=\"font-family:'Space Mono',monospace;font-size:0.65rem;text-transform:uppercase;letter-spacing:0.08em;background:var(--gray-100);color:var(--gray-500);padding:0.15rem 0.5rem;border-radius:100px\">Coming soon</span>" },
+      { term: "Token", definition: "A digital asset created and managed on a blockchain. Unlike a native coin (like ETH or SOL), tokens are built on top of existing networks. They can represent currencies, votes, loyalty points, art, property, and much more. → coming soon" },
 
       { term: "WAGMI", definition: "We Are All Gonna Make It — an optimistic expression used in NFT communities, meaning we're all going to succeed." },
 
