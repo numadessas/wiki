@@ -686,46 +686,87 @@ export const wikiSections = [
     isGlossary: true,
     content: "Essential vocabulary for navigating the Web3 and NFT space. Click on any term to expand its definition.",
     glossaryTerms: [
-      { term: "DYOR", definition: "Do Your Own Research — an expression meaning everyone needs to do their own research, as investing in crypto is very volatile. What works for one person doesn't necessarily work for another." },
-      { term: "Flood", definition: "Sending many messages about the same thing, becoming visual pollution in chats and servers." },
-      { term: "FOMO", definition: "Fear Of Missing Out — fear of missing an opportunity. Very common in volatile markets, it can lead to impulsive decisions." },
-      { term: "WAGMI", definition: "We Are All Gonna Make It — an optimistic expression used in NFT communities, meaning we're all going to succeed." },
-      { term: "Genesis", definition: "The first NFT someone launches on a network/platform. Term inspired by the genesis block, which is the first block mined on a blockchain." },
-      { term: "Hash", definition: "A unique sequence of characters generated from transaction data using a special mathematical function. In blockchains, hashes verify data integrity and securely connect blocks." },
-      { term: "Node", definition: "A computer that is part of a Blockchain network's structure. Each node has an identical copy of all transactions that have occurred on the network." },
-      { term: "Nonce", definition: "Short for number used once — a randomly generated number used only once in a cryptographic transaction." },
-      { term: "Burn NFT", definition: "The process of making an NFT unusable. It's not possible to delete an NFT from the blockchain, so this action is used when there's a need to remove an NFT from circulation." },
-      { term: "Scam", definition: "A fraud or swindle. Very common in the crypto space — always be skeptical of proposals that seem too good to be true." },
-      { term: "Phishing", definition: "A type of virtual scam that steals personal and financial information, usually through fake websites or messages that imitate legitimate services." },
-      { term: "NFA", definition: "No Financial Advice — an expression used when someone talks about a project/coin, indicating that each person should make their own financial assessment." },
-      { term: "IRL", definition: "In Real Life — used to refer to life that happens outside the internet." },
-      { term: "Block Explorer", definition: "A platform where a blockchain can be accessed publicly in real time. Each network has one or more block explorers." },
-      { term: "Whitepaper", definition: "A document that explains the goals and technologies of a crypto project. It is a crucial requirement for projects to be considered genuine and professional." },
-      { term: "Minting", definition: "The process of creating and registering an NFT on a blockchain — making it an official and verifiable digital asset." },
-      { term: "GM / GN", definition: "Good Morning / Good Night — common greetings in NFT and crypto communities to create daily connection." },
-      { term: "P2P", definition: "Peer-to-peer — a direct transaction or communication between two people, without intermediaries. In crypto, P2P transfers happen without a bank or exchange in between." },
-      { term: "LATAM", definition: "Latin America — term used to refer to the region in discussions about crypto and Web3 adoption. The region has one of the highest adoption rates in the world, driven by monetary instability and the search for financial alternatives." },
-      { term: "APAC", definition: "Asia-Pacific — a region including countries like Japan, South Korea, Singapore, China, and Australia. One of the largest crypto and NFT markets in the world, with very active communities especially in Japan and South Korea." },
-      { term: "Pepe", definition: "The Legendary Pepe — born in 2005 in the Boy's Club indie comic by Matt Furie. Just a calm frog saying 'feel good, man'. It spread across the internet and became the most iconic meme in history. In crypto, Pepe became a cultural phenomenon and his creator launched the #SavePepe campaign to revive his good vibes. Pepe is the most famous and widely used meme in the crypto universe." },
-      { term: "Token", definition: "A digital asset created and managed on a blockchain. Unlike a native coin (like ETH or SOL), tokens are built on top of existing networks. They can represent currencies, votes, loyalty points, art, property, and much more. A dedicated article on Token, Tokenization, and Tokenomics is coming." },
-      { term: "DEX", definition: "Decentralized Exchange — a decentralized exchange where you trade directly from your wallet, without creating an account or going through identity verification. Examples: Uniswap, Jupiter, Raydium. A dedicated article on DEX, CEX, and crypto cards is coming." },
-      { term: "CEX", definition: "Centralized Exchange — a centralized exchange managed by a company. You create an account, deposit funds, and trade through the platform. Examples: Coinbase, Binance, Kraken. A dedicated article on DEX, CEX, and crypto cards is coming." },
-      { term: "IPFS", definition: "InterPlanetary File System — a decentralized storage system where files are distributed across the network instead of being stored on a single server. Widely used to store NFT metadata and images. A dedicated article on metadata is coming." },
-      { term: "Smart Contract", definition: "A program that runs automatically on the blockchain when predefined conditions are met. No intermediaries needed to execute. A dedicated article on Smart Contracts is coming." },
-      { term: "Rug Pull", definition: "A scam where the creators of a project disappear with investors' money — usually after a token or NFT sale. Like having the rug pulled out from under you. Always research before investing." },
-      { term: "Moon / Mooning", definition: "'Going to the moon' — when an asset rises sharply in price in a short time. 'When moon?' is a classic (often ironic) question in crypto communities." },
-      { term: "Bear Market", definition: "A prolonged market downturn, with falling prices and widespread pessimism. The opposite of a Bull Market. Bears attack from top to bottom — hence the name." },
-      { term: "Bull Market", definition: "A rising market, with increasing prices and widespread optimism. The opposite of a Bear Market. Bulls attack from bottom to top — hence the name." },
-      { term: "HODL", definition: "A typo of 'hold' that became a classic crypto slang for 'don't sell, hold the asset regardless of price swings'. Also interpreted as Hold On for Dear Life." },
-      { term: "Probably Nothing", definition: "Irony used when something is obviously important or significant. If someone posts huge news and writes 'probably nothing', they mean the opposite — it's very relevant." },
-      { term: "LFG", definition: "Let's F***ing Go — an expression of excitement and hype widely used in crypto communities when something exciting happens." },
-      { term: "PFP", definition: "Profile Picture — an NFT used as a profile picture on social media. It became a symbol of identity and belonging to communities. Collections like CryptoPunks and Bored Apes popularized the concept." },
+
       { term: "1/1", definition: "One of one — a unique edition of just 1 copy. The rarest and most valued form of NFT, usually associated with original artworks by individual artists. The opposite of a large-scale collection." },
-      { term: "Gas Fee", definition: "Transaction fee charged by the Ethereum network (and compatible networks) to process operations on the blockchain. The amount varies with network demand — the more congested, the higher the gas. Networks like Solana and Tezos have much lower fees." },
+
       { term: "Airdrop", definition: "A free distribution of tokens or NFTs to specific wallets. Can be a reward for loyalty, a form of marketing, or the initial distribution of a new project." },
+
+      { term: "APAC", definition: "Asia-Pacific — a region including countries like Japan, South Korea, Singapore, China, and Australia. One of the largest crypto and NFT markets in the world, with very active communities especially in Japan and South Korea." },
+
+      { term: "Bear Market", definition: "A prolonged market downturn, with falling prices and widespread pessimism. The opposite of a Bull Market. Bears attack from top to bottom — hence the name." },
+
+      { term: "Block Explorer", definition: "A platform where a blockchain can be accessed publicly in real time. Each network has one or more block explorers." },
+
+      { term: "Bull Market", definition: "A rising market, with increasing prices and widespread optimism. The opposite of a Bear Market. Bulls attack from bottom to top — hence the name." },
+
+      { term: "Burn NFT", definition: "The process of making an NFT unusable. It's not possible to delete an NFT from the blockchain, so this action is used when there's a need to remove an NFT from circulation." },
+
+      { term: "CEX", definition: "Centralized Exchange — a centralized exchange managed by a company. You create an account, deposit funds, and trade through the platform. Examples: Coinbase, Binance, Kraken. <span style=\"font-family:'Space Mono',monospace;font-size:0.65rem;text-transform:uppercase;letter-spacing:0.08em;background:var(--gray-100);color:var(--gray-500);padding:0.15rem 0.5rem;border-radius:100px\">Coming soon</span>" },
+
+      { term: "DEX", definition: "Decentralized Exchange — a decentralized exchange where you trade directly from your wallet, without creating an account or going through identity verification. Examples: Uniswap, Jupiter, Raydium. <span style=\"font-family:'Space Mono',monospace;font-size:0.65rem;text-transform:uppercase;letter-spacing:0.08em;background:var(--gray-100);color:var(--gray-500);padding:0.15rem 0.5rem;border-radius:100px\">Coming soon</span>" },
+
+      { term: "DYOR", definition: "Do Your Own Research — an expression meaning everyone needs to do their own research, as investing in crypto is very volatile. What works for one person doesn't necessarily work for another." },
+
+      { term: "Flood", definition: "Sending many messages about the same thing, becoming visual pollution in chats and servers." },
+
       { term: "Floor Price", definition: "The lowest available price to buy an NFT from a specific collection. It's the cheapest entry point and used as a benchmark for a collection's value." },
-      { term: "Ser", definition: "A deliberate, humorous misspelling of 'Sir', used as a form of address in crypto and internet culture. Carries a tone of ironic respect and warmth. Ex: 'good morning, sers'." },
+
+      { term: "FOMO", definition: "Fear Of Missing Out — fear of missing an opportunity. Very common in volatile markets, it can lead to impulsive decisions." },
+
+      { term: "Gas Fee", definition: "Transaction fee charged by the Ethereum network (and compatible networks) to process operations on the blockchain. The amount varies with network demand — the more congested, the higher the gas. Networks like Solana and Tezos have much lower fees." },
+
+      { term: "Genesis", definition: "The first NFT someone launches on a network/platform. Term inspired by the genesis block, which is the first block mined on a blockchain." },
+
+      { term: "GM / GN", definition: "Good Morning / Good Night — common greetings in NFT and crypto communities to create daily connection." },
+
+      { term: "Hash", definition: "A unique sequence of characters generated from transaction data using a special mathematical function. In blockchains, hashes verify data integrity and securely connect blocks." },
+
+      { term: "HODL", definition: "A typo of 'hold' that became a classic crypto slang for 'don't sell, hold the asset regardless of price swings'. Also interpreted as Hold On for Dear Life." },
+
+      { term: "IPFS", definition: "InterPlanetary File System — a decentralized storage system where files are distributed across the network instead of being stored on a single server. Widely used to store NFT metadata and images. <span style=\"font-family:'Space Mono',monospace;font-size:0.65rem;text-transform:uppercase;letter-spacing:0.08em;background:var(--gray-100);color:var(--gray-500);padding:0.15rem 0.5rem;border-radius:100px\">Coming soon</span>" },
+
+      { term: "IRL", definition: "In Real Life — used to refer to life that happens outside the internet." },
+
+      { term: "LATAM", definition: "Latin America — term used to refer to the region in discussions about crypto and Web3 adoption. The region has one of the highest adoption rates in the world, driven by monetary instability and the search for financial alternatives." },
+
+      { term: "LFG", definition: "Let's F***ing Go — an expression of excitement and hype widely used in crypto communities when something exciting happens." },
+
+      { term: "Minting", definition: "The process of creating and registering an NFT on a blockchain — making it an official and verifiable digital asset." },
+
+      { term: "Moon / Mooning", definition: "'Going to the moon' — when an asset rises sharply in price in a short time. 'When moon?' is a classic (often ironic) question in crypto communities." },
+
+      { term: "NFA", definition: "No Financial Advice — an expression used when someone talks about a project/coin, indicating that each person should make their own financial assessment." },
+
+      { term: "Node", definition: "A computer that is part of a Blockchain network's structure. Each node has an identical copy of all transactions that have occurred on the network." },
+
+      { term: "Nonce", definition: "Short for number used once — a randomly generated number used only once in a cryptographic transaction." },
+
+      { term: "P2P", definition: "Peer-to-peer — a direct transaction or communication between two people, without intermediaries. In crypto, P2P transfers happen without a bank or exchange in between." },
+
+      { term: "Pepe", definition: "The Legendary Pepe — born in 2005 in the Boy's Club indie comic by Matt Furie. Just a calm frog saying 'feel good, man'. It spread across the internet and became the most iconic meme in history. In crypto, Pepe became a cultural phenomenon and his creator launched the #SavePepe campaign to revive his good vibes. Pepe is the most famous and widely used meme in the crypto universe." },
+
+      { term: "PFP", definition: "Profile Picture — an NFT used as a profile picture on social media. It became a symbol of identity and belonging to communities. Collections like CryptoPunks popularized the concept." },
+
+      { term: "Phishing", definition: "A type of virtual scam that steals personal and financial information, usually through fake websites or messages that imitate legitimate services." },
+
+      { term: "Probably Nothing", definition: "Irony used when something is obviously important or significant. If someone posts huge news and writes 'probably nothing', they mean the opposite — it's very relevant." },
+
+      { term: "Rug Pull", definition: "A scam where the creators of a project disappear with investors' money — usually after a token or NFT sale. Like having the rug pulled out from under you. Always research before investing." },
+
+      { term: "Scam", definition: "A fraud or swindle. Very common in the crypto space — always be skeptical of proposals that seem too good to be true." },
+
+      { term: "Ser", definition: "A deliberate, humorous misspelling of 'Sir', used as a form of address in crypto and internet culture. Carries a tone of ironic respect and warmth. Ex: 'good morning, ser'." },
+
+      { term: "Smart Contract", definition: "A program that runs automatically on the blockchain when predefined conditions are met. No intermediaries needed to execute. <span style=\"font-family:'Space Mono',monospace;font-size:0.65rem;text-transform:uppercase;letter-spacing:0.08em;background:var(--gray-100);color:var(--gray-500);padding:0.15rem 0.5rem;border-radius:100px\">Coming soon</span>" },
+
+      { term: "Token", definition: "A digital asset created and managed on a blockchain. Unlike a native coin (like ETH or SOL), tokens are built on top of existing networks. They can represent currencies, votes, loyalty points, art, property, and much more. <span style=\"font-family:'Space Mono',monospace;font-size:0.65rem;text-transform:uppercase;letter-spacing:0.08em;background:var(--gray-100);color:var(--gray-500);padding:0.15rem 0.5rem;border-radius:100px\">Coming soon</span>" },
+
+      { term: "WAGMI", definition: "We Are All Gonna Make It — an optimistic expression used in NFT communities, meaning we're all going to succeed." },
+
       { term: "Whitelist / Allowlist", definition: "A list of wallets with early access to buy or mint an NFT before public launch. Being on the whitelist usually means a lower price and guaranteed access." },
+
+      { term: "Whitepaper", definition: "A document that explains the goals and technologies of a crypto project. It is a crucial requirement for projects to be considered genuine and professional." },
+    
     ],
   },
   {
