@@ -41,8 +41,6 @@ const internetGen = [
   "A partir de **2008**, quando a tecnologia Blockchain entrou em ação através do Bitcoin. Os princípios da Web3 têm a intenção de permitir que os usuários possuam seus próprios dados, ao invés de empresas.",
   "",
   "Conhecida também como **Web Semântica**, pois tem o objetivo de tornar a informação compreensível para o computador — através do machine learning.",
-  "",
-  "> Apesar disso, muitos discursos sobre Blockchain estão ligados a ideias neoliberais. Mesmo com o ideal sobre descentralização, as Blockchains na prática concentram poder nas mãos de poucos desenvolvedores e mineradores. — MENOTTI, 2021",
 ].join("\n");
 
 const blockchain = [
@@ -508,8 +506,6 @@ const about = [
 
 const references = [
   "## Obras Acadêmicas",
-  "",
-  "**MENOTTI, Gabriel.** Criptoarte: A Metafísica do NFT e a Tecnocolonização da Autenticidade. 2021, Revista do Centro de Pesquisa e Formação / No 13.",
   "",
   "**ASSANGE, Julian et al.** Cypherpunks: Liberdade e o Futuro da Internet. São Paulo: Boitempo, 2013.",
   "",

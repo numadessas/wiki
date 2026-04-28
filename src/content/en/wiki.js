@@ -40,8 +40,6 @@ const internetGen = [
   "Starting from **2008**, when Blockchain technology came into play through Bitcoin. The principles of Web3 intend to allow users to own their own data, instead of companies.",
   "",
   "Also known as the **Semantic Web**, as it aims to make information understandable to computers — through machine learning.",
-  "",
-  "> Despite this, many discourses around Blockchain are tied to neoliberal ideas. Even with the ideal of decentralization, Blockchains in practice concentrate power in the hands of a few developers and miners. — MENOTTI, 2021",
 ].join("\n");
 
 const blockchain = [
@@ -507,8 +505,6 @@ const about = [
 
 const references = [
   "## Academic Works",
-  "",
-  "**MENOTTI, Gabriel.** Criptoarte: A Metafísica do NFT e a Tecnocolonização da Autenticidade. 2021, Revista do Centro de Pesquisa e Formação / No 13.",
   "",
   "**ASSANGE, Julian et al.** Cypherpunks: Freedom and the Future of the Internet. New York: OR Books, 2012.",
   "",
