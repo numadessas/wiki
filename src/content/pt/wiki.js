@@ -698,9 +698,9 @@ export const wikiSections = [
 
       { term: "Bull Market", definition: "Mercado em alta, com preços subindo e otimismo generalizado. O oposto do Bear Market. Touros atacam de baixo para cima — daí o nome." },
 
-      { term: "CEX", definition: "Centralized Exchange — corretora centralizada, gerenciada por uma empresa. Você cria uma conta, deposita fundos e negocia pela plataforma. Exemplos: Coinbase, Binance, Kraken. → artigo em breve" },
+      { term: "CEX", definition: "Centralized Exchange — corretora centralizada, gerenciada por uma empresa. Você cria uma conta, deposita fundos e negocia pela plataforma. Exemplos: Coinbase, Binance, Kraken.  <span style=\"font-family:Space Mono,monospace;font-size:0.65rem;text-transform:uppercase;letter-spacing:0.08em;background:var(--gray-100);color:var(--gray-500);padding:0.15rem 0.5rem;border-radius:100px\">Em breve</span>" },
 
-      { term: "DEX", definition: "Decentralized Exchange — corretora descentralizada onde você negocia diretamente da sua carteira, sem criar conta ou passar por verificação de identidade. Exemplos: Uniswap, Jupiter, Raydium. → artigo em breve" },
+      { term: "DEX", definition: "Decentralized Exchange — corretora descentralizada onde você negocia diretamente da sua carteira, sem criar conta ou passar por verificação de identidade. Exemplos: Uniswap, Jupiter, Raydium.  <span style=\"font-family:Space Mono,monospace;font-size:0.65rem;text-transform:uppercase;letter-spacing:0.08em;background:var(--gray-100);color:var(--gray-500);padding:0.15rem 0.5rem;border-radius:100px\">Em breve</span>" },
 
       { term: "DYOR", definition: "Do Your Own Research — expressão para falar que cada um precisa fazer sua pesquisa, pois investir em cripto é algo muito volátil. O que dá certo para uma pessoa não necessariamente é o que dá para outra." },
 
@@ -720,7 +720,7 @@ export const wikiSections = [
 
       { term: "HODL", definition: "Erro de digitação de 'hold' (segurar) que virou gíria clássica do cripto para 'não vender, segurar o ativo independente das oscilações'. Também interpretado como Hold On for Dear Life." },
 
-      { term: "IPFS", definition: "InterPlanetary File System — sistema de armazenamento descentralizado onde arquivos são distribuídos pela rede ao invés de ficarem em um único servidor. Muito usado para guardar metadados e imagens de NFTs. → artigo em breve" },
+      { term: "IPFS", definition: "InterPlanetary File System — sistema de armazenamento descentralizado onde arquivos são distribuídos pela rede ao invés de ficarem em um único servidor. Muito usado para guardar metadados e imagens de NFTs.  <span style=\"font-family:Space Mono,monospace;font-size:0.65rem;text-transform:uppercase;letter-spacing:0.08em;background:var(--gray-100);color:var(--gray-500);padding:0.15rem 0.5rem;border-radius:100px\">Em breve</span>" },
 
       { term: "IRL", definition: "In Real Life — na vida real. Usado para a vida que acontece fora da internet." },
 
@@ -758,9 +758,9 @@ export const wikiSections = [
 
       { term: "Ser", definition: "Versão proposital e bem-humorada de 'Sir', usada como forma de tratamento na comunidade cripto e na internet em geral. Ex: 'good morning, ser'." },
 
-      { term: "Smart Contract", definition: "Contrato inteligente — programa que roda automaticamente na blockchain quando condições predefinidas são cumpridas. Não precisa de intermediários para executar. → artigo em breve" },
+      { term: "Smart Contract", definition: "Contrato inteligente — programa que roda automaticamente na blockchain quando condições predefinidas são cumpridas. Não precisa de intermediários para executar.  <span style=\"font-family:Space Mono,monospace;font-size:0.65rem;text-transform:uppercase;letter-spacing:0.08em;background:var(--gray-100);color:var(--gray-500);padding:0.15rem 0.5rem;border-radius:100px\">Em breve</span>" },
 
-      { term: "Token", definition: "Ativo digital criado e gerenciado em uma blockchain. Diferente de uma moeda nativa (como ETH ou SOL), tokens são construídos sobre redes existentes. Podem representar moedas, votos, pontos de fidelidade, arte, propriedades, e muito mais. → artigo em breve" },
+      { term: "Token", definition: "Ativo digital criado e gerenciado em uma blockchain. Diferente de uma moeda nativa (como ETH ou SOL), tokens são construídos sobre redes existentes. Podem representar moedas, votos, pontos de fidelidade, arte, propriedades, e muito mais.  <span style=\"font-family:Space Mono,monospace;font-size:0.65rem;text-transform:uppercase;letter-spacing:0.08em;background:var(--gray-100);color:var(--gray-500);padding:0.15rem 0.5rem;border-radius:100px\">Em breve</span>" },
 
       { term: "WAGMI", definition: "We Are All Gonna Make It — expressão otimista usada nas comunidades NFT, algo como nos vamos conseguir." },
 
