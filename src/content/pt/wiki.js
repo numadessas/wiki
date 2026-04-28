@@ -24,7 +24,7 @@ const intro = [
 ].join("\n");
 
 const internetGen = [
-  "Antes de tudo, é importante aprender sobre as três gerações existentes da internet. Vivemos em um momento onde a Web 2 e a Web3 existem simultaneamente — cada geração não são coisas à parte, mas apenas continuações da web que já conhecemos. É possível encontrar conteúdo sobre isso se referindo como "eras", em um sentido mais temporal, mas é mais interessante pensar em termos de formas de interação.",
+  "Antes de tudo, é importante aprender sobre as três gerações existentes da internet. Vivemos em um momento onde a Web 2 e a Web3 existem simultaneamente — cada geração não são coisas à parte, mas apenas continuações da web que já conhecemos. É possível encontrar conteúdo sobre isso se referindo como 'eras', em um sentido mais temporal, mas é mais interessante pensar em termos de formas de interação.",
   "",
   "| ![Web1](/wiki/images/web1.svg) | ![Web2](/wiki/images/web2.svg) | ![Web3](/wiki/images/web3.svg) |",
   "| :---: | :---: | :---: |",
@@ -66,11 +66,11 @@ const internetGen = [
   "",
   "A partir de **2008**, quando a tecnologia Blockchain entrou em ação através do Bitcoin. Os princípios da Web3 têm a intenção de permitir que os usuários possuam seus próprios dados, ao invés de empresas — facilitando transações digitais de informações e valores de forma segura e descentralizada.",
   "",
-  "Conhecida também como **Web Semântica**, pois tem o objetivo de tornar a informação "compreensível" para o computador através do *machine learning* (aprendizado de máquina).",
+  "Conhecida também como **Web Semântica**, pois tem o objetivo de tornar a informação 'compreensível' para o computador através do *machine learning* (aprendizado de máquina).",
   "",
   "> **Semântica** é a parte da linguística que estuda o que as palavras realmente querem dizer.",
   "",
-  "No universo cripto, é comum referir-se a ela simplesmente como **"web3"** — sem o ".0" — especialmente ao falar de projetos descentralizados, NFTs e DeFi.",
+  "No universo cripto, é comum referir-se a ela simplesmente como **'web3'** — sem o '.0' — especialmente ao falar de projetos descentralizados, NFTs e DeFi.",
   "",
   "**Além da blockchain**, a Web3 engloba outras tecnologias: IPFS (armazenamento descentralizado), contratos inteligentes, DAOs (organizações autônomas descentralizadas), identidade digital soberana e redes de computação distribuída como Filecoin e Render.",
   "",

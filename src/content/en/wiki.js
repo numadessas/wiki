@@ -23,7 +23,7 @@ const intro = [
 ].join("\n");
 
 const internetGen = [
-  "First of all, it's important to learn about the three existing generations of the internet. We live in a moment where Web 2 and Web3 exist simultaneously — each generation is not a separate thing, but just a continuation of the web we already know. You may find content referring to these as "eras" in a more temporal sense, but it's more useful to think in terms of modes of interaction.",
+  "First of all, it's important to learn about the three existing generations of the internet. We live in a moment where Web 2 and Web3 exist simultaneously — each generation is not a separate thing, but just a continuation of the web we already know. You may find content referring to these as 'eras' in a more temporal sense, but it's more useful to think in terms of modes of interaction.",
   "",
   "| ![Web1](/wiki/images/web1.svg) | ![Web2](/wiki/images/web2.svg) | ![Web3](/wiki/images/web3.svg) |",
   "| :---: | :---: | :---: |",
@@ -65,11 +65,11 @@ const internetGen = [
   "",
   "Starting from **2008**, when Blockchain technology came into play through Bitcoin. The principles of Web3 intend to allow users to own their own data, instead of companies — facilitating digital transactions of information and value in a secure, decentralized way.",
   "",
-  "Also known as the **Semantic Web**, as it aims to make information "understandable" to computers through *machine learning*.",
+  "Also known as the **Semantic Web**, as it aims to make information 'understandable' to computers through *machine learning*.",
   "",
   "> **Semantics** is the branch of linguistics that studies what words really mean.",
   "",
-  "In the crypto world, it's common to refer to it simply as **"web3"** — without the ".0" — especially when talking about decentralized projects, NFTs, and DeFi.",
+  "In the crypto world, it's common to refer to it simply as **'web3'** — without the '.0' — especially when talking about decentralized projects, NFTs, and DeFi.",
   "",
   "**Beyond blockchain**, Web3 encompasses other technologies: IPFS (decentralized storage), smart contracts, DAOs (decentralized autonomous organizations), sovereign digital identity, and distributed computing networks like Filecoin and Render.",
   "",
