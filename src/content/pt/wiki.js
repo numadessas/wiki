@@ -455,7 +455,7 @@ const nfts = [
   "",
   "NFTs cujas características podem se alterar — também conhecidos como **semi fungíveis** ou **NFT vivo**. Bastante usados em jogos DeFi (insígnias que evoluem após o jogador completar missões) e nas artes (peças que mudam conforme regras definidas pelo artista).",
   "",
-  "<div style=\"overflow:hidden\"><img src=\"/wiki/images/lamello.gif\" alt=\"LaMelo Ball NFT dinâmico\" style=\"float:left;width:50%;height:auto;margin:0 1.25rem 0.75rem 0;border-radius:8px\" /><p>O jogador de basquete <strong>LaMelo Ball</strong> lançou uma coleção com NFTs dinâmicos que incorporam dados esportivos na rede e mudam dependendo do resultado dos jogos que ele disputa.</p></div>",
+  "<div style=\"display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;align-items:center;margin:1.5rem 0\"><img src=\"/wiki/images/lamello.gif\" alt=\"LaMelo Ball NFT dinâmico\" style=\"width:100%;height:auto;border-radius:8px\" /><p>O jogador de basquete <strong>LaMelo Ball</strong> lançou uma coleção com NFTs dinâmicos que incorporam dados esportivos na rede e mudam dependendo do resultado dos jogos que ele disputa.</p></div>",
   "",
   "Os dNFTs também poderiam ser utilizados para venda de bens físicos — como uma casa que registra suas características iniciais e vai atualizando após reformas e mudanças de proprietário.",
   "",
