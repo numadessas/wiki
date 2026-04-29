@@ -72,7 +72,7 @@ const internetGen = [
   "<div style=\"display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.5rem 0\">",
   "  <div class=\"callout callout-info\"><span class=\"callout-icon\">🖥️</span><div><p class=\"callout-title\">Front-end</p>A parte com a qual os usuários interagem: a interface visível — layout, design, animações. Utiliza HTML, CSS e JavaScript.</div></div>",
   "  <div class=\"callout callout-info\"><span class=\"callout-icon\">⚙️</span><div><p class=\"callout-title\">Back-end</p>A parte que lida com a lógica invisível: processamento, armazenamento e autenticações. Utiliza Python, Ruby, Java, Rust.</div></div>",
-  "</div>",
+
   "",
   "> É possível encontrar vagas de emprego para desenvolvedores de front-end, back-end e **full-stack** — um profissional capaz de atuar em ambas as áreas.",
   "",
@@ -100,7 +100,7 @@ const internetGen = [
   "      <p style=\"font-family:'Instrument Sans',sans-serif;font-weight:600;font-size:0.95rem;color:var(--gray-900);margin:0\">Banda Larga, Tecnologias Semânticas, Computação Móvel e Armazenamento em Nuvem</p>",
   "    </div>",
   "  </div>",
-  "</div>",
+
 ].join("\n");
 
 const blockchain = [
@@ -426,11 +426,17 @@ const nfts = [
   "",
   "Depois da mintagem, o ID e o endereço de contrato de uma NFT não podem ser alterados. Metadados podem ser modificados, mas para isso é necessário conhecimento de programação. A maioria das NFTs possui características permanentemente imutáveis.",
   "",
-  "<div style=\"display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;margin:1.5rem 0\">",
-  "  <div class=\"callout callout-warning\"><span class=\"callout-icon\">📚</span><div><p class=\"callout-title\">Artigos digitais</p>Livros Kindle, cursos online, músicas em streaming, filmes alugados em plataformas — existem em formato digital, mas não são únicos nem pertencem ao comprador.</div></div>",
-  "  <div class=\"callout callout-warning\"><span class=\"callout-icon\">🎮</span><div><p class=\"callout-title\">Itens de jogos</p>Skins, armas, poções, personagens — mesmo sendo únicos dentro do jogo, pertencem à empresa desenvolvedora e não ao jogador.</div></div>",
-  "  <div class=\"callout callout-warning\"><span class=\"callout-icon\">🪪</span><div><p class=\"callout-title\">Sistemas públicos</p>Identidade digital como no <a href=\"https://gov.br\" target=\"_blank\">gov.br</a>, carteira de motorista digital — são registros oficiais, mas emitidos e controlados por instituições centralizadas.</div></div>",
-  "</div>",
+  "**Poderiam ser NFT, mas não são:**",
+  "",
+  "- 📚 **Artigos digitais:** livros Kindle, cursos online, músicas em streaming, filmes alugados em plataformas",
+  "- 🎮 **Itens de jogos:** skins, armas, poções, personagens — pertencem à empresa desenvolvedora, não ao jogador",
+  "- 🪪 **Sistemas públicos:** identidade digital como no [gov.br](https://gov.br), carteira de motorista digital — registros oficiais controlados por instituições centralizadas",
+  "",
+
+
+
+
+
   "",
   "## Metadados",
   "",
@@ -441,7 +447,7 @@ const nfts = [
   "<div style=\"display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.5rem 0\">",
   "  <div class=\"callout callout-concept\"><span class=\"callout-icon\">⛓️</span><div><p class=\"callout-title\">On-chain</p>A informação fica diretamente na rede Blockchain, integrada ao próprio NFT. Mais seguro e permanente, mas também mais caro.</div></div>",
   "  <div class=\"callout callout-concept\"><span class=\"callout-icon\">☁️</span><div><p class=\"callout-title\">Off-chain</p>A informação fica em servidores ou sistemas de armazenamento em nuvem. A maioria dos metadados é armazenada desta forma, como arquivo JSON.</div></div>",
-  "</div>",
+
   "",
   "O **IPFS** (InterPlanetary File System) é o protocolo mais usado para armazenamento off-chain — permite que qualquer pessoa compartilhe arquivos diretamente de seu próprio computador, sem depender de um servidor central. Ao armazenar os metadados de uma NFT no IPFS, o arquivo recebe um endereço único baseado em seu conteúdo, garantindo que ele não possa ser alterado ou removido por terceiros.",
   "",
@@ -452,7 +458,7 @@ const nfts = [
   "<div style=\"display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;align-items:center;margin:1.5rem 0\">",
   "  <img src=\"/wiki/images/lamello.gif\" alt=\"LaMelo Ball NFT dinâmico\" style=\"width:100%;height:auto;border-radius:8px\" />",
   "  <p>O jogador de basquete <strong>LaMelo Ball</strong> lançou uma coleção com NFTs dinâmicos que incorporam dados esportivos na rede e mudam dependendo do resultado dos jogos que ele disputa.</p>",
-  "</div>",
+
   "",
   "Os dNFTs também poderiam ser utilizados para venda de bens físicos — como uma casa que registra suas características iniciais e vai atualizando após reformas e mudanças de proprietário.",
   "",
