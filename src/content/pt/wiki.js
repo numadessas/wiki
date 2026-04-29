@@ -416,11 +416,11 @@ const security = [
 const nfts = [
   "## O que são NFTs?",
   "",
-  "São as iniciais de **Non-Fungible Token**, ou **ficha não fungível**. Podemos entender **NFT** como o **certificado digital de propriedade de um item**. Esse certificado é criado e registrado em uma rede Blockchain e pode conter arquivos, links, texto ou códigos. Como um ativo digital único, não pode ser substituído por outro.",
+  "NFT significa **Non-Fungible Token** (ficha não fungível). Podemos entender **NFT** como o **certificado digital de propriedade de um item**. Esse certificado é criado e registrado em uma rede Blockchain e pode conter arquivos, links, texto ou códigos. Como um ativo digital único, não pode ser substituído por outro.",
   "",
   "Mas na criptoarte vai além — é um movimento cultural.",
   "",
-  "**Fungível** é um termo jurídico para definir coisas substituíveis, como automóveis, móveis e dinheiro. **Infungível** é o que não se pode substituir: obras de arte, bens imóveis ou objetos raros dos quais restam um único exemplar.",
+  "**Fungível** é um termo jurídico para definir coisas substituíveis, como dinheiro, carros ou móveis. **Infungível** é o que não se pode substituir: obras de arte, bens imóveis ou objetos raros dos quais restam um único exemplar.",
   "",
   "<figure style=\"margin:1.5rem 0\"><img src=\"/wiki/images/infungivel.png\" alt=\"Gráfico ilustrado exemplificando infungível/fungível e intangível/tangível\" style=\"display:block;max-width:467px;height:auto\" /><figcaption style=\"font-family:'Space Mono',monospace;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--gray-400);margin-top:0.5rem\">Fonte: <a href=\"https://mitsloanreview.com.br/a-ascensao-do-metaverso-e-dos-nfts/\" target=\"_blank\">MIT Sloan Review Brasil</a></figcaption></figure>",
   "",
@@ -432,22 +432,13 @@ const nfts = [
   "- 🎮 **Itens de jogos:** skins, armas, poções, personagens — pertencem à empresa desenvolvedora, não ao jogador",
   "- 🪪 **Sistemas públicos:** identidade digital como no [gov.br](https://gov.br), carteira de motorista digital — registros oficiais controlados por instituições centralizadas",
   "",
-
-
-
-
-
-  "",
   "## Metadados",
   "",
   "Metadados NFT são como etiquetas com as propriedades ou detalhes de um ativo digital. Os mais comumente usados incluem: descrição do arquivo, nome, categorias, histórico de transações, data e hora.",
   "",
   "**Os metadados NFT existem como uma entidade separada e não são iguais ao NFT**. São armazenados em um local diferente, o que é crucial para conservar o valor do ativo. Existem duas formas de armazenamento:",
   "",
-  "<div style=\"display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.5rem 0\">",
-  "  <div class=\"callout callout-concept\"><span class=\"callout-icon\">⛓️</span><div><p class=\"callout-title\">On-chain</p>A informação fica diretamente na rede Blockchain, integrada ao próprio NFT. Mais seguro e permanente, mas também mais caro.</div></div>",
-  "  <div class=\"callout callout-concept\"><span class=\"callout-icon\">☁️</span><div><p class=\"callout-title\">Off-chain</p>A informação fica em servidores ou sistemas de armazenamento em nuvem. A maioria dos metadados é armazenada desta forma, como arquivo JSON.</div></div>",
-
+  "<div style=\"display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.5rem 0\"><div class=\"callout callout-concept\"><span class=\"callout-icon\">⛓️</span><div><p class=\"callout-title\">On-chain</p>A informação fica diretamente na rede Blockchain, integrada ao próprio NFT. Mais seguro e permanente, mas também mais caro.</div></div><div class=\"callout callout-concept\"><span class=\"callout-icon\">☁️</span><div><p class=\"callout-title\">Off-chain</p>A informação fica em servidores ou sistemas de armazenamento em nuvem. A maioria dos metadados é armazenada desta forma, como arquivo JSON.</div></div></div>",
   "",
   "O **IPFS** (InterPlanetary File System) é o protocolo mais usado para armazenamento off-chain — permite que qualquer pessoa compartilhe arquivos diretamente de seu próprio computador, sem depender de um servidor central. Ao armazenar os metadados de uma NFT no IPFS, o arquivo recebe um endereço único baseado em seu conteúdo, garantindo que ele não possa ser alterado ou removido por terceiros.",
   "",
