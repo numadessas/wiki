@@ -421,7 +421,7 @@ const nfts = [
   "",
   "**Fungible** is a legal term for replaceable things, such as money, cars, or furniture. **Non-fungible** refers to what cannot be replaced: artworks, real estate, or rare objects of which only one copy remains.",
   "",
-  "<figure style=\"margin:1.5rem 0\"><img src=\"/wiki/images/non-fungible.png\" alt=\"Illustrated chart showing the fungible/non-fungible and tangible/intangible spectrum\" style=\"max-width:60%;height:auto;display:block\" /><figcaption style=\"font-family:'Space Mono',monospace;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--gray-400);margin-top:0.5rem\">Source: <a href=\"https://mitsloanreview.com.br/a-ascensao-do-metaverso-e-dos-nfts/\" target=\"_blank\">MIT Sloan Review Brasil</a></figcaption></figure>",
+  "<figure style=\"margin:1.5rem 0\"><img src=\"/wiki/images/non-fungible.png\" alt=\"Illustrated chart showing the fungible/non-fungible and tangible/intangible spectrum\" style=\"max-width:467px;width:100%;height:auto;display:block\" /><figcaption style=\"font-family:'Space Mono',monospace;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--gray-400);margin-top:0.5rem\">Source: <a href=\"https://mitsloanreview.com.br/a-ascensao-do-metaverso-e-dos-nfts/\" target=\"_blank\">MIT Sloan Review Brasil</a></figcaption></figure>",
   "",
   "After minting, the ID and contract address of an NFT cannot be changed. Metadata can be modified after minting, but this requires programming knowledge. Most NFTs have permanently immutable characteristics.",
   "",
