@@ -5,6 +5,7 @@ import { useTheme } from '../../utils/ThemeContext.jsx'
 import { useLanguage } from '../../utils/LanguageContext.jsx'
 import SearchModal from '../wiki/SearchModal.jsx'
 import { useReadingProgress } from '../../hooks/useReadingProgress.js'
+import { logoSrc } from '../../utils/sectionMeta.js'
 
 export default function Header({ onMenuClick }) {
   const { dark, toggle } = useTheme()
@@ -30,120 +31,79 @@ export default function Header({ onMenuClick }) {
       <header style={{
         height: 'var(--header-height)',
         background: 'var(--white)',
-        borderBottom: '1px solid var(--gray-200)',
+        borderBottom: 'var(--line)',
         position: 'fixed',
         top: 0, left: 0, right: 0,
         zIndex: 60,
         display: 'flex',
         alignItems: 'center',
-        paddingLeft: '1.25rem',
-        paddingRight: '1.25rem',
-        gap: '1rem',
+        paddingLeft: '1rem',
+        paddingRight: '1rem',
+        gap: '0.6rem',
       }}>
-        <button
-          onClick={onMenuClick}
-          className="lg:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors"
-          style={{ color: 'var(--gray-600)' }}
-        >
-          <Menu size={20} />
+        <button onClick={onMenuClick} className="lg:hidden icon-btn" aria-label="Menu">
+          <Menu size={17} />
         </button>
 
-        <Link to="/" style={{
-          fontFamily: 'Instrument Sans, sans-serif',
-          fontWeight: 700,
-          fontSize: '0.9rem',
-          textTransform: 'uppercase',
-          letterSpacing: '-0.02em',
-          color: 'var(--gray-900)',
+        <Link to="/" aria-label="numawiki" style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: '0.5rem',
           textDecoration: 'none',
           flexShrink: 0,
         }}>
-          numa<span style={{ color: 'var(--orange)' }}>wiki</span>
+          <span aria-hidden="true" style={{
+            display: 'block',
+            width: '66px',
+            height: '22px',
+            background: 'var(--ink)',
+            WebkitMask: `url(${logoSrc}) center / contain no-repeat`,
+            mask: `url(${logoSrc}) center / contain no-repeat`,
+          }} />
+          <span className="chip chip--orange" style={{ transform: 'rotate(-4deg)' }}>wiki</span>
         </Link>
 
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.25rem', marginLeft: '1rem' }}>
-          <NavLink
-            to="/"
-            end
-            style={({ isActive }) => ({
-              fontFamily: 'DM Sans, sans-serif',
-              fontSize: '0.85rem',
-              fontWeight: isActive ? '600' : '400',
-              color: isActive ? 'var(--orange)' : 'var(--gray-500)',
-              textDecoration: 'none',
-              padding: '0.35rem 0.75rem',
-              borderRadius: '6px',
-              transition: 'all 0.2s',
-            })}
-          >
-            Wiki
+        <nav className="hidden md:flex" style={{ alignItems: 'center', gap: '0.25rem', marginLeft: '1rem' }}>
+          <NavLink to="/" end className={({ isActive }) => `top-link${isActive ? ' active' : ''}`}>
+            {lang === 'pt' ? 'Índice' : 'Index'}
           </NavLink>
-
-          <NavLink
-            to="/wiki/about"
-            style={({ isActive }) => ({
-              fontFamily: 'DM Sans, sans-serif',
-              fontSize: '0.85rem',
-              fontWeight: isActive ? '600' : '400',
-              color: isActive ? 'var(--orange)' : 'var(--gray-500)',
-              textDecoration: 'none',
-              padding: '0.35rem 0.75rem',
-              borderRadius: '6px',
-              transition: 'all 0.2s',
-            })}
-          >
+          <NavLink to="/wiki/about" className={({ isActive }) => `top-link${isActive ? ' active' : ''}`}>
             {lang === 'pt' ? 'Sobre' : 'About'}
           </NavLink>
-        </div>
+          <a href="https://numadessas.com.br" target="_blank" rel="noopener noreferrer" className="top-link">
+            numadessas ↗
+          </a>
+        </nav>
 
         <div style={{ flex: 1 }} />
 
         <button
           onClick={() => setSearchOpen(true)}
-          className="flex items-center gap-2 px-3 py-1.5 rounded-lg border transition-colors"
-          style={{
-            borderColor: 'var(--gray-200)',
-            color: 'var(--gray-400)',
-            background: 'var(--gray-50)',
-            fontFamily: 'DM Sans, sans-serif',
-            fontSize: '0.8rem',
-          }}
+          className="icon-btn"
+          style={{ paddingLeft: '0.8rem', paddingRight: '0.5rem', gap: '0.6rem' }}
+          aria-label={t.nav.search}
         >
           <Search size={14} />
-          <span className="hidden sm:block">{t.nav.search}</span>
-          <kbd style={{
+          <span className="hidden sm:block" style={{ fontFamily: 'DM Sans, sans-serif', textTransform: 'none', fontWeight: 400, fontSize: '0.8rem', minWidth: '90px', textAlign: 'left' }}>
+            {t.nav.search}
+          </span>
+          <kbd className="hidden sm:block" style={{
             fontFamily: 'Space Mono, monospace',
             fontSize: '0.6rem',
-            background: 'var(--gray-200)',
-            color: 'var(--gray-500)',
-            padding: '0.1rem 0.35rem',
-            borderRadius: '4px',
-          }} className="hidden sm:block">⌘K</kbd>
+            background: 'var(--ink)',
+            color: 'var(--white)',
+            padding: '0.1rem 0.4rem',
+            borderRadius: '999px',
+          }}>⌘K</kbd>
         </button>
 
-        <button
-          onClick={() => setLang(l => l === 'en' ? 'pt' : 'en')}
-          className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg hover:bg-gray-100 transition-colors"
-          style={{
-            color: 'var(--gray-500)',
-            fontFamily: 'Space Mono, monospace',
-            fontSize: '0.7rem',
-            textTransform: 'uppercase',
-            border: 'none',
-            background: 'none',
-            cursor: 'pointer',
-          }}
-        >
+        <button onClick={() => setLang(l => l === 'en' ? 'pt' : 'en')} className="icon-btn" aria-label={t.nav.language}>
           <Globe size={14} />
           {lang.toUpperCase()}
         </button>
 
-        <button
-          onClick={toggle}
-          className="p-2 rounded-lg hover:bg-gray-100 transition-colors"
-          style={{ color: 'var(--gray-500)', border: 'none', background: 'none', cursor: 'pointer' }}
-        >
-          {dark ? <Sun size={16} /> : <Moon size={16} />}
+        <button onClick={toggle} className="icon-btn" aria-label={dark ? t.nav.lightMode : t.nav.darkMode}>
+          {dark ? <Sun size={15} /> : <Moon size={15} />}
         </button>
       </header>
 

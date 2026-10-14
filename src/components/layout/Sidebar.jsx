@@ -1,126 +1,97 @@
-import { NavLink, Link, useLocation } from 'react-router-dom'
+import { NavLink, Link } from 'react-router-dom'
 import { useLanguage } from '../../utils/LanguageContext.jsx'
+import { getAllSectionsSync } from '../../utils/contentAdapter.js'
+import { getSectionMeta, stickers } from '../../utils/sectionMeta.js'
 import { X } from 'lucide-react'
 
-export default function Sidebar({ isOpen, onClose }) {
+export default function Sidebar({ isOpen, persistent, onClose }) {
   const { lang } = useLanguage()
-  const location = useLocation()
+  const sections = getAllSectionsSync(lang)
 
   return (
     <>
       {isOpen && (
-        <div className="sidebar-overlay lg:hidden" onClick={onClose} />
+        <div className={`sidebar-overlay${persistent ? ' lg:hidden' : ''}`} onClick={onClose} />
       )}
       <aside
         style={{
           width: 'var(--sidebar-width)',
           background: 'var(--gray-50)',
-          borderRight: '1px solid var(--gray-200)',
+          borderRight: 'var(--line)',
           position: 'fixed',
           top: 'var(--header-height)',
           left: 0,
           bottom: 0,
           overflowY: 'auto',
           zIndex: 50,
-          transform: isOpen ? 'translateX(0)' : 'translateX(-100%)',
-          transition: 'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
         }}
-        className="lg:translate-x-0"
+        className={`sidebar${isOpen ? ' open' : ''}${persistent ? ' persist' : ''}`}
       >
         <button
           onClick={onClose}
-          className="lg:hidden absolute top-4 right-4 p-1.5 rounded-lg hover:bg-gray-200 transition-colors"
-          style={{ color: 'var(--gray-500)' }}
+          className={`${persistent ? 'lg:hidden ' : ''}icon-btn`}
+          style={{ position: 'absolute', top: '0.9rem', right: '0.9rem' }}
+          aria-label="Close"
         >
-          <X size={18} />
+          <X size={16} />
         </button>
 
-        <nav className="p-6">
-          <Link
-            to="/"
-            onClick={onClose}
-            style={{
-              fontFamily: 'Space Mono, monospace',
-              fontSize: '0.65rem',
-              textTransform: 'uppercase',
-              letterSpacing: '0.12em',
-              color: 'var(--gray-400)',
-              textDecoration: 'none',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '0.5rem',
-              marginBottom: '1.5rem',
-            }}
-          >
-            ← {lang === 'pt' ? 'Início' : 'Home'}
+        <nav style={{ padding: '1.25rem 1rem 2rem' }}>
+          <Link to="/" onClick={onClose} className="label" style={{
+            color: 'var(--gray-500)',
+            textDecoration: 'none',
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '0.5rem',
+            marginBottom: '1.25rem',
+            paddingLeft: '0.6rem',
+          }}>
+            ← {lang === 'pt' ? 'Índice' : 'Index'}
           </Link>
 
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
-            <Link
-              to="/"
-              onClick={onClose}
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '0.75rem',
-                padding: '0.6rem 0.75rem',
-                borderRadius: '8px',
-                textDecoration: 'none',
-                background: location.pathname === '/' ? 'rgba(238,111,34,0.1)' : 'transparent',
-                color: location.pathname === '/' ? 'var(--orange)' : 'var(--gray-600)',
-                transition: 'all 0.2s',
-                fontFamily: 'DM Sans, sans-serif',
-                fontSize: '0.875rem',
-                fontWeight: location.pathname === '/' ? '600' : '400',
-              }}
-            >
-              <span style={{ fontSize: '0.85rem', opacity: 0.7 }}>◈</span>
-              Wiki
-            </Link>
+          <p className="label" style={{ color: 'var(--ink)', fontWeight: 700, padding: '0 0.6rem', marginBottom: '0.5rem' }}>
+            {lang === 'pt' ? 'Verbetes' : 'Entries'} · {sections.length}
+          </p>
 
-            <div style={{ height: '1px', background: 'var(--gray-200)', margin: '0.75rem 0' }} />
-
-            <NavLink
-              to="/wiki/about"
-              onClick={onClose}
-              style={({ isActive }) => ({
-                display: 'flex',
-                alignItems: 'center',
-                gap: '0.75rem',
-                padding: '0.6rem 0.75rem',
-                borderRadius: '8px',
-                textDecoration: 'none',
-                background: isActive ? 'rgba(238,111,34,0.1)' : 'transparent',
-                color: isActive ? 'var(--orange)' : 'var(--gray-600)',
-                transition: 'all 0.2s',
-                fontFamily: 'DM Sans, sans-serif',
-                fontSize: '0.875rem',
-                fontWeight: isActive ? '600' : '400',
-              })}
-            >
-              <span style={{ fontSize: '0.85rem', opacity: 0.7 }}>✦</span>
-              {lang === 'pt' ? 'Sobre o Projeto' : 'About the Project'}
-            </NavLink>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.15rem' }}>
+            {sections.map((s, i) => {
+              const m = getSectionMeta(s.id, i)
+              const to = s.slug === 'about' ? '/wiki/about' : `/wiki/${s.slug}`
+              return (
+                <NavLink
+                  key={s.id}
+                  to={to}
+                  onClick={onClose}
+                  className={({ isActive }) => `side-link${isActive ? ' active' : ''}`}
+                >
+                  <span className="side-link__code">{m.code}</span>
+                  <span style={{ minWidth: 0 }}>{s.title}</span>
+                  <span className="side-link__dot" style={{ background: m.accent }} />
+                </NavLink>
+              )
+            })}
           </div>
 
-          <div style={{ height: '1px', background: 'var(--gray-200)', margin: '1.5rem 0' }} />
-
-          <p style={{
-            fontFamily: 'Space Mono, monospace',
-            fontSize: '0.6rem',
-            textTransform: 'uppercase',
-            letterSpacing: '0.1em',
-            color: 'var(--gray-400)',
-            lineHeight: 1.8,
+          <div className="nw-card stripes" style={{
+            marginTop: '2rem',
+            padding: '1rem',
+            position: 'relative',
+            overflow: 'hidden',
+            boxShadow: '3px 3px 0 var(--ink)',
           }}>
-            numawiki<br />
-            Computadores Fazem Arte<br />
-            v2.0 — 2026<br />
-            <a href="https://numadessas.com.br" target="_blank" rel="noopener noreferrer"
-              style={{ color: 'var(--orange)', textDecoration: 'underline' }}>
-              numadessas.com.br
-            </a>
-          </p>
+            <img src={stickers.busto} alt="" aria-hidden="true" style={{
+              position: 'absolute', right: '-14px', bottom: '-6px', width: '86px',
+            }} />
+            <p className="label" style={{ fontSize: '0.58rem', color: 'var(--gray-600)', lineHeight: 1.8, maxWidth: '150px', position: 'relative' }}>
+              numawiki<br />
+              Computadores Fazem Arte<br />
+              v3.0 — 2026<br />
+              <a href="https://numadessas.com.br" target="_blank" rel="noopener noreferrer"
+                style={{ color: 'var(--ink)', fontWeight: 700, textDecoration: 'underline', textDecorationColor: 'var(--orange)', textDecorationThickness: '2px' }}>
+                numadessas.com.br
+              </a>
+            </p>
+          </div>
         </nav>
       </aside>
     </>

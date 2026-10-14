@@ -1,23 +1,12 @@
 import { Link } from 'react-router-dom'
 import { ArrowRight } from 'lucide-react'
 import { useLanguage } from '../../utils/LanguageContext.jsx'
-
-const sectionColors = {
-  introduction: 'var(--orange)',
-  glossary: 'var(--purple)',
-  'internet-generations': '#3b82f6',
-  blockchain: 'var(--orange)',
-  security: '#ef4444',
-  nfts: 'var(--purple)',
-  communities: 'var(--green)',
-  platforms: '#0ea5e9',
-  communication: 'var(--orange)',
-  marketing: 'var(--purple)',
-  references: 'var(--gray-400)',
-}
+import { getAllSectionsSync } from '../../utils/contentAdapter.js'
+import { getSectionMeta } from '../../utils/sectionMeta.js'
 
 export default function RelatedArticles({ sections }) {
-  const { t } = useLanguage()
+  const { t, lang } = useLanguage()
+  const all = getAllSectionsSync(lang)
 
   if (!sections || sections.length === 0) return null
 
@@ -34,56 +23,27 @@ export default function RelatedArticles({ sections }) {
         {t.nav.related}
       </p>
 
-      <div style={{ display: 'grid', gap: '0.75rem' }}>
-        {sections.map(section => (
-          <Link
-            key={section.id}
-            to={`/wiki/${section.slug}`}
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              gap: '1rem',
-              padding: '0.875rem 1rem',
-              borderRadius: '10px',
-              border: '1px solid var(--gray-200)',
-              textDecoration: 'none',
-              background: 'var(--white)',
-              transition: 'all 0.2s',
-            }}
-            className="hover:border-orange-400 group"
-          >
-            <div>
-              <p style={{
-                fontFamily: 'Instrument Sans, sans-serif',
-                fontWeight: 600,
-                fontSize: '0.85rem',
-                textTransform: 'uppercase',
-                color: 'var(--gray-900)',
-                marginBottom: '0.15rem',
-              }}>
-                {section.title}
-              </p>
-              <p style={{
-                fontFamily: 'DM Sans, sans-serif',
-                fontSize: '0.75rem',
-                color: 'var(--gray-400)',
-                lineHeight: 1.4,
-              }}>
-                {section.description}
-              </p>
-            </div>
-            <ArrowRight
-              size={14}
-              style={{
-                color: sectionColors[section.id] || 'var(--orange)',
-                flexShrink: 0,
-                transition: 'transform 0.2s',
-              }}
-              className="group-hover:translate-x-1"
-            />
-          </Link>
-        ))}
+      <div style={{ display: 'grid', gap: '0.6rem' }}>
+        {sections.map(section => {
+          const m = getSectionMeta(section.id, all.findIndex(s => s.id === section.id))
+          return (
+            <Link
+              key={section.id}
+              to={section.slug === 'about' ? '/wiki/about' : `/wiki/${section.slug}`}
+              className="side-link"
+              style={{ background: 'var(--card)', borderColor: 'var(--gray-300)', padding: '0.5rem' }}
+            >
+              <span className={`tint-${m.color}`} style={{ width: '38px', height: '38px', borderRadius: '8px', border: 'var(--line)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, overflow: 'hidden' }}>
+                <img src={m.src} alt="" style={m.fit === 'cover' ? { width: '100%', height: '100%', objectFit: 'cover' } : { width: '70%', height: '70%', objectFit: 'contain' }} />
+              </span>
+              <span style={{ minWidth: 0, flex: 1 }}>
+                <span className="side-link__code" style={{ display: 'block', width: 'auto' }}>{m.code}</span>
+                <span style={{ fontFamily: 'Instrument Sans, sans-serif', fontWeight: 700, fontSize: '0.8rem', textTransform: 'uppercase', color: 'var(--ink)' }}>{section.title}</span>
+              </span>
+              <ArrowRight size={14} style={{ color: m.accent, flexShrink: 0 }} />
+            </Link>
+          )
+        })}
       </div>
     </div>
   )

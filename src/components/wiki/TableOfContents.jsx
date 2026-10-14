@@ -53,7 +53,8 @@ export default function TableOfContents({ content }) {
         fontSize: '0.6rem',
         textTransform: 'uppercase',
         letterSpacing: '0.12em',
-        color: 'var(--gray-400)',
+        color: 'var(--ink)',
+        fontWeight: 700,
         marginBottom: '0.75rem',
       }}>
         {t.nav.tableOfContents}
@@ -67,12 +68,15 @@ export default function TableOfContents({ content }) {
                 display: 'block',
                 fontFamily: 'DM Sans, sans-serif',
                 fontSize: h.level === 2 ? '0.8rem' : '0.75rem',
-                color: active === h.id ? 'var(--orange)' : 'var(--gray-500)',
+                color: active === h.id ? 'var(--ink)' : 'var(--gray-500)',
+                fontWeight: active === h.id ? 700 : 400,
+                background: active === h.id ? 'var(--orange-tint)' : 'transparent',
+                borderRadius: '0 6px 6px 0',
                 textDecoration: 'none',
                 paddingLeft: h.level === 3 ? '1rem' : '0.5rem',
                 paddingTop: '0.2rem',
                 paddingBottom: '0.2rem',
-                borderLeft: active === h.id ? '2px solid var(--orange)' : '2px solid transparent',
+                borderLeft: active === h.id ? '3px solid var(--orange)' : '3px solid var(--gray-200)',
                 transition: 'all 0.2s',
                 lineHeight: 1.4,
               }}

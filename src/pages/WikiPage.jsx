@@ -9,10 +9,17 @@ import TableOfContents from '../components/wiki/TableOfContents.jsx'
 import RelatedArticles from '../components/wiki/RelatedArticles.jsx'
 import Breadcrumb from '../components/ui/Breadcrumb.jsx'
 import TagPill from '../components/ui/TagPill.jsx'
+import { getSectionMeta } from '../utils/sectionMeta.js'
 
 function estimateReadTime(content) {
   const words = content?.split(/\s+/).length || 0
   return Math.max(1, Math.round(words / 200))
+}
+
+// Climate Crisis is very wide (~1.1em per glyph): size the title so its longest word fits.
+function fitBanner(title) {
+  const longest = Math.max(...title.split(/\s+/).map(w => w.length))
+  return (100 / (longest * 1.12)).toFixed(2)
 }
 
 export default function WikiPage() {
@@ -47,6 +54,7 @@ export default function WikiPage() {
   const currentIndex = allSections.findIndex(s => s.slug === slug)
   const prevSection = currentIndex > 0 ? allSections[currentIndex - 1] : null
   const nextSection = currentIndex < allSections.length - 1 ? allSections[currentIndex + 1] : null
+  const meta = getSectionMeta(slug, currentIndex)
 
   const handleCopyLink = () => {
     navigator.clipboard.writeText(window.location.href)
@@ -90,7 +98,7 @@ export default function WikiPage() {
           flex: 1,
           minWidth: 0,
           padding: 'clamp(2rem, 4vw, 3.5rem) clamp(1.5rem, 4vw, 3rem)',
-          maxWidth: '760px',
+          maxWidth: '820px',
           opacity: mounted ? 1 : 0,
           transform: mounted ? 'none' : 'translateY(12px)',
           transition: 'opacity 0.4s ease, transform 0.4s ease',
@@ -101,99 +109,57 @@ export default function WikiPage() {
           { label: section.title },
         ]} />
 
-        <header style={{ marginBottom: '2.5rem' }}>
-          <p style={{
-            fontFamily: 'Space Mono, monospace',
-            fontSize: '0.65rem',
-            textTransform: 'uppercase',
-            letterSpacing: '0.12em',
-            color: 'var(--orange)',
-            marginBottom: '0.75rem',
-          }}>
-            {section.subtitle}
-          </p>
+        <header className="entry-hero">
+          <div className="entry-hero__body" style={{ containerType: 'inline-size' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flexWrap: 'wrap', marginBottom: '1rem' }}>
+              <span className={`chip chip--${meta.color}`}>{meta.code}</span>
+              <span className="label" style={{ color: 'var(--gray-500)', fontSize: '0.62rem' }}>
+                {section.subtitle}
+              </span>
+            </div>
 
-          <h1 style={{
-            fontFamily: 'Instrument Sans, sans-serif',
-            fontWeight: 700,
-            fontSize: 'clamp(2rem, 5vw, 3rem)',
-            textTransform: 'uppercase',
-            letterSpacing: '-0.03em',
-            lineHeight: 0.95,
-            color: 'var(--gray-900)',
-            marginBottom: '1rem',
-          }}>
-            {section.title}
-          </h1>
-
-          {section.description && (
-            <p style={{
-              fontFamily: 'DM Sans, sans-serif',
-              fontSize: '1.05rem',
-              color: 'var(--gray-500)',
-              lineHeight: 1.6,
-              marginBottom: '1.5rem',
-              maxWidth: '540px',
+            <h1 className="banner" style={{
+              fontSize: `min(2.6rem, ${fitBanner(section.title)}cqi)`,
+              color: 'var(--ink)',
+              marginBottom: '0.9rem',
             }}>
-              {section.description}
-            </p>
-          )}
+              {section.title}
+            </h1>
 
-          <div style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '0.75rem',
-            flexWrap: 'wrap',
-          }}>
-            <span style={{
-              fontFamily: 'Space Mono, monospace',
-              fontSize: '0.6rem',
-              textTransform: 'uppercase',
-              letterSpacing: '0.08em',
-              color: 'var(--gray-400)',
-            }}>
-              {estimateReadTime(section.content)} {t.nav.readingTime}
-            </span>
+            {section.description && (
+              <p style={{
+                fontSize: '1.05rem',
+                color: 'var(--gray-600)',
+                lineHeight: 1.55,
+                marginBottom: '1.25rem',
+                maxWidth: '520px',
+              }}>
+                {section.description}
+              </p>
+            )}
 
-            <span style={{ color: 'var(--gray-200)' }}>·</span>
-
-            <div style={{ display: 'flex', gap: '0.4rem', flexWrap: 'wrap' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flexWrap: 'wrap' }}>
+              <span className="chip" style={{ background: 'var(--ink)', color: 'var(--white)' }}>
+                ◷ {estimateReadTime(section.content)} {t.nav.readingTime}
+              </span>
               {section.tags?.map(tag => (
                 <TagPill key={tag} tag={tag} asLink />
               ))}
+              <button
+                onClick={handleCopyLink}
+                className="chip"
+                style={{ cursor: 'pointer', background: copied ? 'var(--green)' : 'var(--card)', color: copied ? '#0a0a0a' : 'var(--ink)' }}
+                title={t.nav.copyLink}
+              >
+                {copied ? <Check size={11} /> : <Copy size={11} />}
+                {copied ? t.nav.copied : t.nav.copyLink}
+              </button>
             </div>
-
-            <div style={{ flex: 1 }} />
-
-            <button
-              onClick={handleCopyLink}
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '0.35rem',
-                fontFamily: 'Space Mono, monospace',
-                fontSize: '0.6rem',
-                textTransform: 'uppercase',
-                letterSpacing: '0.08em',
-                color: copied ? 'var(--green)' : 'var(--gray-400)',
-                transition: 'color 0.2s',
-                cursor: 'pointer',
-                border: 'none',
-                background: 'none',
-              }}
-              title={t.nav.copyLink}
-            >
-              {copied ? <Check size={12} /> : <Copy size={12} />}
-              {copied ? t.nav.copied : t.nav.copyLink}
-            </button>
+          </div>
+          <div className={`entry-hero__art tint-${meta.color} stripes`}>
+            <img src={meta.src} alt="" className={meta.fit === 'cover' ? 'cover' : ''} />
           </div>
         </header>
-
-        <div style={{
-          height: '1px',
-          background: 'var(--gray-200)',
-          marginBottom: '2.5rem',
-        }} />
 
         {section.id === 'glossary' ? (
           <>
@@ -207,89 +173,13 @@ export default function WikiPage() {
         <nav
           style={{
             display: 'grid',
-            gridTemplateColumns: '1fr 1fr',
-            gap: '0.75rem',
-            marginTop: '4rem',
-            paddingTop: '2rem',
-            borderTop: '1px solid var(--gray-200)',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 220px), 1fr))',
+            gap: '1rem',
+            marginTop: '4.5rem',
           }}
         >
-          {prevSection ? (
-            <Link
-              to={`/wiki/${prevSection.slug}`}
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '0.25rem',
-                padding: '0.875rem 1rem',
-                borderRadius: '10px',
-                border: '1px solid var(--gray-200)',
-                textDecoration: 'none',
-                transition: 'border-color 0.2s',
-              }}
-              className="hover:border-orange-400"
-            >
-              <span style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '0.35rem',
-                fontFamily: 'Space Mono, monospace',
-                fontSize: '0.6rem',
-                textTransform: 'uppercase',
-                color: 'var(--gray-400)',
-              }}>
-                <ChevronLeft size={11} /> {lang === 'pt' ? 'Anterior' : 'Previous'}
-              </span>
-              <span style={{
-                fontFamily: 'Instrument Sans, sans-serif',
-                fontWeight: 600,
-                fontSize: '0.85rem',
-                textTransform: 'uppercase',
-                color: 'var(--gray-800)',
-              }}>
-                {prevSection.title}
-              </span>
-            </Link>
-          ) : <div />}
-
-          {nextSection && (
-            <Link
-              to={`/wiki/${nextSection.slug}`}
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'flex-end',
-                gap: '0.25rem',
-                padding: '0.875rem 1rem',
-                borderRadius: '10px',
-                border: '1px solid var(--gray-200)',
-                textDecoration: 'none',
-                transition: 'border-color 0.2s',
-              }}
-              className="hover:border-orange-400"
-            >
-              <span style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '0.35rem',
-                fontFamily: 'Space Mono, monospace',
-                fontSize: '0.6rem',
-                textTransform: 'uppercase',
-                color: 'var(--gray-400)',
-              }}>
-                {lang === 'pt' ? 'Próximo' : 'Next'} <ChevronRight size={11} />
-              </span>
-              <span style={{
-                fontFamily: 'Instrument Sans, sans-serif',
-                fontWeight: 600,
-                fontSize: '0.85rem',
-                textTransform: 'uppercase',
-                color: 'var(--gray-800)',
-              }}>
-                {nextSection.title}
-              </span>
-            </Link>
-          )}
+          {prevSection ? <PageLink section={prevSection} meta={getSectionMeta(prevSection.id, currentIndex - 1)} label={lang === 'pt' ? 'Anterior' : 'Previous'} dir="prev" /> : <div />}
+          {nextSection && <PageLink section={nextSection} meta={getSectionMeta(nextSection.id, currentIndex + 1)} label={lang === 'pt' ? 'Próximo' : 'Next'} dir="next" />}
         </nav>
       </article>
 
@@ -313,5 +203,28 @@ export default function WikiPage() {
         </div>
       </aside>
     </div>
+  )
+}
+
+function PageLink({ section, meta, label, dir }) {
+  const next = dir === 'next'
+  const to = section.slug === 'about' ? '/wiki/about' : `/wiki/${section.slug}`
+  return (
+    <Link to={to} className="index-card" style={{ flexDirection: next ? 'row-reverse' : 'row', alignItems: 'stretch' }}>
+      <div className={`tint-${meta.color} stripes`} style={{
+        width: '84px', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center',
+        borderRight: next ? 'none' : 'var(--line)', borderLeft: next ? 'var(--line)' : 'none',
+      }}>
+        <img src={meta.src} alt="" style={{ width: '62%', maxHeight: '64px', objectFit: meta.fit === 'cover' ? 'cover' : 'contain', borderRadius: meta.fit === 'cover' ? '8px' : 0 }} />
+      </div>
+      <div style={{ padding: '0.9rem 1.1rem', display: 'flex', flexDirection: 'column', gap: '0.3rem', alignItems: next ? 'flex-end' : 'flex-start', textAlign: next ? 'right' : 'left', flex: 1, minWidth: 0 }}>
+        <span className="label" style={{ display: 'flex', alignItems: 'center', gap: '0.3rem', fontSize: '0.6rem', color: 'var(--gray-500)' }}>
+          {!next && <ChevronLeft size={12} />} {label} · {meta.code} {next && <ChevronRight size={12} />}
+        </span>
+        <span style={{ fontFamily: 'Instrument Sans, sans-serif', fontWeight: 700, fontSize: '0.95rem', textTransform: 'uppercase', color: 'var(--ink)', lineHeight: 1.2 }}>
+          {section.title}
+        </span>
+      </div>
+    </Link>
   )
 }

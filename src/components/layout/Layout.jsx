@@ -48,13 +48,12 @@ export default function Layout({ children }) {
           paddingTop: 'var(--header-height)',
         }}
       >
-        {/* Sidebar — only on wiki pages */}
-        {isWikiPage && (
-          <Sidebar
-            isOpen={sidebarOpen}
-            onClose={() => setSidebarOpen(false)}
-          />
-        )}
+        {/* Sidebar — fixed on wiki pages, drawer-only on the home page */}
+        <Sidebar
+          isOpen={sidebarOpen}
+          persistent={isWikiPage}
+          onClose={() => setSidebarOpen(false)}
+        />
 
         {/* Main content — only push right on desktop */}
         <main
