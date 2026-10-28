@@ -283,7 +283,6 @@ function HeroArt({ isPt }) {
         </span>
       </div>
 
-      <img src={stickers.phantom} alt="" className="sticker" style={{ width: '17%', left: '-2%', top: '50%', '--r': '-10deg' }} />
       <img src={stickers.pepe} alt="" className="sticker" style={{ width: '20%', right: '0%', top: '2%', '--r': '8deg', animationDelay: '-2s' }} />
       <img src={stickers.shiba} alt="" className="sticker" style={{ width: '18%', right: '2%', bottom: '4%', '--r': '-6deg', animationDelay: '-4s' }} />
       <img src={stickers.emoji} alt="" className="sticker" style={{ width: '16%', left: '2%', top: '0%', '--r': '-8deg', animationDelay: '-1s' }} />
